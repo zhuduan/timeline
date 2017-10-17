@@ -1,4 +1,4 @@
-package  com.team.monitor.model;
+package  com.timeline.model;
 
 
 import javax.persistence.Column;
