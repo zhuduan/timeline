@@ -1,4 +1,4 @@
-package com.team.timeline.service;
+package com.timeline.service;
 
 import static org.junit.Assert.*;
 
