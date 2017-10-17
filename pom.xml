@@ -13,6 +13,7 @@
 		<version>1.5.1.RELEASE</version>
 	</parent>
 
+<<<<<<< HEAD
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.7</java.version>
@@ -118,6 +119,127 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
+=======
+  <properties>
+	  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	  <java.version>1.8</java.version>
+	  <springboot.version>1.5.7.RELEASE</springboot.version>
+	  <json.version>20160810</json.version>
+	  <guava.version>19.0</guava.version>
+	  <aspectj.version>1.8.9</aspectj.version>
+	  <cglib.version>2.2.2</cglib.version>
+	  <commons-lang3.version>3.4</commons-lang3.version>
+	  <mysql.version>5.1.38</mysql.version>
+	  <flyway.version>3.2.1</flyway.version>
+	  <log4j.version>1.2.17</log4j.version>
+	  <springfox.version>2.6.1</springfox.version>
+	  <swagger.version>1.5.13</swagger.version>
+  </properties>
+
+  <dependencies>
+  	<dependency>
+  	  <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <exclusions>
+	    	<exclusion>
+	            <groupId>org.springframework.boot</groupId>
+	            <artifactId>spring-boot-starter-logging</artifactId>
+	        </exclusion>
+    	</exclusions>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.springframework.boot</groupId>
+    	<artifactId>spring-boot-starter-test</artifactId>
+    	<scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>  
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>${mysql.version}</version>
+        <scope>runtime</scope>
+    </dependency>
+    <dependency>
+	    <groupId>org.json</groupId>
+	    <artifactId>json</artifactId>
+	    <version>${json.version}</version>
+	</dependency>
+	<dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-devtools</artifactId>
+    </dependency>
+	<dependency>
+	    <groupId>org.apache.commons</groupId>
+	    <artifactId>commons-lang3</artifactId>
+	    <version>${commons-lang3.version}</version>
+	</dependency>
+	<dependency>
+	    <groupId>com.google.guava</groupId>
+	    <artifactId>guava</artifactId>
+	    <version>${guava.version}</version>
+	</dependency>
+	  <dependency>
+		  <groupId>org.flywaydb</groupId>
+		  <artifactId>flyway-core</artifactId>
+		  <version>${flyway.version}</version>
+	  </dependency>
+	  <dependency>
+		  <groupId>org.flywaydb</groupId>
+		  <artifactId>flyway-maven-plugin</artifactId>
+		  <version>${flyway.version}</version>
+	  </dependency>
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>${junit.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.aspectj</groupId>
+		<artifactId>aspectjweaver</artifactId>
+		<version>${aspectj.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>cglib</groupId>
+		<artifactId>cglib</artifactId>
+		<version>${cglib.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+		<version>${log4j.version}</version>
+	</dependency>
+	  <dependency>
+		  <groupId>org.slf4j</groupId>
+		  <artifactId>slf4j-api</artifactId>
+		  <version>1.6.6</version>
+	  </dependency>
+	  <dependency>
+		  <groupId>org.slf4j</groupId>
+		  <artifactId>slf4j-simple</artifactId>
+		  <version>1.6.6</version>
+	  </dependency>
+	<dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-swagger2</artifactId>
+        <version>${springfox.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>io.swagger</groupId>
+        <artifactId>swagger-annotations</artifactId>
+        <version>${swagger.version}</version>
+    </dependency>
+
+	<!-- for deploy  -->
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-tomcat</artifactId>
+		<scope>provided</scope>
+	</dependency>
+  </dependencies>
+>>>>>>> 744b7e62a644db7b9c8086c1bad792009931970f
 
 	<pluginRepositories>
 		<pluginRepository>
@@ -130,6 +252,7 @@
 		</pluginRepository>
 	</pluginRepositories>
 
+<<<<<<< HEAD
 	<build>
 		<plugins>
 			<plugin>
@@ -143,4 +266,19 @@
 			</plugin>
 		</plugins>
 	</build>
+=======
+  <build>
+	  <plugins>
+		  <plugin>
+			  <groupId>org.springframework.boot</groupId>
+			  <artifactId>spring-boot-maven-plugin</artifactId>
+		  </plugin>
+		  <plugin>
+			  <groupId>org.flywaydb</groupId>
+			  <artifactId>flyway-maven-plugin</artifactId>
+			  <version>${flyway.version}</version>
+		  </plugin>
+	  </plugins>
+   </build>
+>>>>>>> 744b7e62a644db7b9c8086c1bad792009931970f
 </project>
