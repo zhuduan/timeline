@@ -1,4 +1,4 @@
-package  com.team.monitor.controller;
+package  com.team.timeline.controller;
 
 import java.util.Date;
 
@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import  com.team.monitor.service.FirstDemoService;
+import  com.team.timeline.service.FirstDemoService;
 
 
 /**
@@ -31,8 +31,7 @@ public class TotalController
 		logger.debug("get /la");
 		return "hello " + la;
 	}
-	
-	
+
 	@RequestMapping("/item")
 	private String getItem(){		
 		return String.valueOf(firstDemoService.findByTitle("aa").size());

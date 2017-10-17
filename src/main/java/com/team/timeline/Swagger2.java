@@ -1,4 +1,4 @@
-package com.team.monitor;
+package com.team.timeline;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +20,7 @@ public class Swagger2 {
                 .apiInfo(apiInfo())
                 .useDefaultResponseMessages(false)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.team.monitor.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.team.timeline.controller"))
                 .build();
     }
 

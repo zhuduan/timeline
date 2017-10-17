@@ -1,4 +1,4 @@
-package com.team.monitor;
+package com.team.timeline;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

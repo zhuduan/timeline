@@ -15,15 +15,15 @@
 
   <properties>
 	  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	  <java.version>1.7</java.version>
-	  <springboot.version>1.5.1.RELEASE</springboot.version>
+	  <java.version>1.8</java.version>
+	  <springboot.version>1.5.7.RELEASE</springboot.version>
 	  <json.version>20160810</json.version>
 	  <guava.version>19.0</guava.version>
 	  <aspectj.version>1.8.9</aspectj.version>
 	  <cglib.version>2.2.2</cglib.version>
 	  <commons-lang3.version>3.4</commons-lang3.version>
 	  <mysql.version>5.1.38</mysql.version>
-	  <flywaydb.version>3.2.1</flywaydb.version>
+	  <flyway.version>3.2.1</flyway.version>
 	  <log4j.version>1.2.17</log4j.version>
 	  <springfox.version>2.6.1</springfox.version>
 	  <swagger.version>1.5.13</swagger.version>
@@ -74,6 +74,16 @@
 	    <artifactId>guava</artifactId>
 	    <version>${guava.version}</version>
 	</dependency>
+	  <dependency>
+		  <groupId>org.flywaydb</groupId>
+		  <artifactId>flyway-core</artifactId>
+		  <version>${flyway.version}</version>
+	  </dependency>
+	  <dependency>
+		  <groupId>org.flywaydb</groupId>
+		  <artifactId>flyway-maven-plugin</artifactId>
+		  <version>${flyway.version}</version>
+	  </dependency>
 	<dependency>
 		<groupId>junit</groupId>
 		<artifactId>junit</artifactId>
@@ -94,6 +104,16 @@
 		<artifactId>log4j</artifactId>
 		<version>${log4j.version}</version>
 	</dependency>
+	  <dependency>
+		  <groupId>org.slf4j</groupId>
+		  <artifactId>slf4j-api</artifactId>
+		  <version>1.6.6</version>
+	  </dependency>
+	  <dependency>
+		  <groupId>org.slf4j</groupId>
+		  <artifactId>slf4j-simple</artifactId>
+		  <version>1.6.6</version>
+	  </dependency>
 	<dependency>
         <groupId>io.springfox</groupId>
         <artifactId>springfox-swagger2</artifactId>
@@ -104,7 +124,6 @@
         <artifactId>swagger-annotations</artifactId>
         <version>${swagger.version}</version>
     </dependency>
-
 
 	<!-- for deploy  -->
 	<dependency>
@@ -130,6 +149,11 @@
 		  <plugin>
 			  <groupId>org.springframework.boot</groupId>
 			  <artifactId>spring-boot-maven-plugin</artifactId>
+		  </plugin>
+		  <plugin>
+			  <groupId>org.flywaydb</groupId>
+			  <artifactId>flyway-maven-plugin</artifactId>
+			  <version>${flyway.version}</version>
 		  </plugin>
 	  </plugins>
    </build>
