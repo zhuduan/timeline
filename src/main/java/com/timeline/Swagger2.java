@@ -26,7 +26,7 @@ public class Swagger2 {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("小贷监管系统API文档")
+                .title("timeline API文档")
                 .contact(new Contact("作者", "访问地址", "联系方式"))
                 .build();
     }

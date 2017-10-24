@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.timeline.model.Item;
+import com.timeline.model.PO.Item;
 
 @Transactional
 public interface FirstDemoRepository extends JpaRepository<Item, String> {

@@ -1,4 +1,4 @@
-package  com.timeline.model;
+package com.timeline.model.PO;
 
 
 import javax.persistence.Column;
