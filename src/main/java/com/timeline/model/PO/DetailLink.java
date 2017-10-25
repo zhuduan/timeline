@@ -8,15 +8,15 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
-@Table(name = "Detail")
-public class Detail {
+@Table(name = "DetailLink")
+public class DetailLink {
 
     @Id
     @Column(name = "ID", nullable = false)
     private Integer ID;
 
-    @Column(name = "SubjectID", nullable = false)
-    private Integer SubjectID;
+    @Column(name = "DetailID_Language", nullable = false)
+    private String DetailID_Language;
 
     @Column(name = "Title")
     private String Title;
@@ -30,23 +30,17 @@ public class Detail {
     @Column(name = "PicDes")
     private String PicDes;
 
-    @Column(name = "AuthorID")
-    private Integer AuthorID;
+    @Column(name = "SourceName")
+    private String SourceName;
 
-    @Column(name = "ContributorIDs")
-    private String ContributorIDs;
+    @Column(name = "SourceLink")
+    private String SourceLink;
 
-    @Column(name = "OccurrenceTime")
-    private Date OccurrenceTime;
+    @Column(name = "Weight")
+    private Integer Weight;
 
-    @Column(name = "Language")
-    private Integer Language;
-
-    @Column(name = "ReplyCount")
-    private Integer ReplyCount;
-
-    @Column(name = "LikeCount")
-    private Integer LikeCount;
+    @Column(name = "Status")
+    private Integer Status;
 
     @Column(name = "IsValid")
     private Integer IsValid;
@@ -65,12 +59,12 @@ public class Detail {
         this.ID = ID;
     }
 
-    public Integer getSubjectID() {
-        return SubjectID;
+    public String getDetailID_Language() {
+        return DetailID_Language;
     }
 
-    public void setSubjectID(Integer subjectID) {
-        SubjectID = subjectID;
+    public void setDetailID_Language(String detailID_Language) {
+        DetailID_Language = detailID_Language;
     }
 
     public String getTitle() {
@@ -105,52 +99,36 @@ public class Detail {
         PicDes = picDes;
     }
 
-    public Integer getAuthorID() {
-        return AuthorID;
+    public String getSourceName() {
+        return SourceName;
     }
 
-    public void setAuthorID(Integer authorID) {
-        AuthorID = authorID;
+    public void setSourceName(String sourceName) {
+        SourceName = sourceName;
     }
 
-    public String getContributorIDs() {
-        return ContributorIDs;
+    public String getSourceLink() {
+        return SourceLink;
     }
 
-    public void setContributorIDs(String contributorIDs) {
-        ContributorIDs = contributorIDs;
+    public void setSourceLink(String sourceLink) {
+        SourceLink = sourceLink;
     }
 
-    public Date getOccurrenceTime() {
-        return OccurrenceTime;
+    public Integer getWeight() {
+        return Weight;
     }
 
-    public void setOccurrenceTime(Date occurrenceTime) {
-        OccurrenceTime = occurrenceTime;
+    public void setWeight(Integer weight) {
+        Weight = weight;
     }
 
-    public Integer getLanguage() {
-        return Language;
+    public Integer getStatus() {
+        return Status;
     }
 
-    public void setLanguage(Integer language) {
-        Language = language;
-    }
-
-    public Integer getReplyCount() {
-        return ReplyCount;
-    }
-
-    public void setReplyCount(Integer replyCount) {
-        ReplyCount = replyCount;
-    }
-
-    public Integer getLikeCount() {
-        return LikeCount;
-    }
-
-    public void setLikeCount(Integer likeCount) {
-        LikeCount = likeCount;
+    public void setStatus(Integer status) {
+        Status = status;
     }
 
     public Integer getIsValid() {

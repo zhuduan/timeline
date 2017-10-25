@@ -111,6 +111,7 @@ CREATE TABLE `usercontribute` (
   `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `SubjectID` int(11) DEFAULT NULL,
   `DetailID` int(11) DEFAULT NULL,
+  `UserID` int(11) DEFAULT NOT NULL,
   `IsValid` int(11) DEFAULT '1' COMMENT '0-delete, 1-valid',
   `CreateTime` timestamp DEFAULT CURRENT_TIMESTAMP,
   `UpdateTime` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -123,7 +124,7 @@ CREATE TABLE `usercontribute` (
 DROP TABLE IF EXISTS `userfocus`;
 CREATE TABLE `userfocus` (
   `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `UserID` int(11) DEFAULT NULL,
+  `UserID` int(11) DEFAULT NOT NULL,
   `SubjectID` int(11) DEFAULT NULL,
   `IsValid` int(11) DEFAULT '1' COMMENT '0-delete, 1-valid',
   `CreateTime` timestamp DEFAULT CURRENT_TIMESTAMP,
