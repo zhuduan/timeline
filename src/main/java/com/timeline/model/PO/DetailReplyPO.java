@@ -7,21 +7,24 @@ import javax.persistence.Table;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "UserContribute")
-public class UserContribute {
+@Table(name = "DetailReplyPO")
+public class DetailReplyPO {
 
     @Id
     @Column(name = "ID", nullable = false)
     private Integer ID;
 
-    @Column(name = "DetailID")
+    @Column(name = "DetailID", nullable = false)
     private Integer DetailID;
 
-    @Column(name = "SubjectID")
-    private Integer SubjectID;
+    @Column(name = "Title")
+    private String Title;
 
-    @Column(name = "UserID")
-    private Integer UserID;
+    @Column(name = "Content")
+    private String Content;
+
+    @Column(name = "AuthorID")
+    private Integer AuthorID;
 
     @Column(name = "IsValid")
     private Integer IsValid;
@@ -48,20 +51,28 @@ public class UserContribute {
         DetailID = detailID;
     }
 
-    public Integer getSubjectID() {
-        return SubjectID;
+    public String getTitle() {
+        return Title;
     }
 
-    public void setSubjectID(Integer subjectID) {
-        SubjectID = subjectID;
+    public void setTitle(String title) {
+        Title = title;
     }
 
-    public Integer getUserID() {
-        return UserID;
+    public String getContent() {
+        return Content;
     }
 
-    public void setUserID(Integer userID) {
-        UserID = userID;
+    public void setContent(String content) {
+        Content = content;
+    }
+
+    public Integer getAuthorID() {
+        return AuthorID;
+    }
+
+    public void setAuthorID(Integer authorID) {
+        AuthorID = authorID;
     }
 
     public Integer getIsValid() {

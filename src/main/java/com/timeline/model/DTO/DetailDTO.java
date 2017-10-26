@@ -1,61 +1,34 @@
-package com.timeline.model.PO;
+package com.timeline.model.DTO;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
-import java.sql.Timestamp;
 import java.util.Date;
 
-@Entity
-@Table(name = "Detail")
-public class Detail {
+public class DetailDTO {
 
-    @Id
-    @Column(name = "ID", nullable = false)
     private Integer ID;
 
-    @Column(name = "SubjectID", nullable = false)
     private Integer SubjectID;
 
-    @Column(name = "Title")
     private String Title;
 
-    @Column(name = "Content")
     private String Content;
 
-    @Column(name = "PicUrl")
     private String PicUrl;
 
-    @Column(name = "PicDes")
     private String PicDes;
 
-    @Column(name = "AuthorID")
     private Integer AuthorID;
 
-    @Column(name = "ContributorIDs")
     private String ContributorIDs;
 
-    @Column(name = "OccurrenceTime")
     private Date OccurrenceTime;
 
-    @Column(name = "Language")
     private Integer Language;
 
-    @Column(name = "ReplyCount")
     private Integer ReplyCount;
 
-    @Column(name = "LikeCount")
     private Integer LikeCount;
-
-    @Column(name = "IsValid")
-    private Integer IsValid;
-
-    @Column(name = "CreateTime")
-    private Timestamp CreateTime;
-
-    @Column(name = "UpdateTime")
-    private Timestamp UpdateTime;
 
     public Integer getID() {
         return ID;
@@ -151,29 +124,5 @@ public class Detail {
 
     public void setLikeCount(Integer likeCount) {
         LikeCount = likeCount;
-    }
-
-    public Integer getIsValid() {
-        return IsValid;
-    }
-
-    public void setIsValid(Integer isValid) {
-        IsValid = isValid;
-    }
-
-    public Timestamp getCreateTime() {
-        return CreateTime;
-    }
-
-    public void setCreateTime(Timestamp createTime) {
-        CreateTime = createTime;
-    }
-
-    public Timestamp getUpdateTime() {
-        return UpdateTime;
-    }
-
-    public void setUpdateTime(Timestamp updateTime) {
-        UpdateTime = updateTime;
     }
 }

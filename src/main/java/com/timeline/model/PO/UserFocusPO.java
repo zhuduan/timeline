@@ -7,8 +7,8 @@ import javax.persistence.Table;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "UserFocus")
-public class UserFocus {
+@Table(name = "UserFocusPO")
+public class UserFocusPO {
 
     @Id
     @Column(name = "ID", nullable = false)

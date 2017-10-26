@@ -8,8 +8,8 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
-@Table(name = "DetailLink")
-public class DetailLink {
+@Table(name = "DetailLinkPO")
+public class DetailLinkPO {
 
     @Id
     @Column(name = "ID", nullable = false)

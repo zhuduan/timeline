@@ -5,17 +5,15 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.sql.Timestamp;
+import java.util.Date;
 
 @Entity
-@Table(name = "DetailReply")
-public class DetailReply {
+@Table(name = "SubjectPO")
+public class SubjectPO {
 
     @Id
     @Column(name = "ID", nullable = false)
     private Integer ID;
-
-    @Column(name = "DetailID", nullable = false)
-    private Integer DetailID;
 
     @Column(name = "Title")
     private String Title;
@@ -23,8 +21,35 @@ public class DetailReply {
     @Column(name = "Content")
     private String Content;
 
+    @Column(name = "PicUrl")
+    private String PicUrl;
+
+    @Column(name = "PicDes")
+    private String PicDes;
+
     @Column(name = "AuthorID")
     private Integer AuthorID;
+
+    @Column(name = "ContributorIDs")
+    private String ContributorIDs;
+
+    @Column(name = "Category")
+    private String Category;
+
+    @Column(name = "Tags")
+    private String Tags;
+
+    @Column(name = "StartTime")
+    private Date StartTime;
+
+    @Column(name = "EndTime")
+    private Date EndTime;
+
+    @Column(name = "Language")
+    private Integer Language;
+
+    @Column(name = "RelatedSubjectIDs")
+    private String RelatedSubjectIDs;
 
     @Column(name = "IsValid")
     private Integer IsValid;
@@ -43,14 +68,6 @@ public class DetailReply {
         this.ID = ID;
     }
 
-    public Integer getDetailID() {
-        return DetailID;
-    }
-
-    public void setDetailID(Integer detailID) {
-        DetailID = detailID;
-    }
-
     public String getTitle() {
         return Title;
     }
@@ -67,12 +84,52 @@ public class DetailReply {
         Content = content;
     }
 
+    public String getPicUrl() {
+        return PicUrl;
+    }
+
+    public void setPicUrl(String picUrl) {
+        PicUrl = picUrl;
+    }
+
+    public String getPicDes() {
+        return PicDes;
+    }
+
+    public void setPicDes(String picDes) {
+        PicDes = picDes;
+    }
+
     public Integer getAuthorID() {
         return AuthorID;
     }
 
     public void setAuthorID(Integer authorID) {
         AuthorID = authorID;
+    }
+
+    public String getContributorIDs() {
+        return ContributorIDs;
+    }
+
+    public void setContributorIDs(String contributorIDs) {
+        ContributorIDs = contributorIDs;
+    }
+
+    public String getCategory() {
+        return Category;
+    }
+
+    public void setCategory(String category) {
+        Category = category;
+    }
+
+    public String getTags() {
+        return Tags;
+    }
+
+    public void setTags(String tags) {
+        Tags = tags;
     }
 
     public Integer getIsValid() {

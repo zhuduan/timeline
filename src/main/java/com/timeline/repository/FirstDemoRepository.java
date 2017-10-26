@@ -14,6 +14,4 @@ public interface FirstDemoRepository extends JpaRepository<Item, String> {
     
 	@Query("SELECT b FROM Item b WHERE b.name like %?1%")
     List<Item> findByTitle(String name);
-	
-	
 }

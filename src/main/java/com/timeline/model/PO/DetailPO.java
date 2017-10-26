@@ -8,12 +8,15 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
-@Table(name = "Subject")
-public class Subject {
+@Table(name = "DetailPO")
+public class DetailPO {
 
     @Id
     @Column(name = "ID", nullable = false)
     private Integer ID;
+
+    @Column(name = "SubjectID", nullable = false)
+    private Integer SubjectID;
 
     @Column(name = "Title")
     private String Title;
@@ -33,23 +36,17 @@ public class Subject {
     @Column(name = "ContributorIDs")
     private String ContributorIDs;
 
-    @Column(name = "Category")
-    private String Category;
-
-    @Column(name = "Tags")
-    private String Tags;
-
-    @Column(name = "StartTime")
-    private Date StartTime;
-
-    @Column(name = "EndTime")
-    private Date EndTime;
+    @Column(name = "OccurrenceTime")
+    private Date OccurrenceTime;
 
     @Column(name = "Language")
     private Integer Language;
 
-    @Column(name = "RelatedSubjectIDs")
-    private String RelatedSubjectIDs;
+    @Column(name = "ReplyCount")
+    private Integer ReplyCount;
+
+    @Column(name = "LikeCount")
+    private Integer LikeCount;
 
     @Column(name = "IsValid")
     private Integer IsValid;
@@ -66,6 +63,14 @@ public class Subject {
 
     public void setID(Integer ID) {
         this.ID = ID;
+    }
+
+    public Integer getSubjectID() {
+        return SubjectID;
+    }
+
+    public void setSubjectID(Integer subjectID) {
+        SubjectID = subjectID;
     }
 
     public String getTitle() {
@@ -116,20 +121,36 @@ public class Subject {
         ContributorIDs = contributorIDs;
     }
 
-    public String getCategory() {
-        return Category;
+    public Date getOccurrenceTime() {
+        return OccurrenceTime;
     }
 
-    public void setCategory(String category) {
-        Category = category;
+    public void setOccurrenceTime(Date occurrenceTime) {
+        OccurrenceTime = occurrenceTime;
     }
 
-    public String getTags() {
-        return Tags;
+    public Integer getLanguage() {
+        return Language;
     }
 
-    public void setTags(String tags) {
-        Tags = tags;
+    public void setLanguage(Integer language) {
+        Language = language;
+    }
+
+    public Integer getReplyCount() {
+        return ReplyCount;
+    }
+
+    public void setReplyCount(Integer replyCount) {
+        ReplyCount = replyCount;
+    }
+
+    public Integer getLikeCount() {
+        return LikeCount;
+    }
+
+    public void setLikeCount(Integer likeCount) {
+        LikeCount = likeCount;
     }
 
     public Integer getIsValid() {
