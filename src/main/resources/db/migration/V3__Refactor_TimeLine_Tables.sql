@@ -16,7 +16,7 @@ CREATE TABLE `detail` (
   `ReplyCount` int(11) DEFAULT '0',
   `LikeCount` int(11) DEFAULT '0',
   `IsValid` tinyint(11) DEFAULT '1' COMMENT '0-delete, 1-valid',
-  `CreateTime` timestamp DEFAULT CURRENT_TIMESTAMP,
+  `CreateTime` datetime DEFAULT CURRENT_TIMESTAMP,
   `UpdateTime` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -37,7 +37,7 @@ CREATE TABLE `detaillink` (
   `Weight` int(11) DEFAULT '1000' COMMENT '权重，用于做排序',
   `Status` int(11) DEFAULT '0' COMMENT 'link的状态归属： 0-默认，1-精选， 2-热门  —— 主要方便后面做管理和筛选',
   `IsValid` int(11) DEFAULT '1' COMMENT '0-delete, 1-valid',
-  `CreateTime` timestamp DEFAULT CURRENT_TIMESTAMP,
+  `CreateTime` datetime DEFAULT CURRENT_TIMESTAMP,
   `UpdateTime` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -53,7 +53,7 @@ CREATE TABLE `detailreply` (
   `Content` varchar(255) DEFAULT NULL,
   `AuthorID` int(11) DEFAULT NULL,
   `IsValid` tinyint(4) DEFAULT '1' COMMENT '0-delete, 1-valid',
-  `CreateTime` timestamp DEFAULT CURRENT_TIMESTAMP,
+  `CreateTime` datetime DEFAULT CURRENT_TIMESTAMP,
   `UpdateTime` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -77,7 +77,7 @@ CREATE TABLE `subject` (
   `Language` int(11) DEFAULT '1' COMMENT '1-CN, 2-EN, ',
   `RelatedSubjectIDs` varchar(255) DEFAULT NULL COMMENT '用于关联不同的语言下的相同内容的Subject Id List',
   `IsValid` tinyint(4) DEFAULT '1' COMMENT '0-delete, 1-valid',
-  `CreateTime` timestamp DEFAULT CURRENT_TIMESTAMP,
+  `CreateTime` datetime DEFAULT CURRENT_TIMESTAMP,
   `UpdateTime` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
@@ -98,7 +98,7 @@ CREATE TABLE `user` (
   `WeiboAccount` varchar(255) DEFAULT NULL,
   `GoogleAccount` varchar(255) DEFAULT NULL,
   `IsValid` tinyint(11) DEFAULT '1' COMMENT '0-delete, 1-valid',
-  `CreateTime` timestamp DEFAULT CURRENT_TIMESTAMP,
+  `CreateTime` datetime DEFAULT CURRENT_TIMESTAMP,
   `UpdateTime` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -111,9 +111,9 @@ CREATE TABLE `usercontribute` (
   `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `SubjectID` int(11) DEFAULT NULL,
   `DetailID` int(11) DEFAULT NULL,
-  `UserID` int(11) DEFAULT NOT NULL,
+  `UserID` int(11) NOT NULL,
   `IsValid` int(11) DEFAULT '1' COMMENT '0-delete, 1-valid',
-  `CreateTime` timestamp DEFAULT CURRENT_TIMESTAMP,
+  `CreateTime` datetime DEFAULT CURRENT_TIMESTAMP,
   `UpdateTime` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -124,10 +124,10 @@ CREATE TABLE `usercontribute` (
 DROP TABLE IF EXISTS `userfocus`;
 CREATE TABLE `userfocus` (
   `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `UserID` int(11) DEFAULT NOT NULL,
+  `UserID` int(11) NOT NULL,
   `SubjectID` int(11) DEFAULT NULL,
   `IsValid` int(11) DEFAULT '1' COMMENT '0-delete, 1-valid',
-  `CreateTime` timestamp DEFAULT CURRENT_TIMESTAMP,
+  `CreateTime` datetime DEFAULT CURRENT_TIMESTAMP,
   `UpdateTime` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
