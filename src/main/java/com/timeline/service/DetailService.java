@@ -27,7 +27,7 @@ public class DetailService {
         List<DetailDTO> detailDTOs = new ArrayList<>();
 //      TODO: mapper the class
         //TODO: add pagingAndSort
-//      detailRepository.findBySubjectID(subjectID);
+        detailRepository.findBySubjectID(subjectID);
         return detailDTOs;
     }
 }

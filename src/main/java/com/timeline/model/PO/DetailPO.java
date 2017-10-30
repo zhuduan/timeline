@@ -1,11 +1,12 @@
 package com.timeline.model.PO;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.sql.Timestamp;
-import java.util.Date;
 
 @Entity
 @Table(name = "DetailPO")
@@ -52,10 +53,10 @@ public class DetailPO {
     private Integer IsValid;
 
     @Column(name = "CreateTime")
-    private Timestamp CreateTime;
+    private Date CreateTime;
 
     @Column(name = "UpdateTime")
-    private Timestamp UpdateTime;
+    private Date UpdateTime;
 
     public Integer getID() {
         return ID;
@@ -161,7 +162,7 @@ public class DetailPO {
         IsValid = isValid;
     }
 
-    public Timestamp getCreateTime() {
+    public Date getCreateTime() {
         return CreateTime;
     }
 
@@ -169,7 +170,7 @@ public class DetailPO {
         CreateTime = createTime;
     }
 
-    public Timestamp getUpdateTime() {
+    public Date getUpdateTime() {
         return UpdateTime;
     }
 
