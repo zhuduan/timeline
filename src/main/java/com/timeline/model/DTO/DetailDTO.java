@@ -1,7 +1,7 @@
 package com.timeline.model.DTO;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
+import com.timeline.model.PO.Detail;
+
 import java.util.Date;
 
 public class DetailDTO {
@@ -124,5 +124,12 @@ public class DetailDTO {
 
     public void setLikeCount(Integer likeCount) {
         LikeCount = likeCount;
+    }
+
+    // this constructor will be replaced by common util
+    @Deprecated()
+    public DetailDTO(Detail po){
+        this.setID(po.getId());
+        this.setSubjectID(po.getSubjectID());
     }
 }
