@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+	<classPathEntry location="D:/program/library/maven/mysql/mysql-connector-java/5.1.38/mysql-connector-java-5.1.38.jar"/>
+	
+	<context id="master">
+	
+		<!-- 自动识别数据库关键字，默认false -->
+		<property name="autoDelimitKeywords" value="true" />
+		<!--可以使用``包括字段名，避免字段名与sql保留字冲突报错 -->
+		<property name="beginningDelimiter" value="`" />
+		<property name="endingDelimiter" value="`" />
+		
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+			<property name="suppressDate" value="true" />
+			<property name="addRemarkComments" value="true" />
+		</commentGenerator>
+		
+		<jdbcConnection
+			connectionURL="jdbc:mysql://localhost:3306/timeline?characterEncoding=utf8"
+			driverClass="com.mysql.jdbc.Driver"
+			password="123456" userId="root" />
+		<!-- 模型类 -->
+		<javaModelGenerator targetPackage="com.timeline.model.PO" targetProject="timeline/src/main/java" />
+		
+		<!-- 如果是XML方式，XML放置位置 -->
+		<sqlMapGenerator targetPackage="com.timeline.repository" targetProject="timeline/src/main/java" />
+		
+		<!-- 接口类位置 -->
+		<javaClientGenerator targetPackage="com.timeline.repository" targetProject="timeline/src/main/java" type="ANNOTATEDMAPPER" />
+		
+		<table schema="timeline" tableName="subject" domainObjectName = "Subject" mapperName="SubjectDAO"
+			enableDeleteByPrimaryKey="false"
+			enableCountByExample="false" 
+			enableUpdateByExample="false" 
+			enableDeleteByExample="false" 
+			enableSelectByExample="false" 
+			selectByExampleQueryId="false"
+		>
+			
+			<!-- 如果设置了runtimeSchema，那么在生成的SQL中，使用该指定的schema，而不是table元素上的schema <property 
+				name="runtimeSchema" value=""/> -->
+
+			<!-- 如果设置了runtimeTableName，那么在生成的SQL中，使用该指定的tablename，而不是table元素上的tablename 
+				<property name="runtimeTableName" value=""/> -->
+			
+			<!-- 不使用表的列名，就会使用驼峰命名 -->
+			<property name="useActualColumnNames" value="true" />
+		</table>
+	</context>
+</generatorConfiguration>
