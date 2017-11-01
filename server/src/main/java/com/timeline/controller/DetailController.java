@@ -3,11 +3,13 @@ package com.timeline.controller;
 import com.timeline.Common.ErrorType;
 import com.timeline.Common.ControllerException;
 import com.timeline.model.DTO.DetailDTO;
+import com.timeline.model.PO.Subject;
 import com.timeline.service.DetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,5 +35,11 @@ public class DetailController {
         }
 
         return detailService.getDetailsBySubjectID(pageable, subjectID);
+    }
+    
+    @RequestMapping(value="{subjectID}", method= RequestMethod.GET)
+    private Subject getSubject(@PathVariable("subjectID") Long id) throws Exception{
+
+    	return detailService.getSubject(id);
     }
 }
