@@ -3,6 +3,7 @@ package com.timeline.model.PO;
 import java.util.Date;
 
 public class Detail {
+
     private Integer ID;
 
     private Integer subjectID;

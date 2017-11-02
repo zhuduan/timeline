@@ -1,7 +1,10 @@
 package com.timeline.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.timeline.model.DTO.DetailDTO;
+import com.timeline.util.ConvertUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -20,9 +23,8 @@ public class DetailServiceImpl implements DetailService{
      * @param subjectID
      * @return detailDTOs or EmptyList if no such detail under subject
      */
-	public List<Detail> getDetailsBySubjectID(Pageable pageable, Integer subjectID){
-		
+	public List<DetailDTO> getDetailsBySubjectID(Integer subjectID){
         List<Detail> details = detailDAO.getDetailBySubjectID(subjectID);
-        return details;
+        return ConvertUtils.convert(details, DetailDTO.class);
     }
 }

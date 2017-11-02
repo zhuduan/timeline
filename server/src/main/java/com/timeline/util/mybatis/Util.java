@@ -1,4 +1,4 @@
-package com.timeline.common.mybatis;
+package com.timeline.util.mybatis;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

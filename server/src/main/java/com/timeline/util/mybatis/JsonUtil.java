@@ -1,4 +1,4 @@
-package com.timeline.common.mybatis;
+package com.timeline.util.mybatis;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.DeserializationFeature;

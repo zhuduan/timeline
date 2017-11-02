@@ -1,4 +1,4 @@
-package com.timeline.common.mybatis.mapper;
+package com.timeline.util.mybatis.mapper;
 
 public interface Mapper <K, V>{
 

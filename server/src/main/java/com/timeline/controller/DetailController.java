@@ -2,6 +2,7 @@ package com.timeline.controller;
 
 import java.util.List;
 
+import com.timeline.model.DTO.DetailDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -24,19 +25,15 @@ public class DetailController {
 	private DetailService detailService;
 
 	@RequestMapping(value = "list", method = RequestMethod.GET)
-	private List<Detail> getDetailListBySubjectID(
-			@PageableDefault(value = 20, sort = {
-					"id"}, direction = Sort.Direction.DESC) Pageable pageable,
-			@RequestParam(value = "subjectID", required = true) Integer subjectID)
+	private List<DetailDTO> getDetailListBySubjectID(@RequestParam(value = "subjectID") Integer subjectID)
 			throws Exception {
 		
-		if (subjectID == null || subjectID <= 0 || pageable == null) {
+		if (subjectID == null || subjectID <= 0 ) {
 			// TODO:
 			// 1. should add logs here
-			// 2. should add common exception controller
 			throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
 		}
 
-		return detailService.getDetailsBySubjectID(pageable, subjectID);
+		return detailService.getDetailsBySubjectID(subjectID);
 	}
 }

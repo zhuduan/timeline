@@ -2,11 +2,9 @@ package com.timeline.service;
 
 import java.util.List;
 
-import org.springframework.data.domain.Pageable;
-
-import com.timeline.model.PO.Detail;
+import com.timeline.model.DTO.DetailDTO;
 
 public interface DetailService {
 
-	List<Detail> getDetailsBySubjectID(Pageable pageable, Integer subjectID);
+	List<DetailDTO> getDetailsBySubjectID(Integer subjectID);
 }

@@ -1,34 +1,32 @@
 package com.timeline.model.DTO;
 
-import com.timeline.model.PO.Detail;
-
 import java.util.Date;
 
 public class DetailDTO {
 
     private Integer ID;
 
-    private Integer SubjectID;
+    private Integer subjectID;
 
-    private String Title;
+    private String title;
 
-    private String Content;
+    private String content;
 
-    private String PicUrl;
+    private String picUrl;
 
-    private String PicDes;
+    private String picDes;
 
-    private Integer AuthorID;
+    private Integer authorID;
 
-    private String ContributorIDs;
+    private String contributorIDs;
 
-    private Date OccurrenceTime;
+    private Date occurrenceTime;
 
-    private Integer Language;
+    private Integer language;
 
-    private Integer ReplyCount;
+    private Integer replyCount;
 
-    private Integer LikeCount;
+    private Integer likeCount;
 
     public Integer getID() {
         return ID;
@@ -39,97 +37,90 @@ public class DetailDTO {
     }
 
     public Integer getSubjectID() {
-        return SubjectID;
+        return subjectID;
     }
 
     public void setSubjectID(Integer subjectID) {
-        SubjectID = subjectID;
+        this.subjectID = subjectID;
     }
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public void setTitle(String title) {
-        Title = title;
+        this.title = title;
     }
 
     public String getContent() {
-        return Content;
+        return content;
     }
 
     public void setContent(String content) {
-        Content = content;
+        this.content = content;
     }
 
     public String getPicUrl() {
-        return PicUrl;
+        return picUrl;
     }
 
     public void setPicUrl(String picUrl) {
-        PicUrl = picUrl;
+        this.picUrl = picUrl;
     }
 
     public String getPicDes() {
-        return PicDes;
+        return picDes;
     }
 
     public void setPicDes(String picDes) {
-        PicDes = picDes;
+        this.picDes = picDes;
     }
 
     public Integer getAuthorID() {
-        return AuthorID;
+        return authorID;
     }
 
     public void setAuthorID(Integer authorID) {
-        AuthorID = authorID;
+        this.authorID = authorID;
     }
 
     public String getContributorIDs() {
-        return ContributorIDs;
+        return contributorIDs;
     }
 
     public void setContributorIDs(String contributorIDs) {
-        ContributorIDs = contributorIDs;
+        this.contributorIDs = contributorIDs;
     }
 
     public Date getOccurrenceTime() {
-        return OccurrenceTime;
+        return occurrenceTime;
     }
 
     public void setOccurrenceTime(Date occurrenceTime) {
-        OccurrenceTime = occurrenceTime;
+        this.occurrenceTime = occurrenceTime;
     }
 
     public Integer getLanguage() {
-        return Language;
+        return language;
     }
 
     public void setLanguage(Integer language) {
-        Language = language;
+        this.language = language;
     }
 
     public Integer getReplyCount() {
-        return ReplyCount;
+        return replyCount;
     }
 
     public void setReplyCount(Integer replyCount) {
-        ReplyCount = replyCount;
+        this.replyCount = replyCount;
     }
 
     public Integer getLikeCount() {
-        return LikeCount;
+        return likeCount;
     }
 
     public void setLikeCount(Integer likeCount) {
-        LikeCount = likeCount;
-    }
-
-    // this constructor will be replaced by common util
-    @Deprecated()
-    public DetailDTO(Detail po){
-        this.setID(po.getID());
-        this.setSubjectID(po.getSubjectID());
+        this.likeCount = likeCount;
     }
 }

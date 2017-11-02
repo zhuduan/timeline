@@ -2,7 +2,7 @@ package com.timeline.repository;
 
 import org.apache.ibatis.annotations.SelectProvider;
 
-import com.timeline.common.mybatis.mapper.BaseSql;
+import com.timeline.util.mybatis.mapper.BaseSql;
 import com.timeline.model.PO.Subject;
 
 public interface SubjectDAO {

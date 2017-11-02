@@ -1,4 +1,4 @@
-package com.timeline.common.mybatis.mapper;
+package com.timeline.util.mybatis.mapper;
 
 import java.util.Collection;
 import java.util.Map;
