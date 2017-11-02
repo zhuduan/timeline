@@ -1,12 +1,12 @@
-package com.timeline.Common.mybatis.mapper;
+package com.timeline.common.mybatis.mapper;
 
 import java.util.Collection;
 import java.util.Map;
 
 import org.apache.ibatis.jdbc.SQL;
 
-import com.timeline.Common.mybatis.JsonUtil;
-import com.timeline.Common.mybatis.Util;
+import com.timeline.common.mybatis.JsonUtil;
+import com.timeline.common.mybatis.Util;
 
 public abstract class AbstractSqlHandler implements SqlHandler {
 

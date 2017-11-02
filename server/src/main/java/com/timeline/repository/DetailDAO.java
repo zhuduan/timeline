@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.SelectProvider;
 
-import com.timeline.Common.mybatis.mapper.BaseSql;
+import com.timeline.common.mybatis.mapper.BaseSql;
 import com.timeline.model.PO.Detail;
 
 public interface DetailDAO {

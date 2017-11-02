@@ -1,4 +1,4 @@
-package com.timeline.Common;
+package com.timeline.common;
 
 public class DataConfig {
 

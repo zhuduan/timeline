@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.timeline.Common.ControllerException;
-import com.timeline.Common.ErrorType;
+import com.timeline.common.ControllerException;
+import com.timeline.common.ErrorType;
 import com.timeline.model.PO.Detail;
 import com.timeline.service.DetailService;
 
