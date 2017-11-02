@@ -3,8 +3,6 @@ package com.timeline.Common.mybatis.mapper;
 import java.util.Collection;
 import java.util.Map;
 
-import com.timeline.Common.mybatis.plugin.pagination.page.Page;
-
 public interface SqlHandler {
   /**
    * <pre>
@@ -30,13 +28,6 @@ public interface SqlHandler {
    */
   void handleCollection(Collection<Object> collection);
   
-  /**
-   * <pre>
-   * 处理分页参数
-   * </pre>
-   * @param page
-   */
-  void handlePage(@SuppressWarnings("rawtypes") Page page);
   
   /**
    * <pre>

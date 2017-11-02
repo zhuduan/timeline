@@ -12,10 +12,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * @author wenlongchen
- * @since Jun 23, 2016
- */
 public class Util {
 
   private static final Logger logger = LoggerFactory.getLogger(Util.class);

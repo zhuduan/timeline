@@ -12,7 +12,7 @@ public interface SubjectDAO {
 	 final static String ALL_COLUMNS = "ID,Title,Content,PicUrl,PicDes,AuthorID,ContributorIDs,Category,Tags,StartTime,EndTime,Language,RelatedSubjectIDs,IsValid,CreateTime,UpdateTime";
 	 
 	 @SelectProvider(type = SubjectSQL.class, method = SubjectSQL.METHOD_GET_BY_KEY)
-	 Subject getSubjectByID(Long id);
+	 Subject getSubjectByID(Integer id);
 	 
 	 static class SubjectSQL extends BaseSql {
 

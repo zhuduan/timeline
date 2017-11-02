@@ -7,7 +7,6 @@ import org.apache.ibatis.jdbc.SQL;
 
 import com.timeline.Common.mybatis.JsonUtil;
 import com.timeline.Common.mybatis.Util;
-import com.timeline.Common.mybatis.plugin.pagination.page.Page;
 
 public abstract class AbstractSqlHandler implements SqlHandler {
 
@@ -24,12 +23,7 @@ public abstract class AbstractSqlHandler implements SqlHandler {
 		throw new UnsupportedOperationException("不支持集合或数组类型！");
 	}
 
-	@Override
-	public void handlePage(@SuppressWarnings("rawtypes") Page page) {
-		throw new UnsupportedOperationException("不支持集合或数组类型！");
-	}
-
-	@SuppressWarnings({"unchecked", "rawtypes"})
+	@SuppressWarnings("unchecked")
 	@Override
 	public String getSql() {
 		if (params != null) {
@@ -37,13 +31,10 @@ public abstract class AbstractSqlHandler implements SqlHandler {
 				handlePremitive(params);
 			} else if (params instanceof Map) {
 				handleComplex((Map<String, Object>) params);
-			} else if (params instanceof Page) {
-				handlePage((Page) params);
-			} else if (params instanceof Collection) {
+			}  else if (params instanceof Collection) {
 				handleCollection((Collection<Object>) params);
 			} else {
-				handleComplex((Map<String, Object>) JsonUtil
-						.toMap(JsonUtil.toJsonString(params)));
+				handleComplex((Map<String, Object>) JsonUtil.toMap(JsonUtil.toJsonString(params)));
 			}
 		}
 		return sql.toString();

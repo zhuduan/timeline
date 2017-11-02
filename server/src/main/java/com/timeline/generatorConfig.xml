@@ -26,12 +26,12 @@
 		<javaModelGenerator targetPackage="com.timeline.model.PO" targetProject="timeline/src/main/java" />
 		
 		<!-- 如果是XML方式，XML放置位置 -->
-		<sqlMapGenerator targetPackage="com.timeline.repository" targetProject="timeline/src/main/java" />
+		<sqlMapGenerator targetPackage="com.timeline.repository.a" targetProject="timeline/src/main/java" />
 		
 		<!-- 接口类位置 -->
-		<javaClientGenerator targetPackage="com.timeline.repository" targetProject="timeline/src/main/java" type="ANNOTATEDMAPPER" />
-		
-		<table schema="timeline" tableName="subject" domainObjectName = "Subject" mapperName="SubjectDAO"
+		<javaClientGenerator targetPackage="com.timeline.repository.a" targetProject="timeline/src/main/java" type="ANNOTATEDMAPPER" />
+		<!-- domainObjectName = "Subject" mapperName="SubjectDAO" -->
+		<table schema="timeline" tableName="%" 
 			enableDeleteByPrimaryKey="false"
 			enableCountByExample="false" 
 			enableUpdateByExample="false" 

@@ -8,9 +8,7 @@ import java.util.Set;
 import org.apache.commons.collections4.map.CaseInsensitiveMap;
 import org.apache.ibatis.jdbc.SQL;
 
-import com.timeline.Common.mybatis.JsonUtil;
 import com.timeline.Common.mybatis.Util;
-import com.timeline.Common.mybatis.plugin.pagination.page.Page;
 
 public abstract class BaseSql {
 
@@ -148,8 +146,7 @@ public abstract class BaseSql {
 	 * @param sql
 	 * @param params
 	 */
-	private void buildWhereKey(SQL sql, Map<String, Object> params,
-			boolean isPage) {
+	private void buildWhereKey(SQL sql, Map<String, Object> params){
 		String columnKeyInParams = getKeyIgnoreCaseInParamMap(params,
 				keyColumnName, keyPropertyName);
 
@@ -161,25 +158,10 @@ public abstract class BaseSql {
 					temp = temp.substring(1, temp.length() - 1);
 					sql.WHERE(keyColumnName + " in (" + temp + ')');
 				} else {
-					sql.WHERE(keyColumnName + "=#{"
-							+ (isPage ? (Page.CONDITION_FIELD_NAME + '.') : "")
-							+ columnKeyInParams + '}');
+					sql.WHERE(keyColumnName + "=#{" +  columnKeyInParams + '}');
 				}
 			}
 		}
-	}
-
-	/**
-	 * <pre>
-	 * 生成主键where条件
-	 * 不区分大小写
-	 * </pre>
-	 * 
-	 * @param sql
-	 * @param params
-	 */
-	private void buildWhereKey(SQL sql, Map<String, Object> params) {
-		buildWhereKey(sql, params, false);
 	}
 
 	/**
@@ -271,27 +253,15 @@ public abstract class BaseSql {
 
 			@Override
 			public void handleComplex(Map<String, Object> params) {
-				buildSql(params, false);
+				buildSql(params);
 			}
 
-			@SuppressWarnings("unchecked")
-			@Override
-			public void handlePage(@SuppressWarnings("rawtypes") Page page) {
-				if (page.getCondition() != null) {
-					Map<String, Object> params = (Map<String, Object>) JsonUtil
-							.toMap(JsonUtil.toJsonString(page.getCondition()));
-					buildSql(params, true);
-				}
-			}
-
-			private void buildSql(Map<String, Object> params, boolean isPage) {
-				buildWhereKey(sql, params, isPage);
+			private void buildSql(Map<String, Object> params) {
+				buildWhereKey(sql, params);
 				String condition;
 				for (String key : params.keySet()) {
 					if (!isKey(key)) {
-						condition = isPage
-								? conditionPageWrap(key, params, "=")
-								: conditionEQ(key, params);
+						condition = conditionEQ(key, params);
 						if (condition != null) {
 							sql.AND().WHERE(condition);
 						}
@@ -483,26 +453,6 @@ public abstract class BaseSql {
 		String[] results = paramsReady(column, params);
 		if (results[0] != null) {
 			return results[0] + operate + "#{" + results[1] + '}';
-		}
-		return null;
-	}
-
-	/**
-	 * <pre>
-	 * 组装分页查询条件
-	 * </pre>
-	 * 
-	 * @param column
-	 * @param params
-	 * @param operate
-	 * @return
-	 */
-	protected final String conditionPageWrap(String column,
-			Map<String, Object> params, String operate) {
-		String[] results = paramsReady(column, params);
-		if (results[0] != null) {
-			return results[0] + operate + "#{" + Page.CONDITION_FIELD_NAME + '.'
-					+ results[1] + '}';
 		}
 		return null;
 	}

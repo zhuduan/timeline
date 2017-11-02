@@ -129,7 +129,7 @@ public class DetailDTO {
     // this constructor will be replaced by common util
     @Deprecated()
     public DetailDTO(Detail po){
-        this.setID(po.getId());
+        this.setID(po.getID());
         this.setSubjectID(po.getSubjectID());
     }
 }
