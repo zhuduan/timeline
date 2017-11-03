@@ -5,35 +5,35 @@ import java.util.Date;
 public class Subject {
     private Integer ID;
 
-    private String title;
+    private String Title;
 
-    private String picUrl;
+    private String PicUrl;
 
-    private String picDes;
+    private String PicDes;
 
-    private Integer authorID;
+    private Integer AuthorID;
 
-    private String contributorIDs;
+    private String ContributorIDs;
 
-    private String category;
+    private String Category;
 
-    private String tags;
+    private String Tags;
 
-    private Date startTime;
+    private Date StartTime;
 
-    private Date endTime;
+    private Date EndTime;
 
-    private Integer language;
+    private Integer Language;
 
-    private String relatedSubjectIDs;
+    private String RelatedSubjectIDs;
 
-    private Byte isValid;
+    private Byte IsValid;
 
-    private Date createTime;
+    private Date CreateTime;
 
-    private Date updateTime;
+    private Date UpdateTime;
 
-    private String content;
+    private String Content;
 
     public Integer getID() {
         return ID;
@@ -44,122 +44,122 @@ public class Subject {
     }
 
     public String getTitle() {
-        return title;
+        return Title;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        Title = title;
     }
 
     public String getPicUrl() {
-        return picUrl;
+        return PicUrl;
     }
 
     public void setPicUrl(String picUrl) {
-        this.picUrl = picUrl;
+        PicUrl = picUrl;
     }
 
     public String getPicDes() {
-        return picDes;
+        return PicDes;
     }
 
     public void setPicDes(String picDes) {
-        this.picDes = picDes;
+        PicDes = picDes;
     }
 
     public Integer getAuthorID() {
-        return authorID;
+        return AuthorID;
     }
 
     public void setAuthorID(Integer authorID) {
-        this.authorID = authorID;
+        AuthorID = authorID;
     }
 
     public String getContributorIDs() {
-        return contributorIDs;
+        return ContributorIDs;
     }
 
     public void setContributorIDs(String contributorIDs) {
-        this.contributorIDs = contributorIDs;
+        ContributorIDs = contributorIDs;
     }
 
     public String getCategory() {
-        return category;
+        return Category;
     }
 
     public void setCategory(String category) {
-        this.category = category;
+        Category = category;
     }
 
     public String getTags() {
-        return tags;
+        return Tags;
     }
 
     public void setTags(String tags) {
-        this.tags = tags;
+        Tags = tags;
     }
 
     public Date getStartTime() {
-        return startTime;
+        return StartTime;
     }
 
     public void setStartTime(Date startTime) {
-        this.startTime = startTime;
+        StartTime = startTime;
     }
 
     public Date getEndTime() {
-        return endTime;
+        return EndTime;
     }
 
     public void setEndTime(Date endTime) {
-        this.endTime = endTime;
+        EndTime = endTime;
     }
 
     public Integer getLanguage() {
-        return language;
+        return Language;
     }
 
     public void setLanguage(Integer language) {
-        this.language = language;
+        Language = language;
     }
 
     public String getRelatedSubjectIDs() {
-        return relatedSubjectIDs;
+        return RelatedSubjectIDs;
     }
 
     public void setRelatedSubjectIDs(String relatedSubjectIDs) {
-        this.relatedSubjectIDs = relatedSubjectIDs;
+        RelatedSubjectIDs = relatedSubjectIDs;
     }
 
     public Byte getIsValid() {
-        return isValid;
+        return IsValid;
     }
 
     public void setIsValid(Byte isValid) {
-        this.isValid = isValid;
+        IsValid = isValid;
     }
 
     public Date getCreateTime() {
-        return createTime;
+        return CreateTime;
     }
 
     public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+        CreateTime = createTime;
     }
 
     public Date getUpdateTime() {
-        return updateTime;
+        return UpdateTime;
     }
 
     public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+        UpdateTime = updateTime;
     }
 
     public String getContent() {
-        return content;
+        return Content;
     }
 
     public void setContent(String content) {
-        this.content = content;
+        Content = content;
     }
 }

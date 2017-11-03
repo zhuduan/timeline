@@ -5,15 +5,15 @@ import java.util.Date;
 public class UserFocus {
     private Integer ID;
 
-    private Integer userID;
+    private Integer UserID;
 
-    private Integer subjectID;
+    private Integer SubjectID;
 
-    private Integer isValid;
+    private Integer IsValid;
 
-    private Date createTime;
+    private Date CreateTime;
 
-    private Date updateTime;
+    private Date UpdateTime;
 
     public Integer getID() {
         return ID;
@@ -24,42 +24,42 @@ public class UserFocus {
     }
 
     public Integer getUserID() {
-        return userID;
+        return UserID;
     }
 
     public void setUserID(Integer userID) {
-        this.userID = userID;
+        UserID = userID;
     }
 
     public Integer getSubjectID() {
-        return subjectID;
+        return SubjectID;
     }
 
     public void setSubjectID(Integer subjectID) {
-        this.subjectID = subjectID;
+        SubjectID = subjectID;
     }
 
     public Integer getIsValid() {
-        return isValid;
+        return IsValid;
     }
 
     public void setIsValid(Integer isValid) {
-        this.isValid = isValid;
+        IsValid = isValid;
     }
 
     public Date getCreateTime() {
-        return createTime;
+        return CreateTime;
     }
 
     public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+        CreateTime = createTime;
     }
 
     public Date getUpdateTime() {
-        return updateTime;
+        return UpdateTime;
     }
 
     public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+        UpdateTime = updateTime;
     }
 }

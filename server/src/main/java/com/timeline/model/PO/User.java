@@ -5,29 +5,29 @@ import java.util.Date;
 public class User {
     private Integer ID;
 
-    private String name;
+    private String Name;
 
-    private String picUrl;
+    private String PicUrl;
 
-    private Byte role;
+    private Byte Role;
 
-    private Byte authority;
+    private Byte Authority;
 
-    private String email;
+    private String Email;
 
-    private String phone;
+    private String Phone;
 
-    private String wechatAccount;
+    private String WechatAccount;
 
-    private String weiboAccount;
+    private String WeiboAccount;
 
-    private String googleAccount;
+    private String GoogleAccount;
 
-    private Byte isValid;
+    private Byte IsValid;
 
-    private Date createTime;
+    private Date CreateTime;
 
-    private Date updateTime;
+    private Date UpdateTime;
 
     public Integer getID() {
         return ID;
@@ -38,98 +38,98 @@ public class User {
     }
 
     public String getName() {
-        return name;
+        return Name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        Name = name;
     }
 
     public String getPicUrl() {
-        return picUrl;
+        return PicUrl;
     }
 
     public void setPicUrl(String picUrl) {
-        this.picUrl = picUrl;
+        PicUrl = picUrl;
     }
 
     public Byte getRole() {
-        return role;
+        return Role;
     }
 
     public void setRole(Byte role) {
-        this.role = role;
+        Role = role;
     }
 
     public Byte getAuthority() {
-        return authority;
+        return Authority;
     }
 
     public void setAuthority(Byte authority) {
-        this.authority = authority;
+        Authority = authority;
     }
 
     public String getEmail() {
-        return email;
+        return Email;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        Email = email;
     }
 
     public String getPhone() {
-        return phone;
+        return Phone;
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        Phone = phone;
     }
 
     public String getWechatAccount() {
-        return wechatAccount;
+        return WechatAccount;
     }
 
     public void setWechatAccount(String wechatAccount) {
-        this.wechatAccount = wechatAccount;
+        WechatAccount = wechatAccount;
     }
 
     public String getWeiboAccount() {
-        return weiboAccount;
+        return WeiboAccount;
     }
 
     public void setWeiboAccount(String weiboAccount) {
-        this.weiboAccount = weiboAccount;
+        WeiboAccount = weiboAccount;
     }
 
     public String getGoogleAccount() {
-        return googleAccount;
+        return GoogleAccount;
     }
 
     public void setGoogleAccount(String googleAccount) {
-        this.googleAccount = googleAccount;
+        GoogleAccount = googleAccount;
     }
 
     public Byte getIsValid() {
-        return isValid;
+        return IsValid;
     }
 
     public void setIsValid(Byte isValid) {
-        this.isValid = isValid;
+        IsValid = isValid;
     }
 
     public Date getCreateTime() {
-        return createTime;
+        return CreateTime;
     }
 
     public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+        CreateTime = createTime;
     }
 
     public Date getUpdateTime() {
-        return updateTime;
+        return UpdateTime;
     }
 
     public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+        UpdateTime = updateTime;
     }
 }

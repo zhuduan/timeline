@@ -5,19 +5,19 @@ import java.util.Date;
 public class DetailReply {
     private Integer ID;
 
-    private Integer detailID;
+    private Integer DetailID;
 
-    private String title;
+    private String Title;
 
-    private String content;
+    private String Content;
 
-    private Integer authorID;
+    private Integer AuthorID;
 
-    private Byte isValid;
+    private Byte IsValid;
 
-    private Date createTime;
+    private Date CreateTime;
 
-    private Date updateTime;
+    private Date UpdateTime;
 
     public Integer getID() {
         return ID;
@@ -28,58 +28,58 @@ public class DetailReply {
     }
 
     public Integer getDetailID() {
-        return detailID;
+        return DetailID;
     }
 
     public void setDetailID(Integer detailID) {
-        this.detailID = detailID;
+        DetailID = detailID;
     }
 
     public String getTitle() {
-        return title;
+        return Title;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        Title = title;
     }
 
     public String getContent() {
-        return content;
+        return Content;
     }
 
     public void setContent(String content) {
-        this.content = content;
+        Content = content;
     }
 
     public Integer getAuthorID() {
-        return authorID;
+        return AuthorID;
     }
 
     public void setAuthorID(Integer authorID) {
-        this.authorID = authorID;
+        AuthorID = authorID;
     }
 
     public Byte getIsValid() {
-        return isValid;
+        return IsValid;
     }
 
     public void setIsValid(Byte isValid) {
-        this.isValid = isValid;
+        IsValid = isValid;
     }
 
     public Date getCreateTime() {
-        return createTime;
+        return CreateTime;
     }
 
     public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+        CreateTime = createTime;
     }
 
     public Date getUpdateTime() {
-        return updateTime;
+        return UpdateTime;
     }
 
     public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+        UpdateTime = updateTime;
     }
 }

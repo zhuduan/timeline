@@ -5,17 +5,17 @@ import java.util.Date;
 public class UserContribute {
     private Integer ID;
 
-    private Integer subjectID;
+    private Integer SubjectID;
 
-    private Integer detailID;
+    private Integer DetailID;
 
-    private Integer userID;
+    private Integer UserID;
 
-    private Integer isValid;
+    private Integer IsValid;
 
-    private Date createTime;
+    private Date CreateTime;
 
-    private Date updateTime;
+    private Date UpdateTime;
 
     public Integer getID() {
         return ID;
@@ -26,50 +26,50 @@ public class UserContribute {
     }
 
     public Integer getSubjectID() {
-        return subjectID;
+        return SubjectID;
     }
 
     public void setSubjectID(Integer subjectID) {
-        this.subjectID = subjectID;
+        SubjectID = subjectID;
     }
 
     public Integer getDetailID() {
-        return detailID;
+        return DetailID;
     }
 
     public void setDetailID(Integer detailID) {
-        this.detailID = detailID;
+        DetailID = detailID;
     }
 
     public Integer getUserID() {
-        return userID;
+        return UserID;
     }
 
     public void setUserID(Integer userID) {
-        this.userID = userID;
+        UserID = userID;
     }
 
     public Integer getIsValid() {
-        return isValid;
+        return IsValid;
     }
 
     public void setIsValid(Integer isValid) {
-        this.isValid = isValid;
+        IsValid = isValid;
     }
 
     public Date getCreateTime() {
-        return createTime;
+        return CreateTime;
     }
 
     public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+        CreateTime = createTime;
     }
 
     public Date getUpdateTime() {
-        return updateTime;
+        return UpdateTime;
     }
 
     public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+        UpdateTime = updateTime;
     }
 }

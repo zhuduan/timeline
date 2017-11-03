@@ -5,29 +5,29 @@ import java.util.Date;
 public class DetailLlink {
     private Integer ID;
 
-    private String detailID_Language;
+    private String DetailID_Language;
 
-    private String title;
+    private String Title;
 
-    private String picUrl;
+    private String PicUrl;
 
-    private String picDes;
+    private String PicDes;
 
-    private String sourceName;
+    private String SourceName;
 
-    private String sourceLink;
+    private String SourceLink;
 
-    private Integer weight;
+    private Integer Weight;
 
-    private Integer status;
+    private Integer Status;
 
-    private Integer isValid;
+    private Integer IsValid;
 
-    private Date createTime;
+    private Date CreateTime;
 
-    private Date updateTime;
+    private Date UpdateTime;
 
-    private String content;
+    private String Content;
 
     public Integer getID() {
         return ID;
@@ -38,98 +38,98 @@ public class DetailLlink {
     }
 
     public String getDetailID_Language() {
-        return detailID_Language;
+        return DetailID_Language;
     }
 
     public void setDetailID_Language(String detailID_Language) {
-        this.detailID_Language = detailID_Language;
+        DetailID_Language = detailID_Language;
     }
 
     public String getTitle() {
-        return title;
+        return Title;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        Title = title;
     }
 
     public String getPicUrl() {
-        return picUrl;
+        return PicUrl;
     }
 
     public void setPicUrl(String picUrl) {
-        this.picUrl = picUrl;
+        PicUrl = picUrl;
     }
 
     public String getPicDes() {
-        return picDes;
+        return PicDes;
     }
 
     public void setPicDes(String picDes) {
-        this.picDes = picDes;
+        PicDes = picDes;
     }
 
     public String getSourceName() {
-        return sourceName;
+        return SourceName;
     }
 
     public void setSourceName(String sourceName) {
-        this.sourceName = sourceName;
+        SourceName = sourceName;
     }
 
     public String getSourceLink() {
-        return sourceLink;
+        return SourceLink;
     }
 
     public void setSourceLink(String sourceLink) {
-        this.sourceLink = sourceLink;
+        SourceLink = sourceLink;
     }
 
     public Integer getWeight() {
-        return weight;
+        return Weight;
     }
 
     public void setWeight(Integer weight) {
-        this.weight = weight;
+        Weight = weight;
     }
 
     public Integer getStatus() {
-        return status;
+        return Status;
     }
 
     public void setStatus(Integer status) {
-        this.status = status;
+        Status = status;
     }
 
     public Integer getIsValid() {
-        return isValid;
+        return IsValid;
     }
 
     public void setIsValid(Integer isValid) {
-        this.isValid = isValid;
+        IsValid = isValid;
     }
 
     public Date getCreateTime() {
-        return createTime;
+        return CreateTime;
     }
 
     public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+        CreateTime = createTime;
     }
 
     public Date getUpdateTime() {
-        return updateTime;
+        return UpdateTime;
     }
 
     public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+        UpdateTime = updateTime;
     }
 
     public String getContent() {
-        return content;
+        return Content;
     }
 
     public void setContent(String content) {
-        this.content = content;
+        Content = content;
     }
 }

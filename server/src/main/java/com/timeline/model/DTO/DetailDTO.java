@@ -6,27 +6,27 @@ public class DetailDTO {
 
     private Integer ID;
 
-    private Integer subjectID;
+    private Integer SubjectID;
 
-    private String title;
+    private String Title;
 
-    private String content;
+    private String Content;
 
-    private String picUrl;
+    private String PicUrl;
 
-    private String picDes;
+    private String PicDes;
 
-    private Integer authorID;
+    private Integer AuthorID;
 
-    private String contributorIDs;
+    private String ContributorIDs;
 
-    private Date occurrenceTime;
+    private Date OccurrenceTime;
 
-    private Integer language;
+    private Integer Language;
 
-    private Integer replyCount;
+    private Integer ReplyCount;
 
-    private Integer likeCount;
+    private Integer LikeCount;
 
     public Integer getID() {
         return ID;
@@ -37,90 +37,90 @@ public class DetailDTO {
     }
 
     public Integer getSubjectID() {
-        return subjectID;
+        return SubjectID;
     }
 
     public void setSubjectID(Integer subjectID) {
-        this.subjectID = subjectID;
+        SubjectID = subjectID;
     }
 
     public String getTitle() {
-        return title;
+        return Title;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        Title = title;
     }
 
     public String getContent() {
-        return content;
+        return Content;
     }
 
     public void setContent(String content) {
-        this.content = content;
+        Content = content;
     }
 
     public String getPicUrl() {
-        return picUrl;
+        return PicUrl;
     }
 
     public void setPicUrl(String picUrl) {
-        this.picUrl = picUrl;
+        PicUrl = picUrl;
     }
 
     public String getPicDes() {
-        return picDes;
+        return PicDes;
     }
 
     public void setPicDes(String picDes) {
-        this.picDes = picDes;
+        PicDes = picDes;
     }
 
     public Integer getAuthorID() {
-        return authorID;
+        return AuthorID;
     }
 
     public void setAuthorID(Integer authorID) {
-        this.authorID = authorID;
+        AuthorID = authorID;
     }
 
     public String getContributorIDs() {
-        return contributorIDs;
+        return ContributorIDs;
     }
 
     public void setContributorIDs(String contributorIDs) {
-        this.contributorIDs = contributorIDs;
+        ContributorIDs = contributorIDs;
     }
 
     public Date getOccurrenceTime() {
-        return occurrenceTime;
+        return OccurrenceTime;
     }
 
     public void setOccurrenceTime(Date occurrenceTime) {
-        this.occurrenceTime = occurrenceTime;
+        OccurrenceTime = occurrenceTime;
     }
 
     public Integer getLanguage() {
-        return language;
+        return Language;
     }
 
     public void setLanguage(Integer language) {
-        this.language = language;
+        Language = language;
     }
 
     public Integer getReplyCount() {
-        return replyCount;
+        return ReplyCount;
     }
 
     public void setReplyCount(Integer replyCount) {
-        this.replyCount = replyCount;
+        ReplyCount = replyCount;
     }
 
     public Integer getLikeCount() {
-        return likeCount;
+        return LikeCount;
     }
 
     public void setLikeCount(Integer likeCount) {
-        this.likeCount = likeCount;
+        LikeCount = likeCount;
     }
 }
