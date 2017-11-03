@@ -17,6 +17,8 @@ import com.timeline.common.ErrorType;
 import com.timeline.model.PO.Detail;
 import com.timeline.service.DetailService;
 
+import static com.timeline.common.CommonConfig.PAGE_SIZE;
+
 @RestController()
 @RequestMapping(value = "detail")
 public class DetailController {
@@ -25,15 +27,17 @@ public class DetailController {
 	private DetailService detailService;
 
 	@RequestMapping(value = "list", method = RequestMethod.GET)
-	private List<DetailDTO> getDetailListBySubjectID(@RequestParam(value = "subjectID") Integer subjectID)
-			throws Exception {
-		
-		if (subjectID == null || subjectID <= 0 ) {
+	private List<DetailDTO> getDetailListBySubjectID(@RequestParam("subjectID") Integer subjectID,
+													 @RequestParam("pageNum") Integer pageNum,
+													 @RequestParam(name="pageSize", required = false) Integer pageSize) throws Exception {
+		if (subjectID == null || subjectID <= 0 || pageNum ==null || pageNum<0) {
 			// TODO:
 			// 1. should add logs here
 			throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
 		}
-
-		return detailService.getDetailsBySubjectID(subjectID);
+		if ( pageSize==null ){
+			pageSize = PAGE_SIZE;
+		}
+		return detailService.getDetailsBySubjectID(subjectID, pageNum, pageSize);
 	}
 }

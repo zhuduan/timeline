@@ -6,5 +6,5 @@ import com.timeline.model.DTO.DetailDTO;
 
 public interface DetailService {
 
-	List<DetailDTO> getDetailsBySubjectID(Integer subjectID);
+	List<DetailDTO> getDetailsBySubjectID(Integer subjectID, Integer pageNum, Integer pageSize);
 }
