@@ -1,12 +1,9 @@
 package com.timeline.interceptor;
 
 import com.timeline.service.StatisticInfoService;
-import com.timeline.service.impl.StatisticInfoServiceImpl;
-import org.springframework.beans.factory.BeanFactory;
+import com.timeline.util.LogUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,6 +23,8 @@ public class StatisticInterceptor implements HandlerInterceptor {
         Integer userID = 0;
 
         statisticInfoService.saveInfo(httpServletRequest.getRequestURI(), userID, httpServletRequest.getRemoteAddr());
+        LogUtil.itcLog.info(LogUtil.getMsg("save statistic info "
+                + httpServletRequest.getRemoteAddr() + httpServletRequest.getRequestURI()));
         return true;
     }
 
