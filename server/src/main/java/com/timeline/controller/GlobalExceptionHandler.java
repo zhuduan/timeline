@@ -15,6 +15,7 @@ public class GlobalExceptionHandler {
 	public Object exceptionHandler(HttpServletRequest request, Exception exception) throws Exception {
 		
 		System.out.println("exception: " + exception.getMessage());
+		exception.printStackTrace();
 		return exception.getMessage();
 	}
 }

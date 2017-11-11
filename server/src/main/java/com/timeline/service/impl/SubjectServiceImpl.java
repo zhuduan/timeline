@@ -1,5 +1,6 @@
-package com.timeline.service;
+package com.timeline.service.impl;
 
+import com.timeline.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -7,7 +8,7 @@ import com.timeline.model.PO.Subject;
 import com.timeline.repository.SubjectDAO;
 
 @Service
-public class SubjectServiceImpl implements SubjectService{
+public class SubjectServiceImpl implements SubjectService {
 
 	@Autowired
 	private SubjectDAO subjectDAO;
