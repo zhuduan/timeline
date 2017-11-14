@@ -3,6 +3,7 @@ package com.timeline.controller;
 import java.util.List;
 
 import com.timeline.model.DTO.DetailDTO;
+import com.timeline.util.LogUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -31,13 +32,21 @@ public class DetailController {
 													 @RequestParam("pageNum") Integer pageNum,
 													 @RequestParam(name="pageSize", required = false) Integer pageSize) throws Exception {
 		if (subjectID == null || subjectID <= 0 || pageNum ==null || pageNum<0) {
-			// TODO:
-			// 1. should add logs here
+			LogUtil.appLog.info(LogUtil.getMsg("wrong input for: subjectID="+subjectID+", pageNum="+pageNum));
 			throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
 		}
 		if ( pageSize==null ){
 			pageSize = PAGE_SIZE;
 		}
 		return detailService.getDetailsBySubjectID(subjectID, pageNum, pageSize);
+	}
+
+	@RequestMapping(value = "info", method = RequestMethod.GET)
+	private DetailDTO getDetailByID(@RequestParam("detailID") Integer detailID) throws Exception{
+		if ( detailID==null || detailID<=0 ){
+			LogUtil.appLog.info(LogUtil.getMsg("wrong input for: detailID="+detailID));
+			throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
+		}
+		return detailService.getDetailByID(detailID);
 	}
 }

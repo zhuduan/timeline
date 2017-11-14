@@ -29,4 +29,10 @@ public class DetailServiceImpl implements DetailService {
         List<Detail> details = detailDAO.getDetailBySubjectID(subjectID);
         return ConvertUtils.convert(details, DetailDTO.class);
     }
+
+    @Override
+    public DetailDTO getDetailByID(Integer detailID) {
+        Detail detail = detailDAO.getDetailByID(detailID);
+	    return ConvertUtils.convert(detail, DetailDTO.class);
+    }
 }
