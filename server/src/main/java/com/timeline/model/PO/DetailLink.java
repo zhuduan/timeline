@@ -2,7 +2,7 @@ package com.timeline.model.PO;
 
 import java.util.Date;
 
-public class DetailLlink {
+public class DetailLink {
     private Integer ID;
 
     private String DetailID_Language;
