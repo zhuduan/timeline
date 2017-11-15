@@ -54,7 +54,7 @@
     }
 </style>
 <template>
-    <div class="layout">
+    <div class="layout" id="app">
         <Row>
             <Menu mode="horizontal" theme="dark" active-name="1">
                 <!-- Logo -->

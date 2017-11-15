@@ -4,7 +4,7 @@ import VueRouter from 'vue-router';
 import Routers from './router';
 import Vuex from 'vuex';
 import Util from './libs/util';
-import App from './app.vue';
+import Index from './views/index.vue';
 import 'iview/dist/styles/iview.css';
 
 import VueI18n from 'vue-i18n';
@@ -71,5 +71,5 @@ new Vue({
     el: '#app',
     router: router,
     store: store,
-    render: h => h(App)
+    render: h => h(Index)
 });
