@@ -3,6 +3,6 @@ const routers = [{
     meta: {
         title: ''
     },
-    component: (resolve) => require(['./views/Index.vue'], resolve)
+    component: (resolve) => require(['./pages/Index.vue'], resolve)
 }];
 export default routers;
