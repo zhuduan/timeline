@@ -13,21 +13,10 @@
             <div class="margin-top-48">
               <div class="row-padding">
                 <div class="col l9 s12">
-                  <itemCard/>
-                  <itemCard/>
-                  <itemCard/>
-                  <itemCard/>
-                  <itemCard/>
-                  <itemCard/>
-                  <itemCard/>
-                  <itemCard/>
-                  <itemCard/>
-                  <itemCard/>
-                  <itemCard/>
-                  <itemCard/>
+                  <itemCard v-for="item in cardlist" v-bind:item="item"/>
                 </div>
                 <div class="col l3 s0">
-                  <sideBanner/>
+                  <sideBanner v-bind:sidelist="sidelist"/>
                 </div>
               </div>
             </div>
@@ -42,9 +31,31 @@
 <script>
 import itemCard from './../components/itemCard'
 import sideBanner from './../components/sideBanner'
+
 export default {
+  data () {
+    return {
+        cardlist: [
+          {titleImage: 'https://timeline.knightlab.com/static/img/examples/thumbs/thumb_mandela.jpg', subTitleImage: 'https://timeline.knightlab.com/static/img/examples/logos/logo_time.png', itemDes: 'Mandela: A Life of Purpose', itemUrl: '#'},
+          {titleImage: 'https://timeline.knightlab.com/static/img/examples/thumbs/thumb_mandela.jpg', subTitleImage: 'https://timeline.knightlab.com/static/img/examples/logos/logo_time.png', itemDes: 'Mandela: A Life of Purpose', itemUrl: '#'},
+          {titleImage: 'https://timeline.knightlab.com/static/img/examples/thumbs/thumb_mandela.jpg', subTitleImage: 'https://timeline.knightlab.com/static/img/examples/logos/logo_time.png', itemDes: 'Mandela: A Life of Purpose', itemUrl: '#'},
+          {titleImage: 'https://timeline.knightlab.com/static/img/examples/thumbs/thumb_mandela.jpg', subTitleImage: 'https://timeline.knightlab.com/static/img/examples/logos/logo_time.png', itemDes: 'Mandela: A Life of Purpose', itemUrl: '#'},
+          {titleImage: 'https://timeline.knightlab.com/static/img/examples/thumbs/thumb_mandela.jpg', subTitleImage: 'https://timeline.knightlab.com/static/img/examples/logos/logo_time.png', itemDes: 'Mandela: A Life of Purpose', itemUrl: '#'},
+          {titleImage: 'https://timeline.knightlab.com/static/img/examples/thumbs/thumb_mandela.jpg', subTitleImage: 'https://timeline.knightlab.com/static/img/examples/logos/logo_time.png', itemDes: 'Mandela: A Life of Purpose', itemUrl: '#'},
+          {titleImage: 'https://timeline.knightlab.com/static/img/examples/thumbs/thumb_mandela.jpg', subTitleImage: 'https://timeline.knightlab.com/static/img/examples/logos/logo_time.png', itemDes: 'Mandela: A Life of Purpose', itemUrl: '#'},
+          {titleImage: 'https://timeline.knightlab.com/static/img/examples/thumbs/thumb_mandela.jpg', subTitleImage: 'https://timeline.knightlab.com/static/img/examples/logos/logo_time.png', itemDes: 'Mandela: A Life of Purpose', itemUrl: '#'},
+          {titleImage: 'https://timeline.knightlab.com/static/img/examples/thumbs/thumb_mandela.jpg', subTitleImage: 'https://timeline.knightlab.com/static/img/examples/logos/logo_time.png', itemDes: 'Mandela: A Life of Purpose', itemUrl: '#'},
+          {titleImage: 'https://timeline.knightlab.com/static/img/examples/thumbs/thumb_mandela.jpg', subTitleImage: 'https://timeline.knightlab.com/static/img/examples/logos/logo_time.png', itemDes: 'Mandela: A Life of Purpose', itemUrl: '#'},
+          {titleImage: 'https://timeline.knightlab.com/static/img/examples/thumbs/thumb_mandela.jpg', subTitleImage: 'https://timeline.knightlab.com/static/img/examples/logos/logo_time.png', itemDes: 'Mandela: A Life of Purpose', itemUrl: '#'}
+        ],
+        sidelist: [
+          {itemText: 'Create your own timeline!', itemUrl: '#'},
+          {itemText: 'What is latest news?', itemUrl: '#'},
+          {itemText: 'Tips', itemUrl: '#'}
+        ]
+    }
+  },
   components: {
-    // myCom: myComponent
     itemCard: itemCard,
     sideBanner: sideBanner
   }
