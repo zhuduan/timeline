@@ -3,10 +3,7 @@ package com.timeline.controller;
 import static com.timeline.common.CommonConfig.PAGE_SIZE;
 
 import java.util.List;
-import com.timeline.model.DTO.DetailDTO;
-import com.timeline.util.LogUtil;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +15,9 @@ import com.timeline.common.ErrorType;
 import com.timeline.model.DTO.DetailDTO;
 import com.timeline.service.DetailService;
 import com.timeline.util.LogUtil;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @Api(description = "detail related interface")
 @RestController()

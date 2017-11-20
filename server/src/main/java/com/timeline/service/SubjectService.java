@@ -1,9 +1,8 @@
 package com.timeline.service;
 
-import com.timeline.model.DTO.SubjectDTO;
-import com.timeline.model.PO.Subject;
-
 import java.util.List;
+
+import com.timeline.model.DTO.SubjectDTO;
 
 public interface SubjectService {
 
