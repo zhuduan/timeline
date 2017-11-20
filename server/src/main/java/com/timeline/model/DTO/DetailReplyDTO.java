@@ -1,7 +1,5 @@
 package com.timeline.model.DTO;
 
-import java.util.Date;
-
 public class DetailReplyDTO {
     private Integer ID;
 
