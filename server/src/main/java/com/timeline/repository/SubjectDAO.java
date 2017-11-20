@@ -1,9 +1,13 @@
 package com.timeline.repository;
 
+import com.timeline.model.PO.Detail;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.SelectProvider;
 
 import com.timeline.util.mybatis.mapper.BaseSql;
 import com.timeline.model.PO.Subject;
+
+import java.util.List;
 
 public interface SubjectDAO {
    
@@ -13,12 +17,13 @@ public interface SubjectDAO {
 	 
 	 @SelectProvider(type = SubjectSQL.class, method = SubjectSQL.METHOD_GET_BY_KEY)
 	 Subject getSubjectByID(Integer id);
+
+	 @SelectProvider(type = SubjectSQL.class, method = SubjectSQL.METHOD_SELECT_BY_KEYS)
+	 List<Subject> getDetailBySubjectIDs(List<Integer> subjectIDs);
 	 
 	 static class SubjectSQL extends BaseSql {
-
 		public SubjectSQL() {
 			super(TABLE, ALL_COLUMNS);
 		}
-		 
 	 }
 }

@@ -1,8 +1,15 @@
 package com.timeline.service;
 
+import com.timeline.model.DTO.SubjectDTO;
 import com.timeline.model.PO.Subject;
+
+import java.util.List;
 
 public interface SubjectService {
 
-	Subject getSubject(Integer id);
+	SubjectDTO getSubject(Integer id);
+
+	List<SubjectDTO> getSubjectListByIDs(List<Integer> idList, Integer pageNum, Integer pageSize);
+
+	List<SubjectDTO> getSubjectListByUserFocus(Integer userID, Integer pageNum, Integer pageSize);
 }

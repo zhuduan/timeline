@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.timeline.model.DTO.DetailDTO;
 import com.timeline.util.LogUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -20,6 +22,7 @@ import com.timeline.service.DetailService;
 
 import static com.timeline.common.CommonConfig.PAGE_SIZE;
 
+@Api(description = "detail related interface")
 @RestController()
 @RequestMapping(value = "detail")
 public class DetailController {
@@ -27,6 +30,7 @@ public class DetailController {
 	@Autowired
 	private DetailService detailService;
 
+	@ApiOperation(httpMethod = "GET", value = "get detail list in subject", response = List.class)
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	private List<DetailDTO> getDetailListBySubjectID(@RequestParam("subjectID") Integer subjectID,
 													 @RequestParam("pageNum") Integer pageNum,
@@ -41,6 +45,7 @@ public class DetailController {
 		return detailService.getDetailsBySubjectID(subjectID, pageNum, pageSize);
 	}
 
+	@ApiOperation(httpMethod = "GET", value = "get definite detail by ID", response = List.class)
 	@RequestMapping(value = "info", method = RequestMethod.GET)
 	private DetailDTO getDetailByID(@RequestParam("detailID") Integer detailID) throws Exception{
 		if ( detailID==null || detailID<=0 ){
