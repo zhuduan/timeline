@@ -1,7 +1,5 @@
 package com.timeline.model.DTO;
 
-import java.util.Date;
-
 public class UserContributeDTO {
     private Integer ID;
 

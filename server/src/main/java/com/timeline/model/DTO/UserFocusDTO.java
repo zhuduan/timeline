@@ -1,7 +1,5 @@
 package com.timeline.model.DTO;
 
-import java.util.Date;
-
 public class UserFocusDTO {
     private Integer ID;
 

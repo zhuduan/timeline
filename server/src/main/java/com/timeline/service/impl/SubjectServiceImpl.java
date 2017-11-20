@@ -6,9 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
+import com.timeline.common.CommonConfig;
+import com.timeline.model.DTO.DetailDTO;
 import com.timeline.model.DTO.SubjectDTO;
 import com.timeline.model.PO.Subject;
 import com.timeline.repository.SubjectDAO;
+import com.timeline.service.DetailService;
 import com.timeline.service.SubjectService;
 import com.timeline.util.ConvertUtils;
 
@@ -18,9 +21,24 @@ public class SubjectServiceImpl implements SubjectService {
 	@Autowired
 	private SubjectDAO subjectDAO;
 	
+	@Autowired
+	private DetailService detailService;
+	
 	@Override
 	public SubjectDTO getSubject(Integer id) {
-		return ConvertUtils.convert(subjectDAO.getSubjectByID(id),SubjectDTO.class);
+		
+		if(id == null || id <= 0) {
+			
+			return null;
+		}
+		
+		Subject subject = subjectDAO.getSubjectByID(id);
+		SubjectDTO subjectDTO = ConvertUtils.convert(subject,SubjectDTO.class);
+		
+		//查询出全部时间线返回（时间线一般可能就在10以内，或10-20，暂时可以不考虑分页）
+		List<DetailDTO> details = detailService.getDetailsBySubjectID(id, 1, CommonConfig.PAGE_SIZE_ALL);
+		subjectDTO.setDetails(details);
+		return subjectDTO;
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package com.timeline.model.DTO;
 
 import java.util.Date;
+import java.util.List;
 
 public class SubjectDTO {
     private Integer ID;
@@ -29,6 +30,8 @@ public class SubjectDTO {
 
     private String Content;
 
+    private List<DetailDTO> details;
+    
     public Integer getID() {
         return ID;
     }
@@ -132,4 +135,12 @@ public class SubjectDTO {
     public void setContent(String content) {
         Content = content;
     }
+
+	public List<DetailDTO> getDetails() {
+		return details;
+	}
+
+	public void setDetails(List<DetailDTO> details) {
+		this.details = details;
+	}
 }
