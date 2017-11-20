@@ -374,14 +374,20 @@ h1, h2, h3, h4, h5, h6 {
 .grayscale, .hover-grayscale:hover {
   -webkit-filter: grayscale(50%);
   filter: grayscale(50%);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 .grayscale-max, .hover-grayscale-max:hover {
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 .grayscale-min, .hover-grayscale-min:hover {
   -webkit-filter: grayscale(25%);
   filter: grayscale(25%);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 /* NOTE: filter end */
 
@@ -435,6 +441,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 .text-shadow {
   text-shadow: -1.06066px 1.06066px 0 #f6f6f6, -2.12132px 2.12132px 0 #f6f6f6, -3.18198px 3.18198px 0 #f7f7f7, -4.24264px 4.24264px 0 #f7f7f7, -5.3033px 5.3033px 0 #f8f8f8, -6.36396px 6.36396px 0 #f8f8f8, -7.42462px 7.42462px 0 #f9f9f9, -8.48528px 8.48528px 0 #f9f9f9, -9.54594px 9.54594px 0 #fafafa;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+.hover-text-shadow:hover {
+  text-shadow: -1.06066px 1.06066px 0 #f6f6f6, -2.12132px 2.12132px 0 #f6f6f6, -3.18198px 3.18198px 0 #f7f7f7;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 /* NOTE:  shadow end*/
 
@@ -607,8 +620,8 @@ h1, h2, h3, h4, h5, h6 {
 /* animation-top */
 .animate-top {
   position: relative;
-  -webkit-animation: animationtop 0.6s;
-  animation: animationtop 0.6s;
+  -webkit-animation: animationtop 0.5s;
+  animation: animationtop 0.5s;
 }
 @-webkit-keyframes animationtop {
   from {top: -300px;opacity: 0;}
@@ -622,8 +635,8 @@ h1, h2, h3, h4, h5, h6 {
 /* animation-bottom */
 .animate-bottom {
   position: relative;
-  -webkit-animation: animationbottom 0.6s;
-  animation: animationbottom 0.6s;
+  -webkit-animation: animationbottom 0.5s;
+  animation: animationbottom 0.5s;
 }
 @-webkit-keyframes animationbottom {
   from {bottom: -300px;opacity: 0;}
@@ -637,8 +650,8 @@ h1, h2, h3, h4, h5, h6 {
 /* animation-left */
 .animate-left {
   position: relative;
-  -webkit-animation: animationleft 0.6s;
-  animation: animationleft 0.6s;
+  -webkit-animation: animationleft 0.5s;
+  animation: animationleft 0.5s;
 }
 @-webkit-keyframes animationleft {
   from {left: -300px;opacity: 0;}
@@ -651,8 +664,8 @@ h1, h2, h3, h4, h5, h6 {
 /* animation-right */
 .animate-right {
   position: relative;
-  -webkit-animation: animationright 0.6s;
-  animation: animationright 0.6s;
+  -webkit-animation: animationright 0.5s;
+  animation: animationright 0.5s;
 }
 @-webkit-keyframes animationright {
   from {right: -300px;opacity: 0;}

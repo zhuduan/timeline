@@ -2,6 +2,18 @@
   padding: 10px;
   height: 300px;
 }
+.item-card:hover .hover-text-shadow {
+  text-shadow: -1.06066px 1.06066px 0 #f6f6f6, -2.12132px 2.12132px 0 #f6f6f6, -3.18198px 3.18198px 0 #f7f7f7;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.item-card:hover .hover-grayscale-min{
+  -webkit-filter: grayscale(25%);
+  filter: grayscale(25%);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
 
 .border {
   border: 4px solid lightgrey;

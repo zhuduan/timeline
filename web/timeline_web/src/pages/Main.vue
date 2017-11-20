@@ -21,7 +21,9 @@
         height: 30px;
         border-radius: 3px;
         float: right;
+        text-align: center;
         position: relative;
+        padding: 0;
         top: 15px;
         right: 20px;
     }
