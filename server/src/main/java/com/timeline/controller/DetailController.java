@@ -3,14 +3,10 @@ package com.timeline.controller;
 import static com.timeline.common.CommonConfig.PAGE_SIZE;
 
 import java.util.List;
-
-<<<<<<< HEAD
 import com.timeline.model.DTO.DetailDTO;
 import com.timeline.util.LogUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-=======
->>>>>>> 208934aac76e51fce2fbad23076d889dfaaaca16
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
