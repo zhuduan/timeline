@@ -4,6 +4,7 @@ import static com.timeline.common.CommonConfig.PAGE_SIZE;
 
 import java.util.List;
 
+import com.timeline.util.NumberUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,7 +33,7 @@ public class DetailController {
 	private List<DetailDTO> getDetailListBySubjectID(@RequestParam("subjectID") Integer subjectID,
 													 @RequestParam("pageNum") Integer pageNum,
 													 @RequestParam(name="pageSize", required = false) Integer pageSize) throws Exception {
-		if (subjectID == null || subjectID <= 0 || pageNum ==null || pageNum<0) {
+		if ( !NumberUtil.isPositiveAndValid(subjectID) || !NumberUtil.isPositiveAndValid(pageNum) ) {
 			LogUtil.appLog.info(LogUtil.getMsg("wrong input for: subjectID="+subjectID+", pageNum="+pageNum));
 			throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
 		}
@@ -45,7 +46,7 @@ public class DetailController {
 	@ApiOperation(httpMethod = "GET", value = "get definite detail by ID", response = List.class)
 	@RequestMapping(value = "info", method = RequestMethod.GET)
 	private DetailDTO getDetailByID(@RequestParam("detailID") Integer detailID) throws Exception{
-		if ( detailID==null || detailID<=0 ){
+		if ( !NumberUtil.isPositiveAndValid(detailID) ){
 			LogUtil.appLog.info(LogUtil.getMsg("wrong input for: detailID="+detailID));
 			throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
 		}

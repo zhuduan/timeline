@@ -35,10 +35,8 @@ public interface DetailDAO {
 	 List<Detail> getDetailBySubjectID(@Param("subjectID")Integer subjectID);
 	 
 	 static class DetailSQL extends BaseSql {
-
 		public DetailSQL() {
 			super(TABLE, ALL_COLUMNS);
 		}
-		 
 	 }
 }
