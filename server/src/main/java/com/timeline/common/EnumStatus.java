@@ -9,6 +9,14 @@ public enum EnumStatus {
     private Integer statusID = 0;
 
     EnumStatus(Integer statusID){
-        this.statusID = statusID;
+        this.setStatusID(statusID);
     }
+
+	public Integer getStatusID() {
+		return statusID;
+	}
+
+	public void setStatusID(Integer statusID) {
+		this.statusID = statusID;
+	}
 }

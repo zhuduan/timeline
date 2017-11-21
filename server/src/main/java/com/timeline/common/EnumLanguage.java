@@ -1,7 +1,5 @@
 package com.timeline.common;
 
-import io.swagger.models.auth.In;
-
 public enum EnumLanguage {
 
     CN(1),       // zh_ch: chinese
