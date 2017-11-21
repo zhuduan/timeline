@@ -4,6 +4,7 @@ import static com.timeline.common.CommonConfig.PAGE_SIZE;
 
 import java.util.List;
 
+import com.timeline.util.NumberUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,7 +33,7 @@ public class SubjectController {
 	@ApiOperation(httpMethod = "GET", value = "get definite subject by ID", response = List.class)
 	@RequestMapping(value="info", method=RequestMethod.GET)
 	public SubjectDTO getSubjectInfo(@RequestParam("subjectID") Integer subjectID) throws ControllerException {
-		if ( subjectID==null || subjectID<=0 ){
+		if ( !NumberUtil.isPositiveAndValid(subjectID) ){
 			LogUtil.appLog.info(LogUtil.getMsg("wrong input for: subjectID="+subjectID));
 			throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
 		}
@@ -43,7 +44,7 @@ public class SubjectController {
 	@RequestMapping(value="list", method=RequestMethod.GET)
 	public List<SubjectDTO> getSubjectList(@RequestParam("pageNum") Integer pageNum,
 										   @RequestParam(name="pageSize", required = false) Integer pageSize) throws ControllerException {
-		if ( pageNum ==null || pageNum<0) {
+		if ( !NumberUtil.isPositiveAndValid(pageNum) ) {
 			LogUtil.appLog.info(LogUtil.getMsg("wrong input for: pageNum="+pageNum));
 			throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
 		}
@@ -58,11 +59,11 @@ public class SubjectController {
 	public List<SubjectDTO> getFocusSubjectList(@RequestParam("userID") Integer userID,
 												@RequestParam("pageNum") Integer pageNum,
 											    @RequestParam(name="pageSize", required = false) Integer pageSize) throws ControllerException {
-		if ( userID==null || userID<=0 ){
+		if ( !NumberUtil.isPositiveAndValid(userID) ){
 			LogUtil.appLog.info(LogUtil.getMsg("wrong input for: userID="+userID));
 			throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
 		}
-		if ( pageNum ==null || pageNum<0) {
+		if ( !NumberUtil.isPositiveAndValid(pageNum) ) {
 			LogUtil.appLog.info(LogUtil.getMsg("wrong input for: pageNum="+pageNum));
 			throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
 		}
