@@ -3,7 +3,6 @@ package com.timeline.controller;
 import com.timeline.common.ControllerException;
 import com.timeline.common.EnumLanguage;
 import com.timeline.common.ErrorType;
-import com.timeline.model.DTO.DetailDTO;
 import com.timeline.model.DTO.DetailLinkDTO;
 import com.timeline.service.DetailLinkService;
 import com.timeline.util.LogUtil;
