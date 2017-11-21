@@ -2,6 +2,7 @@ package com.timeline.service.impl;
 
 import java.util.List;
 
+import com.timeline.common.DataConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,9 +43,16 @@ public class SubjectServiceImpl implements SubjectService {
 	}
 
 	@Override
+	public List<SubjectDTO> getSubjectListByDefault(Integer pageNum, Integer pageSize) {
+		// TODO: 根据首页推荐规则，来构建默认列表
+		List<Subject> subjects = subjectDAO.getSubjectByValid(DataConfig.DataValidation.VALID.getValidationFlag());
+		return ConvertUtils.convert(subjects, SubjectDTO.class);
+	}
+
+	@Override
 	public List<SubjectDTO> getSubjectListByIDs(List<Integer> idList, Integer pageNum, Integer pageSize) {
 		PageHelper.startPage(pageNum, pageSize);
-		List<Subject> subjects = subjectDAO.getDetailBySubjectIDs(idList);
+		List<Subject> subjects = subjectDAO.getSubjectBySubjectIDs(idList);
 		return ConvertUtils.convert(subjects, SubjectDTO.class);
 	}
 

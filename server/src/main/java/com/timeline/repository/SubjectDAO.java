@@ -2,6 +2,7 @@ package com.timeline.repository;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.SelectProvider;
 
 import com.timeline.model.PO.Subject;
@@ -16,8 +17,11 @@ public interface SubjectDAO {
 	 @SelectProvider(type = SubjectSQL.class, method = SubjectSQL.METHOD_GET_BY_KEY)
 	 Subject getSubjectByID(Integer id);
 
+	 @SelectProvider(type = SubjectSQL.class, method = SubjectSQL.METHOD_SELECT_BY_COLUMN)
+	 List<Subject> getSubjectByValid(@Param("isValid")Integer isValid);
+
 	 @SelectProvider(type = SubjectSQL.class, method = SubjectSQL.METHOD_SELECT_BY_KEYS)
-	 List<Subject> getDetailBySubjectIDs(List<Integer> subjectIDs);
+	 List<Subject> getSubjectBySubjectIDs(List<Integer> subjectIDs);
 	 
 	 static class SubjectSQL extends BaseSql {
 		public SubjectSQL() {

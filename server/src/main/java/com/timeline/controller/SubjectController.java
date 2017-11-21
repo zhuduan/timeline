@@ -41,13 +41,8 @@ public class SubjectController {
 
 	@ApiOperation(httpMethod = "GET", value = "get subject list by subject ID List", response = List.class)
 	@RequestMapping(value="list", method=RequestMethod.GET)
-	public List<SubjectDTO> getSubjectList(@RequestParam("subjectIDs") List<Integer> subjectIDs,
-										   @RequestParam("pageNum") Integer pageNum,
+	public List<SubjectDTO> getSubjectList(@RequestParam("pageNum") Integer pageNum,
 										   @RequestParam(name="pageSize", required = false) Integer pageSize) throws ControllerException {
-		if ( subjectIDs==null || subjectIDs.size()<=0 ){
-			LogUtil.appLog.info(LogUtil.getMsg("wrong input for: subjectID="+subjectIDs));
-			throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
-		}
 		if ( pageNum ==null || pageNum<0) {
 			LogUtil.appLog.info(LogUtil.getMsg("wrong input for: pageNum="+pageNum));
 			throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
@@ -55,8 +50,7 @@ public class SubjectController {
 		if ( pageSize==null ){
 			pageSize = PAGE_SIZE;
 		}
-
-		return subjectService.getSubjectListByIDs(subjectIDs, pageNum, pageSize);
+		return subjectService.getSubjectListByDefault(pageNum, pageSize);
 	}
 
 	@ApiOperation(httpMethod = "GET", value = "get subject list which user focus on", response = List.class)
