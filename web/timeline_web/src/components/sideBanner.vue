@@ -22,5 +22,4 @@ export default {
 </script>
 
 <style>
-  @import "./../css/timeline.css";
 </style>

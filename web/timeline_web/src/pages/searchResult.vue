@@ -1,31 +1,27 @@
 <template>
-    <div>
-        <Row style="text-align: center;">
-            <div class="index-logo" style="font-size: xx-large;"><h1>timeline<sup class="sup red">js</sup></h1></div>
-            <span><h3>Sub title</h3></span>
-            <br/>
-            <div class="index-search">
-                <input v-model="value" class="ivu-inputbox" placeholder="Enter something..."/>
-                <router-link :to="{ path: '/search', params: {} }"><Button type="ghost" shape="circle" icon="ios-search">Search</Button></router-link>
-            </div>
+  <div>
+    <Row style="text-align: center;">
+        <div class="index-logo" style="font-size: x-large;"><h1>Search result</h1></div>
+        <div class="index-search">
+            <input v-model="value" class="ivu-inputbox" placeholder="Enter something..."/>
+            <router-link :to="{ path: '/search', params: {} }"><Button type="ghost" shape="circle" icon="ios-search">Search</Button></router-link>
+        </div>
 
-            <!-- content grid start -->
-            <div class="margin-top-48">
-              <div class="row-padding">
-                <div class="col l9 s12">
-                  <itemCard v-for="item in cardlist" v-bind:item="item"/>
-                </div>
-                <div class="col l3 s0">
-                  <sideBanner v-bind:sidelist="sidelist"/>
-                </div>
-              </div>
+        <!-- searchResult grid start -->
+        <div class="margin-top-48">
+          <div class="row-padding">
+            <div class="col l12 m12 s12">
+              <itemCard v-for="item in cardlist" v-bind:item="item"/>
             </div>
-            <!-- content grid end -->
-        </Row>
-        <Row>
+          </div>
+        </div>
+        <!-- searchResult grid end -->
 
-        </Row>
-    </div>
+    </Row>
+    <Row>
+
+    </Row>
+  </div>
 </template>
 
 <script>
@@ -58,16 +54,7 @@ export default {
   components: {
     itemCard: itemCard,
     sideBanner: sideBanner
-  },
-  mounted: function () {
-        // GET /someUrl
-        this.$http.jsonp('http://localhost:8080/subject/list?pageNum=1').then(response => {
-             console.log(response.data);
-
-        }, response => {
-            console.log("error");
-        });
-    },
+  }
 }
 </script>
 
