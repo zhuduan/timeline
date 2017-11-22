@@ -7,7 +7,7 @@
             </div>
             <!-- <img :src="item.subTitleImage" class="round-small subtitle-image" alt="" style="width: 70%; height: auto"> -->
             <h3 class="subject-title">{{item.title}}</h3>
-            <h2 class="item-des text-shadow hover-text-shadow">{{item.content}}</h2>
+            <h2 class="item-des text-shadow hover-text-shadow">{{addEllipsis(item.content)}}</h2>
         </div>
       </a>
     </div>
@@ -23,6 +23,15 @@ export default {
   },
   props: {
     'item': Object
+  },
+  methods: {
+    addEllipsis: function (str) {
+        if(str.length > 32){
+          return str.substring(0,32)+"...";
+        }else{
+          return str;
+        }
+    }
   }
 }
 </script>
