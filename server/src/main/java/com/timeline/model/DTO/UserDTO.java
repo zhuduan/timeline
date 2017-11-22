@@ -10,6 +10,8 @@ public class UserDTO {
     private Byte Role;
 
     private Byte Authority;
+    
+    private String password;
 
     private String Email;
 
@@ -100,5 +102,13 @@ public class UserDTO {
     public void setGoogleAccount(String googleAccount) {
         GoogleAccount = googleAccount;
     }
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 }
