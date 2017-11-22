@@ -7,9 +7,11 @@ import com.timeline.repository.UserFocusDAO;
 import com.timeline.service.UserFocusService;
 import com.timeline.util.ConvertUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class UserFocusServiceImpl implements UserFocusService {
 
     @Autowired
