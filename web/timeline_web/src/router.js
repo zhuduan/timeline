@@ -7,6 +7,7 @@ const routers = [{
     },
     {
         path: '/search',
+        name: '/search',
         meta: {
             title: ''
         },
