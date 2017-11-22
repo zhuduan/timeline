@@ -16,6 +16,8 @@ public class User {
     private String Email;
 
     private String Phone;
+    
+    private String password;
 
     private String WechatAccount;
 
@@ -132,4 +134,12 @@ public class User {
     public void setUpdateTime(Date updateTime) {
         UpdateTime = updateTime;
     }
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 }
