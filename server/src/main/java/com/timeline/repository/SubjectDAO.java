@@ -34,7 +34,6 @@ public interface SubjectDAO {
 		}
 		
 		public String searchSubjectsSQL() {
-			
 			SQL sql = new SQL();
 			sql.SELECT(getQueryList())
 			   .FROM(getTable())

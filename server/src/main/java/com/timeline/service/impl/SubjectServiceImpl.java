@@ -1,7 +1,12 @@
 package com.timeline.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.timeline.model.DTO.UserFocusDTO;
+import com.timeline.service.UserFocusService;
+import com.timeline.util.NumberUtil;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +28,9 @@ public class SubjectServiceImpl implements SubjectService {
 	
 	@Autowired
 	private DetailService detailService;
+
+	@Autowired
+	private UserFocusService userFocusService;
 	
 	@Override
 	public SubjectDTO getSubject(Integer id) {
@@ -57,10 +65,15 @@ public class SubjectServiceImpl implements SubjectService {
 
 	@Override
 	public List<SubjectDTO> getSubjectListByUserFocus(Integer userID, Integer pageNum, Integer pageSize) {
-		//TODO:
 		// 1. get user focused on Subject ID List
+		List<UserFocusDTO> focusList = userFocusService.getFocusListByUID(userID, pageNum, pageSize);
+
 		// 2. then get subject list by IDs
-		return null;
+		List<Integer> subjectIDs = new ArrayList<>();
+		focusList.stream().filter( userFocusDTO -> NumberUtil.isPositiveAndValid(userFocusDTO.getSubjectID()) )
+				.forEach( (userFocusDTO) -> { subjectIDs.add(userFocusDTO.getSubjectID()); } );
+		List<Subject> focusSubjects = subjectDAO.getSubjectBySubjectIDs(subjectIDs);
+		return ConvertUtils.convert(focusSubjects, SubjectDTO.class);
 	}
 
 }

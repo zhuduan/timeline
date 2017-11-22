@@ -77,8 +77,7 @@ public class SubjectController {
 			pageSize = PAGE_SIZE;
 		}
 
-//		return subjectService.getSubject(subjectID);
-		return null;
+		return subjectService.getSubjectListByUserFocus(userID, pageNum, pageSize);
 	}
 
 	@RequestMapping(value = "search", method = { RequestMethod.GET, RequestMethod.POST })
