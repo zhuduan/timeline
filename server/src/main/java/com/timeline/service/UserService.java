@@ -7,6 +7,8 @@ public interface UserService {
 
 	int register(UserDTO user) throws Exception;
 	
+	User login(UserDTO user) throws Exception;
+	
 	int insertUser(User user);
 	
 	User getUserByID(Long id);
