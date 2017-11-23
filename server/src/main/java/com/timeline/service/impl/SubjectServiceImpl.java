@@ -71,8 +71,11 @@ public class SubjectServiceImpl implements SubjectService {
 		// 2. then get subject list by IDs
 		List<Integer> subjectIDs = new ArrayList<>();
 		focusList.stream().filter( userFocusDTO -> NumberUtil.isPositiveAndValid(userFocusDTO.getSubjectID()) )
-				.forEach( (userFocusDTO) -> { subjectIDs.add(userFocusDTO.getSubjectID()); } );
-		List<Subject> focusSubjects = subjectDAO.getSubjectBySubjectIDs(subjectIDs);
+				.forEach( (userFocusDTO) -> subjectIDs.add(userFocusDTO.getSubjectID()) );
+		List<Subject> focusSubjects = new ArrayList<>();
+		if ( subjectIDs.size()>0 ){
+			focusSubjects = subjectDAO.getSubjectBySubjectIDs(subjectIDs);
+		}
 		return ConvertUtils.convert(focusSubjects, SubjectDTO.class);
 	}
 

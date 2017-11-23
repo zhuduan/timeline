@@ -7,6 +7,7 @@ import com.timeline.model.DTO.UserDTO;
 import com.timeline.model.PO.User;
 import com.timeline.repository.UserDAO;
 import com.timeline.service.UserService;
+import com.timeline.util.ConvertUtils;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -23,7 +24,9 @@ public class UserServiceImpl implements UserService{
 			throw new Exception("user name exists!");
 		}
 		
-		return 0;
+		existsUser = ConvertUtils.convert(user, User.class);
+		
+		return userDAO.insertUser(existsUser);
 	}
 
 	@Override
@@ -42,6 +45,19 @@ public class UserServiceImpl implements UserService{
 	public User getUserByName(String name) {
 
 		return userDAO.getUserByName(name);
+	}
+
+	@Override
+	public User login(UserDTO user) throws Exception {
+
+		User existsUser = userDAO.getUserByName(user.getName());
+		if(existsUser != null && existsUser.getPassword().equals(user.getPassword())) {
+			
+			return existsUser;
+		} else {
+			
+			throw new Exception("user not exist or password invalid");
+		}
 	}
 
 }
