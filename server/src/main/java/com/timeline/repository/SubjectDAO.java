@@ -21,8 +21,8 @@ public interface SubjectDAO {
 	 @SelectProvider(type = SubjectSQL.class, method = SubjectSQL.METHOD_SELECT_BY_COLUMN)
 	 List<Subject> getSubjectByValid(@Param("isValid")Integer isValid);
 
-	 @SelectProvider(type = SubjectSQL.class, method = SubjectSQL.METHOD_SELECT_BY_KEYS)
-	 List<Subject> getSubjectBySubjectIDs(List<Integer> subjectIDs);
+	 @SelectProvider(type = SubjectSQL.class, method = SubjectSQL.METHOD_SELECT_BY_COLUMN )
+	 List<Subject> getSubjectBySubjectIDs(@Param("ID") List<Integer> ids);
 	 
 	 @SelectProvider(type = SubjectSQL.class, method = "searchSubjectsSQL")
 	 List<Subject> searchSubjects(@Param("title") String title);
@@ -38,7 +38,6 @@ public interface SubjectDAO {
 			sql.SELECT(getQueryList())
 			   .FROM(getTable())
 			   .WHERE("Title like #{title}");
-			
 			return sql.toString();
 		}
 	 }
