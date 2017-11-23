@@ -19,9 +19,34 @@
   border: 4px solid lightgrey;
 }
 
-.subtitle-image {
-  margin-top: 5px;
+.title-image-cover
+{
+    margin:0;
+    width: 100%;
+    height: 40%;
+    overflow: hidden;
+    border: none;
+    position: relative;
 }
+.title-image {
+  width: 100%;
+  height: auto;
+  top:50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  position: relative;
+}
+
+/*.subtitle-image {
+  margin-top: 5px;
+}*/
+.subject-title {
+  text-align: left;
+  padding: 10px 0 0 10px;
+}
+
 .item-des {
   text-align: left;
   padding: 10px;

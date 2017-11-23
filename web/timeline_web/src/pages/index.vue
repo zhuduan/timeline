@@ -5,8 +5,8 @@
             <span><h3>Sub title</h3></span>
             <br/>
             <div class="index-search">
-                <input v-model="value" class="ivu-inputbox" placeholder="Enter something..."/>
-                <router-link :to="{ path: '/search', params: {} }"><Button type="ghost" shape="circle" icon="ios-search">Search</Button></router-link>
+                <input v-model="searchKey" class="ivu-inputbox" placeholder="Enter something..."/>
+                <router-link :to="{ name: '/search', params: {value:this.searchKey} }"><Button type="ghost" shape="circle" icon="ios-search" @click="searchSubject">Search</Button></router-link>
             </div>
 
             <!-- content grid start -->
@@ -35,24 +35,13 @@ import sideBanner from './../components/sideBanner'
 export default {
   data () {
     return {
-        cardlist: [
-          {titleImage: 'https://timeline.knightlab.com/static/img/examples/thumbs/thumb_mandela.jpg', subTitleImage: 'https://timeline.knightlab.com/static/img/examples/logos/logo_time.png', itemDes: 'Mandela: A Life of Purpose', itemUrl: '#'},
-          {titleImage: 'https://timeline.knightlab.com/static/img/examples/thumbs/thumb_mandela.jpg', subTitleImage: 'https://timeline.knightlab.com/static/img/examples/logos/logo_time.png', itemDes: 'Mandela: A Life of Purpose', itemUrl: '#'},
-          {titleImage: 'https://timeline.knightlab.com/static/img/examples/thumbs/thumb_mandela.jpg', subTitleImage: 'https://timeline.knightlab.com/static/img/examples/logos/logo_time.png', itemDes: 'Mandela: A Life of Purpose', itemUrl: '#'},
-          {titleImage: 'https://timeline.knightlab.com/static/img/examples/thumbs/thumb_mandela.jpg', subTitleImage: 'https://timeline.knightlab.com/static/img/examples/logos/logo_time.png', itemDes: 'Mandela: A Life of Purpose', itemUrl: '#'},
-          {titleImage: 'https://timeline.knightlab.com/static/img/examples/thumbs/thumb_mandela.jpg', subTitleImage: 'https://timeline.knightlab.com/static/img/examples/logos/logo_time.png', itemDes: 'Mandela: A Life of Purpose', itemUrl: '#'},
-          {titleImage: 'https://timeline.knightlab.com/static/img/examples/thumbs/thumb_mandela.jpg', subTitleImage: 'https://timeline.knightlab.com/static/img/examples/logos/logo_time.png', itemDes: 'Mandela: A Life of Purpose', itemUrl: '#'},
-          {titleImage: 'https://timeline.knightlab.com/static/img/examples/thumbs/thumb_mandela.jpg', subTitleImage: 'https://timeline.knightlab.com/static/img/examples/logos/logo_time.png', itemDes: 'Mandela: A Life of Purpose', itemUrl: '#'},
-          {titleImage: 'https://timeline.knightlab.com/static/img/examples/thumbs/thumb_mandela.jpg', subTitleImage: 'https://timeline.knightlab.com/static/img/examples/logos/logo_time.png', itemDes: 'Mandela: A Life of Purpose', itemUrl: '#'},
-          {titleImage: 'https://timeline.knightlab.com/static/img/examples/thumbs/thumb_mandela.jpg', subTitleImage: 'https://timeline.knightlab.com/static/img/examples/logos/logo_time.png', itemDes: 'Mandela: A Life of Purpose', itemUrl: '#'},
-          {titleImage: 'https://timeline.knightlab.com/static/img/examples/thumbs/thumb_mandela.jpg', subTitleImage: 'https://timeline.knightlab.com/static/img/examples/logos/logo_time.png', itemDes: 'Mandela: A Life of Purpose', itemUrl: '#'},
-          {titleImage: 'https://timeline.knightlab.com/static/img/examples/thumbs/thumb_mandela.jpg', subTitleImage: 'https://timeline.knightlab.com/static/img/examples/logos/logo_time.png', itemDes: 'Mandela: A Life of Purpose', itemUrl: '#'}
-        ],
+        cardlist: '',
         sidelist: [
           {itemText: 'Create your own timeline!', itemUrl: '#'},
           {itemText: 'What is latest news?', itemUrl: '#'},
           {itemText: 'Tips', itemUrl: '#'}
-        ]
+        ],
+        searchKey: ''
     }
   },
   components: {
@@ -60,14 +49,21 @@ export default {
     sideBanner: sideBanner
   },
   mounted: function () {
-        // GET /someUrl
-        this.$http.jsonp('http://localhost:8080/subject/list?pageNum=1').then(response => {
-             console.log(response.data);
+    this.onMainPageLoaded();
+  },
+  methods: {
+    onMainPageLoaded: function () {
+      this.$http.get('http://localhost:8080/subject/list?pageNum=1').then(response => {
+           this.cardlist = response.data;
 
-        }, response => {
-            console.log("error");
-        });
+      }, response => {
+          console.log("error");
+      });
     },
+    searchSubject: function () {
+      console.log("searchKey in index page: "+this.searchKey);
+    }
+  }
 }
 </script>
 
