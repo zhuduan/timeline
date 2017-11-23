@@ -5,8 +5,8 @@
             <span><h3>Sub title</h3></span>
             <br/>
             <div class="index-search">
-                <input v-model="searchKey" class="ivu-inputbox" placeholder="Enter something..."/>
-                <router-link :to="{ name: '/search', params: {value:this.searchKey} }"><Button type="ghost" shape="circle" icon="ios-search" @click="searchSubject">Search</Button></router-link>
+                <input v-model="searchKey" class="ivu-inputbox" v-on:keyup.enter="searchSubject" placeholder="Enter something..."/>
+                <Button type="ghost" shape="circle" icon="ios-search" @click="searchSubject">Search</Button>
             </div>
 
             <!-- content grid start -->
@@ -62,6 +62,7 @@ export default {
     },
     searchSubject: function () {
       console.log("searchKey in index page: "+this.searchKey);
+      this.$router.push({ name: '/search', params: { value:this.searchKey }})
     }
   }
 }
