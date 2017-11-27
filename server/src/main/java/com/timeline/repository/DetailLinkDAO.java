@@ -4,7 +4,6 @@ import com.timeline.model.PO.DetailLink;
 import com.timeline.util.mybatis.mapper.BaseSql;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.SelectProvider;
-import org.apache.ibatis.jdbc.SQL;
 
 import java.util.List;
 

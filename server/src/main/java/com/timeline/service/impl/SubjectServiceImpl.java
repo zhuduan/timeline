@@ -1,24 +1,22 @@
 package com.timeline.service.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.timeline.model.DTO.UserFocusDTO;
-import com.timeline.service.UserFocusService;
-import com.timeline.util.NumberUtil;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.github.pagehelper.PageHelper;
 import com.timeline.common.CommonConfig;
 import com.timeline.model.DTO.DetailDTO;
 import com.timeline.model.DTO.SubjectDTO;
+import com.timeline.model.DTO.UserFocusDTO;
 import com.timeline.model.PO.Subject;
 import com.timeline.repository.SubjectDAO;
 import com.timeline.service.DetailService;
 import com.timeline.service.SubjectService;
+import com.timeline.service.UserFocusService;
 import com.timeline.util.ConvertUtils;
+import com.timeline.util.NumberUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class SubjectServiceImpl implements SubjectService {

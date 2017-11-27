@@ -1,12 +1,11 @@
 package com.timeline.repository;
 
-import java.util.List;
-
+import com.timeline.model.PO.Detail;
+import com.timeline.util.mybatis.mapper.BaseSql;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.SelectProvider;
 
-import com.timeline.util.mybatis.mapper.BaseSql;
-import com.timeline.model.PO.Detail;
+import java.util.List;
 
 public interface DetailDAO {
 

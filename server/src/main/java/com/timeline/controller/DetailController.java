@@ -1,24 +1,22 @@
 package com.timeline.controller;
 
-import static com.timeline.common.CommonConfig.PAGE_SIZE;
-
-import java.util.List;
-
+import com.timeline.common.ControllerException;
+import com.timeline.common.ErrorType;
+import com.timeline.model.DTO.DetailDTO;
+import com.timeline.service.DetailService;
+import com.timeline.util.LogUtil;
 import com.timeline.util.NumberUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.timeline.common.ControllerException;
-import com.timeline.common.ErrorType;
-import com.timeline.model.DTO.DetailDTO;
-import com.timeline.service.DetailService;
-import com.timeline.util.LogUtil;
+import java.util.List;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import static com.timeline.common.CommonConfig.PAGE_SIZE;
 
 @Api(description = "detail related interface")
 @RestController()

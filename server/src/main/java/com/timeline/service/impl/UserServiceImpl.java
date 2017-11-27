@@ -1,13 +1,12 @@
 package com.timeline.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.timeline.model.DTO.UserDTO;
 import com.timeline.model.PO.User;
 import com.timeline.repository.UserDAO;
 import com.timeline.service.UserService;
 import com.timeline.util.ConvertUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService{

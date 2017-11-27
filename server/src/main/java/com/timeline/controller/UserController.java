@@ -1,15 +1,14 @@
 package com.timeline.controller;
 
+import com.timeline.model.DTO.UserDTO;
+import com.timeline.model.PO.User;
+import com.timeline.service.UserService;
+import com.timeline.util.ConvertUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.timeline.model.DTO.UserDTO;
-import com.timeline.model.PO.User;
-import com.timeline.service.UserService;
-import com.timeline.util.ConvertUtils;
 
 @RestController
 @RequestMapping("user")
