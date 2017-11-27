@@ -4,6 +4,7 @@ import com.timeline.interceptor.StatisticInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
@@ -22,5 +23,10 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         //      addPathPatterns 用于添加拦截规则, excludePathPatterns 用户排除拦截
         registry.addInterceptor(statisticInterceptor()).excludePathPatterns("/user/**");
         super.addInterceptors(registry);
+    }
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/user/login").setViewName("/user/login");
     }
 }
