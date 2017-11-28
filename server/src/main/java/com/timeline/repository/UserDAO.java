@@ -1,11 +1,10 @@
 package com.timeline.repository;
 
+import com.timeline.model.PO.User;
+import com.timeline.util.mybatis.mapper.BaseSql;
 import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.SelectProvider;
-
-import com.timeline.model.PO.User;
-import com.timeline.util.mybatis.mapper.BaseSql;
 
 public interface UserDAO {
 

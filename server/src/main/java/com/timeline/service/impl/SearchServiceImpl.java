@@ -1,16 +1,15 @@
 package com.timeline.service.impl;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.github.pagehelper.PageHelper;
 import com.google.common.base.Strings;
 import com.timeline.common.CommonConfig;
 import com.timeline.model.PO.Subject;
 import com.timeline.repository.SubjectDAO;
 import com.timeline.service.SearchService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class SearchServiceImpl implements SearchService{

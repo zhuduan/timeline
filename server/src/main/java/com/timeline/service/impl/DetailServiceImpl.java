@@ -1,16 +1,15 @@
 package com.timeline.service.impl;
 
-import java.util.List;
-
 import com.github.pagehelper.PageHelper;
 import com.timeline.model.DTO.DetailDTO;
+import com.timeline.model.PO.Detail;
+import com.timeline.repository.DetailDAO;
 import com.timeline.service.DetailService;
 import com.timeline.util.ConvertUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.timeline.model.PO.Detail;
-import com.timeline.repository.DetailDAO;
+import java.util.List;
 
 
 @Service

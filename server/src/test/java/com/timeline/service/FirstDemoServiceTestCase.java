@@ -1,8 +1,8 @@
 package com.timeline.service;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
+
+import static org.junit.Assert.fail;
 
 public class FirstDemoServiceTestCase {
 

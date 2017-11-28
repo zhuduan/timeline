@@ -1,8 +1,8 @@
 package com.timeline.service;
 
-import java.util.List;
-
 import com.timeline.model.DTO.DetailDTO;
+
+import java.util.List;
 
 public interface DetailService {
 

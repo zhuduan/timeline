@@ -1,15 +1,15 @@
 package com.timeline.controller;
 
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.timeline.model.DTO.UserDTO;
 import com.timeline.model.PO.User;
 import com.timeline.service.UserService;
 import com.timeline.util.ConvertUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("user")
@@ -17,7 +17,8 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
-	
+
+	@RequestMapping( value = "register", method = RequestMethod.POST )
 	public UserDTO register(@RequestParam("userName")String userName, 
 							@RequestParam("password")String password,
 							@RequestParam("email")String email,
@@ -42,10 +43,11 @@ public class UserController {
 			throw new Exception("register failure");
 		}
 	}
-	
-	public UserDTO login(@RequestParam("userName")String userName, 
+
+	@RequestMapping( value = "login", method = {RequestMethod.POST} )
+	public UserDTO login( @RequestParam("userName")String userName,
 						 @RequestParam("password")String password) throws Exception {
-		
+
 		if(StringUtils.isAnyEmpty(userName, password)) {
 			
 			throw new Exception("parameter is null");
@@ -58,5 +60,17 @@ public class UserController {
 		User user = userService.login(dto);
 		
 		return ConvertUtils.convert(user, UserDTO.class);
+	}
+
+	@RequestMapping( value = "login/error", method = RequestMethod.GET )
+	public String loginError() throws Exception {
+
+		return "you need login!";
+	}
+
+	@RequestMapping( value = "info", method = RequestMethod.GET )
+	public UserDTO info() {
+
+		return new UserDTO();
 	}
 }

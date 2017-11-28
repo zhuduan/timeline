@@ -1,6 +1,5 @@
 package com.timeline.repository;
 
-import com.timeline.model.PO.DetailLink;
 import com.timeline.model.PO.UserFocus;
 import com.timeline.util.mybatis.mapper.BaseSql;
 import org.apache.ibatis.annotations.Param;

@@ -1,14 +1,13 @@
 package com.timeline.util.mybatis.mapper;
 
+import com.timeline.util.mybatis.Util;
+import org.apache.commons.collections4.map.CaseInsensitiveMap;
+import org.apache.ibatis.jdbc.SQL;
+
 import java.util.Collection;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-
-import org.apache.commons.collections4.map.CaseInsensitiveMap;
-import org.apache.ibatis.jdbc.SQL;
-
-import com.timeline.util.mybatis.Util;
 
 public abstract class BaseSql {
 

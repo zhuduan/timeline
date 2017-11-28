@@ -1,13 +1,12 @@
 package com.timeline.repository;
 
-import java.util.List;
-
+import com.timeline.model.PO.Subject;
+import com.timeline.util.mybatis.mapper.BaseSql;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.jdbc.SQL;
 
-import com.timeline.model.PO.Subject;
-import com.timeline.util.mybatis.mapper.BaseSql;
+import java.util.List;
 
 public interface SubjectDAO {
    
