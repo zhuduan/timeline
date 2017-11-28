@@ -1,3 +1,6 @@
+/***************************************************************
+++++++++            Itemcard start                    +++++++++
+***************************************************************/
 .item-card {
   padding: 10px;
   height: 300px;
@@ -39,9 +42,6 @@
   position: relative;
 }
 
-/*.subtitle-image {
-  margin-top: 5px;
-}*/
 .subject-title {
   text-align: left;
   padding: 10px 0 0 10px;
@@ -58,8 +58,13 @@
   color: #828282;
   font-size: 0.85em;
 }
+/* Itemcard end*/
 
-/* timeline index page */
+
+
+/***************************************************************
+++++++++            timeline index page start           ++++++++
+***************************************************************/
 .index-logo {
     width: 100%;
     height: 120px;
@@ -77,10 +82,6 @@
     position: relative;
 }
 
-/*.ivu-row {
-  text-Align: center;
-}*/
-
 .ivu-inputbox {
   display: inline-block;
   width: 20%;
@@ -97,9 +98,25 @@
   cursor: text;
   transition: border .2s ease-in-out,background .2s ease-in-out,box-shadow .2s ease-in-out;
 }
+/* timeline index page end */
 
+
+
+/***************************************************************
+++++++++            subject page start                  ++++++++
+***************************************************************/
 .subject-detail {
-  /*display: inline-block;*/
   float: left;
   font-size: 16px;
+}
+/* subject page end */
+
+
+
+/***************************************************************
+++++++++            login page start                    +++++++++
+***************************************************************/
+.login-form-container {
+  display: inline-block;
+  margin: 120px 0;
 }

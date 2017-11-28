@@ -17,15 +17,13 @@
     }
 
     .layout-login {
-        width: 100px;
-        height: 30px;
         border-radius: 3px;
-        float: right;
         text-align: center;
         position: relative;
         padding: 0;
-        top: 15px;
-        right: 20px;
+    }
+    .login-container {
+      padding-left: 90%;
     }
 
     .layout-nav {
@@ -83,8 +81,11 @@
                         关于我们
                     </MenuItem>
                 </div>
-                <div class="">
-                    <Button class="layout-login">Sign in/Sign up</Button>
+                <div class="login-container">
+                  <router-link :to="{ name: '/login', params: {} }">
+                    <button class="btn white layout-login">登录</button>
+                  </router-link>
+                  <button class="btn white layout-login">注册</button>
                 </div>
             </Menu>
             <div class="layout-breadcrumb">

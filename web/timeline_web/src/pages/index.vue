@@ -61,7 +61,6 @@ export default {
       });
     },
     searchSubject: function () {
-      console.log("searchKey in index page: "+this.searchKey);
       this.$router.push({ name: '/search', params: { value:this.searchKey }})
     }
   }
