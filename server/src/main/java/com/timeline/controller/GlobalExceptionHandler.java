@@ -18,7 +18,7 @@ public class GlobalExceptionHandler {
 	public Object exceptionHandler(HttpServletRequest request,
 								   HttpServletResponse response,
 								   Exception exception) throws Exception {
-		
+
 		response.setStatus(200);
 		WebUtils.clearErrorRequestAttributes(request);
 
