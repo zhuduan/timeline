@@ -1251,3 +1251,12 @@ li.right {
   z-index: 2
 }
 /* NOTE: modal end */
+
+
+/* common*/
+.hidden {
+  display: none;
+}
+.show {
+  display: block;
+}
