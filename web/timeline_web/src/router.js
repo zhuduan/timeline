@@ -21,7 +21,6 @@ const routers = [{
         },
         component: (resolve) => require(['./pages/subject.vue'], resolve)
     },
-    ,
     {
         path: '/login',
         name: '/login',
@@ -29,6 +28,14 @@ const routers = [{
             title: ''
         },
         component: (resolve) => require(['./pages/login.vue'], resolve)
+    },
+    {
+        path: '/register',
+        name: '/register',
+        meta: {
+            title: ''
+        },
+        component: (resolve) => require(['./pages/register.vue'], resolve)
     }
 ];
 export default routers;

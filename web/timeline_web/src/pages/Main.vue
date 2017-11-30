@@ -85,7 +85,9 @@
                   <router-link :to="{ name: '/login', params: {} }">
                     <button class="btn white layout-login">登录</button>
                   </router-link>
-                  <button class="btn white layout-login">注册</button>
+                  <router-link :to="{ name: '/register', params: {} }">
+                    <button class="btn white layout-login">注册</button>
+                  </router-link>
                 </div>
             </Menu>
             <div class="layout-breadcrumb">

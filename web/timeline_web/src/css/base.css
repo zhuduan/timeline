@@ -949,6 +949,7 @@ h1, h2, h3, h4, h5, h6 {
   outline: 0;
   border-radius: 0;
   font-size: 13px;
+  text-indent: 4px;
 }
 label {
   font-size: 13px;
@@ -956,20 +957,22 @@ label {
 }
 .form-group-label {
   position: relative;
-  margin: 20px 0;
+  margin: 30px 0;
+  border: 1px solid #eee;
+  border-radius: 6px;
 }
 .floating-label {
   position: absolute;
   top: 11px;
-  left: 0;
+  left: 4px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
 .control-focus .floating-label {
   color: #ed6589;
-  -webkit-transform: scale(0.85,0.85) translateY(-32px);
-          transform: scale(0.85,0.85) translateY(-32px);
+  -webkit-transform: scale(0.85,0.85) translateY(-36px);
+          transform: scale(0.85,0.85) translateY(-36px);
 }
 .control-focus .form-control {
   border-bottom: 2px solid #ed6589;

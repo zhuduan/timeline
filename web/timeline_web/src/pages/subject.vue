@@ -41,7 +41,6 @@ export default {
           headers: {'Content-Type': 'application/text; charset=UTF-8'}
         }).then(
           response => {
-             // this.timelineData = response.data;
              this.timelineData = this.assembleTimeline(response.data);
              this.loadTimeline();
         }, response => {
