@@ -10,6 +10,12 @@ public class ResponseUtils {
 
     public static final String FAILURE = "failure";
 
+    public static final int SuccessStatus = 200;
+
+    public static final int FailureStatus = 500;
+
+    public static final int NeedLoginStatus = 100;
+
     private static <T> Map<String, Object> wrap(T data, int status, String msg) {
 
         Map<String, Object> modal = Maps.newHashMap();
@@ -21,7 +27,7 @@ public class ResponseUtils {
 
     public static <T> Map<String, Object> toSuccess(T data) {
 
-        return wrap(data, 200, SUCCESS);
+        return wrap(data, SuccessStatus, SUCCESS);
     }
 
     public static <T> Map<String, Object> toFailure(T data, int status) {
@@ -31,6 +37,6 @@ public class ResponseUtils {
 
     public static <T> Map<String, Object> toFailure(T data) {
 
-        return toFailure(data, 500);
+        return toFailure(data, FailureStatus);
     }
 }

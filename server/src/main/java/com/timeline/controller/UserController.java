@@ -1,15 +1,24 @@
 package com.timeline.controller;
 
+import com.google.common.collect.Maps;
+import com.timeline.common.ResponseUtils;
 import com.timeline.model.DTO.UserDTO;
 import com.timeline.model.PO.User;
 import com.timeline.service.UserService;
 import com.timeline.util.ConvertUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 @RestController
 @RequestMapping("user")
@@ -44,33 +53,50 @@ public class UserController {
 		}
 	}
 
-	@RequestMapping( value = "login", method = {RequestMethod.POST} )
-	public UserDTO login( @RequestParam("userName")String userName,
-						 @RequestParam("password")String password) throws Exception {
+	@RequestMapping( value = "login", method = {RequestMethod.GET, RequestMethod.POST} )
+	public Object login(ServletRequest request, String userName, String password) throws Exception {
+
+		String requestMethod = ((HttpServletRequest)request).getMethod();
+		if( requestMethod.equalsIgnoreCase(RequestMethod.GET.name()) ) {
+
+			Map<String, Object> loginInfo = Maps.newHashMap();
+			loginInfo.put("loginURL", "/user/login");
+			loginInfo.put("msg", "you need login!");
+			return ResponseUtils.toFailure(loginInfo, ResponseUtils.NeedLoginStatus);
+		}
 
 		if(StringUtils.isAnyEmpty(userName, password)) {
 			
 			throw new Exception("parameter is null");
 		}
-		
-		UserDTO dto = new UserDTO();
-		dto.setName(userName);
-		dto.setPassword(password);
-		
-		User user = userService.login(dto);
-		
-		return ConvertUtils.convert(user, UserDTO.class);
+		try {
+
+			doLogin(userName, password);
+			UserDTO dto = new UserDTO();
+			dto.setName(userName);
+			dto.setPassword(password);
+
+			User user = userService.login(dto);
+			return ConvertUtils.convert(user, UserDTO.class);
+
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 
-	@RequestMapping( value = "login/error", method = RequestMethod.GET )
-	public String loginError() throws Exception {
+	/**
+	 * 登录路径下不经过shiro的filter处理
+	 * 由controller处理登录过程，以便处理各种异常
+	 * 如果经过shiro的filter处理，则由request传递异常
+	 * */
+	private void doLogin(String username, String password) {
 
-		return "you need login!";
-	}
+		UsernamePasswordToken token = new UsernamePasswordToken();
+		token.setUsername(username);
+		token.setPassword(password.toCharArray());
 
-	@RequestMapping( value = "info", method = RequestMethod.GET )
-	public UserDTO info() {
-
-		return new UserDTO();
+		//get current subject
+		Subject subject = SecurityUtils.getSubject();
+		subject.login(token);
 	}
 }

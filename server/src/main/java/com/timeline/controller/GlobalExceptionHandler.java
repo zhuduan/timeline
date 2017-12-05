@@ -17,19 +17,12 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(value = Exception.class)
 	public Object exceptionHandler(HttpServletRequest request,
 								   HttpServletResponse response,
-								   Exception exception) throws Exception {
+								   Exception exception){
 
 		response.setStatus(200);
 		WebUtils.clearErrorRequestAttributes(request);
 
-		StringBuilder message = new StringBuilder();
-		message.append("your request [ ")
-		       .append(request.getMethod())
-		       .append(", ")
-		       .append(request.getRequestURI())
-		       .append(" ] ")
-		       .append(", error info: ")
-		       .append(exception.getMessage());
-		return ResponseUtils.toFailure(message.toString(), 500);
+		//do some things such as print log
+		return ResponseUtils.toFailure(exception.getMessage(), 500);
 	}
 }

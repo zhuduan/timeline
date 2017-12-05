@@ -60,6 +60,7 @@ public class ShiroFilterConfig {
 
         Map<String, String> definitionMap = Maps.newLinkedHashMap();
         definitionMap.put("/user/login", DefaultFilter.anon.name());
+        definitionMap.put("/user/login/error", DefaultFilter.anon.name());
         definitionMap.put("/user/**", DefaultFilter.authc.name());
 
         return definitionMap;
@@ -84,7 +85,7 @@ public class ShiroFilterConfig {
 
             //验证当前登录的用户，获取认证信息。
             protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token)
-                                                                throws AuthenticationException {
+                    throws AuthenticationException {
 
                 UsernamePasswordToken usertoken = (UsernamePasswordToken) token;
 
@@ -96,18 +97,18 @@ public class ShiroFilterConfig {
                 }
 
                 // check user password
-                if(usertoken.getPassword() == null || usertoken.getPassword().length == 0){
+                if (usertoken.getPassword() == null || usertoken.getPassword().length == 0) {
                     throw new AuthenticationException("Password must not be empty!");
                 }
 
                 User user = userService.getUserByName(username);
 
                 // not found user
-                if(user == null){
+                if (user == null) {
                     throw new UnknownAccountException("Username or Password is invalid!");
                 }
 
-                if(!String.valueOf(usertoken.getPassword()).equals(user.getPassword())){
+                if (!String.valueOf(usertoken.getPassword()).equals(user.getPassword())) {
                     throw new UnknownAccountException("Password Error!");
                 }
 
