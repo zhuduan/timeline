@@ -14,7 +14,6 @@
 </template>
 
 <script>
-// import TimeLine from '../timeline.js'
 export default {
   data () {
     return {
@@ -26,7 +25,7 @@ export default {
     }
   },
   mounted: function () {
-    this.loadJS();
+    // this.loadJS();
     this.subjectId = this.$route.params.value;
     this.loadDetail();
   },
@@ -50,12 +49,12 @@ export default {
     loadTimeline: function () {
       timeline = new TL.Timeline('timeline-embed',this.timelineData);
     },
-    loadJS: function () {
-      const s = document.createElement('script');
-      s.type = 'text/javascript';
-      s.src = 'https://cdn.knightlab.com/libs/timeline3/latest/js/timeline-min.js';
-      document.body.appendChild(s);
-    },
+    // loadJS: function () {
+    //   const s = document.createElement('script');
+    //   s.type = 'text/javascript';
+    //   s.src = 'https://cdn.knightlab.com/libs/timeline3/latest/js/timeline-min.js';
+    //   document.body.appendChild(s);
+    // },
     assembleTimeline: function (responseData) {
       var timeline = {title: '', events: ''};
       var title = {text: '', media: ''};
