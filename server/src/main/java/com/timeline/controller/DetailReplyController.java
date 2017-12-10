@@ -1,9 +1,7 @@
 package com.timeline.controller;
 
 import com.timeline.common.ControllerException;
-import com.timeline.common.EnumLanguage;
 import com.timeline.common.ErrorType;
-import com.timeline.model.DTO.DetailLinkDTO;
 import com.timeline.model.DTO.DetailReplyDTO;
 import com.timeline.service.DetailReplyService;
 import com.timeline.util.LogUtil;
@@ -41,6 +39,6 @@ public class DetailReplyController {
         if ( pageSize==null ){
             pageSize = PAGE_SIZE;
         }
-        return detailReplyService.getDetailReplyByDetailID(detailID, pageNum, pageSize);
+        return detailReplyService.getReplyByDetailID(detailID, pageNum, pageSize);
     }
 }

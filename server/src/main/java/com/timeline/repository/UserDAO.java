@@ -25,7 +25,6 @@ public interface UserDAO {
     static class UserSQL extends BaseSql{
 
 		public UserSQL() {
-			
 			super(TABLE, ALL_COLUMNS);
 		}
     	

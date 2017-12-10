@@ -82,4 +82,14 @@ public class DetailReply {
     public void setUpdateTime(Date updateTime) {
         UpdateTime = updateTime;
     }
+
+    public DetailReply() {
+    }
+
+    public DetailReply(Integer detailID, String title, String content, Integer authorID) {
+        DetailID = detailID;
+        Title = title;
+        Content = content;
+        AuthorID = authorID;
+    }
 }

@@ -18,9 +18,26 @@ public class DetailReplyServiceImpl implements DetailReplyService {
     private DetailReplyDAO detailReplyDAO;
 
     @Override
-    public List<DetailReplyDTO> getDetailReplyByDetailID(Integer detailID,  Integer pageNum, Integer pageSize) {
+    public List<DetailReplyDTO> getReplyByDetailID(Integer detailID, Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<DetailReply> detailReplyList = detailReplyDAO.getDetailReplyByDetailID(detailID);
         return ConvertUtils.convert(detailReplyList, DetailReplyDTO.class);
+    }
+
+    @Override
+    public Boolean addReply(Integer detailID, String title, String content, Integer authorID) {
+        DetailReply reply = new DetailReply(detailID, title, content, authorID);
+        Integer addNum = detailReplyDAO.saveInfo(reply);
+        return addNum>0;
+    }
+
+    @Override
+    public Boolean deleteReply(Integer relyID) {
+        return null;
+    }
+
+    @Override
+    public Boolean updateReply(Integer relyID, String title, String content) {
+        return null;
     }
 }
