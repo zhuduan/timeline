@@ -18,7 +18,7 @@ public class CommonController {
 
     @ApiOperation(httpMethod = "GET", value = "get all support language and its ID", response = Map.class)
     @RequestMapping(value = "language", method = RequestMethod.GET)
-    private Map<String, Integer> getAllSupportLanguage() throws Exception{
+    public Map<String, Integer> getAllSupportLanguage() throws Exception{
         Map<String,Integer> languageStrIDMap = new HashMap<>();
         for( EnumLanguage language : EnumLanguage.values() ){
            languageStrIDMap.put(language.name(), language.getLanguageID());
@@ -28,7 +28,7 @@ public class CommonController {
 
     @ApiOperation(httpMethod = "GET", value = "get all support status and its ID", response = Map.class)
     @RequestMapping(value = "status", method = RequestMethod.GET)
-    private Map<String, Integer> getAllSupportStatus() throws Exception{
+    public Map<String, Integer> getAllSupportStatus() throws Exception{
         Map<String,Integer> statusStrIDMap = new HashMap<>();
         for( EnumStatus status : EnumStatus.values() ){
             statusStrIDMap.put(status.name(), status.getStatusID());

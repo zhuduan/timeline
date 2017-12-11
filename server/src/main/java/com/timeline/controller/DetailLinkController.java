@@ -29,7 +29,7 @@ public class DetailLinkController {
 
     @ApiOperation(httpMethod = "GET", value = "get detail link list by detailID and language", response = List.class)
     @RequestMapping(value = "list", method = RequestMethod.GET)
-    private List<DetailLinkDTO> getLinksByIDAndLanguage(@RequestParam("detailID") Integer detailID,
+    public List<DetailLinkDTO> getLinksByIDAndLanguage(@RequestParam("detailID") Integer detailID,
                                                         @RequestParam("languageID") Integer languageID,
                                                         @RequestParam("pageNum") Integer pageNum,
                                                         @RequestParam(name="pageSize", required = false) Integer pageSize) throws Exception {

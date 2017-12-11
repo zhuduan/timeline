@@ -28,7 +28,7 @@ public class DetailController {
 
 	@ApiOperation(httpMethod = "GET", value = "get detail list in subject", response = List.class)
 	@RequestMapping(value = "list", method = RequestMethod.GET)
-	private List<DetailDTO> getDetailListBySubjectID(@RequestParam("subjectID") Integer subjectID,
+	public List<DetailDTO> getDetailListBySubjectID(@RequestParam("subjectID") Integer subjectID,
 													 @RequestParam("pageNum") Integer pageNum,
 													 @RequestParam(name="pageSize", required = false) Integer pageSize) throws Exception {
 		if ( !NumberUtil.isPositiveAndValid(subjectID) || !NumberUtil.isPositiveAndValid(pageNum) ) {
@@ -43,7 +43,7 @@ public class DetailController {
 
 	@ApiOperation(httpMethod = "GET", value = "get definite detail by ID", response = List.class)
 	@RequestMapping(value = "info", method = RequestMethod.GET)
-	private DetailDTO getDetailByID(@RequestParam("detailID") Integer detailID) throws Exception{
+	public DetailDTO getDetailByID(@RequestParam("detailID") Integer detailID) throws Exception{
 		if ( !NumberUtil.isPositiveAndValid(detailID) ){
 			LogUtil.appLog.info(LogUtil.getMsg("wrong input for: detailID="+detailID));
 			throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
