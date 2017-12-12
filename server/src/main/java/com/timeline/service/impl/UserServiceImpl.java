@@ -1,5 +1,6 @@
 package com.timeline.service.impl;
 
+import com.timeline.common.EnumAction;
 import com.timeline.model.DTO.UserDTO;
 import com.timeline.model.PO.User;
 import com.timeline.repository.UserDAO;
@@ -44,6 +45,12 @@ public class UserServiceImpl implements UserService{
 	public User getUserByName(String name) {
 
 		return userDAO.getUserByName(name);
+	}
+
+	@Override
+	public Boolean isAuthorised(Integer userID, EnumAction action) {
+		// TODO: judge whether user has the authority
+		return true;
 	}
 
 	@Override

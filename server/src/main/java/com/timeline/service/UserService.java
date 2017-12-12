@@ -1,5 +1,6 @@
 package com.timeline.service;
 
+import com.timeline.common.EnumAction;
 import com.timeline.model.DTO.UserDTO;
 import com.timeline.model.PO.User;
 
@@ -14,4 +15,6 @@ public interface UserService {
 	User getUserByID(Long id);
 	
 	User getUserByName(String name);
+
+	Boolean isAuthorised(Integer userID, EnumAction action);
 }

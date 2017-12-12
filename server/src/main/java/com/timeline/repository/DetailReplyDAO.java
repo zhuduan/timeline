@@ -6,6 +6,7 @@ import com.timeline.util.mybatis.mapper.BaseSql;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
+import java.util.Map;
 
 public interface DetailReplyDAO {
 
@@ -20,7 +21,7 @@ public interface DetailReplyDAO {
     Integer saveInfo(DetailReply detailReply);
 
     @UpdateProvider(type = DetailReplySQL.class, method = DetailReplySQL.METHOD_UPDATE_BY_KEY)
-    Integer updateInfo(DetailReply detailReply);
+    Integer updateInfo(Map<String, Object> replyInfo);
 
     @DeleteProvider(type = DetailReplySQL.class, method = DetailReplySQL.METHOD_DEL_BY_KEY)
     Integer deleteInfo(Integer replyID);
