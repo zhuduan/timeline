@@ -36,6 +36,14 @@ const routers = [{
             title: ''
         },
         component: (resolve) => require(['./pages/register.vue'], resolve)
+    },
+    {
+        path: '/home',
+        name: '/home',
+        meta: {
+            title: ''
+        },
+        component: (resolve) => require(['./pages/home.vue'], resolve)
     }
 ];
 export default routers;
