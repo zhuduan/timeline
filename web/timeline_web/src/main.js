@@ -44,13 +44,69 @@ const router = new VueRouter(RouterConfig);
 router.beforeEach((to, from, next) => {
     iView.LoadingBar.start();
     Util.title(to.meta.title);
-    next();
+    if (to.meta.requireAuth) {
+        if (store.state.sessionid) {
+            next();
+        }
+        else {
+            next({
+                path: '/login',
+                query: {redirect: to.fullPath}
+            })
+        }
+    }
+    else {
+        next();
+    }
+
 });
 
 router.afterEach(() => {
     iView.LoadingBar.finish();
     window.scrollTo(0, 0);
 });
+
+// axios start
+axios.defaults.timeout = 5000;
+axios.defaults.headers.post['Content-Type'] = 'application/text; charset=UTF-8';
+axios.defaults.baseURL = 'api url';
+axios.defaults.withCredentials = false;
+
+axios.interceptors.request.use((config) => {
+    if(config.method  === 'post'){
+        config.data = qs.stringify(config.data);
+    }
+    return config;
+},(error) =>{
+     _.toast("bad params", 'fail');
+    return Promise.reject(error);
+});
+//interceptors
+axios.interceptors.response.use((res) =>{
+    // if(res.data.status != 200){
+    //     // _.toast(res.data.msg);
+    //     return Promise.reject(res);
+    // }
+    return res;
+}, (error) => {
+    _.toast("network issue", 'fail');
+    return Promise.reject(error);
+});
+
+export function fetch(url, params) {
+    return new Promise((resolve, reject) => {
+        axios.post(url, params)
+            .then(response => {
+                resolve(response.data);
+            }, err => {
+                reject(err);
+            })
+            .catch((error) => {
+               reject(error)
+            })
+    })
+}
+// axios end
 
 
 const store = new Vuex.Store({
