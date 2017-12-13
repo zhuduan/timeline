@@ -3,6 +3,7 @@ package com.timeline.controller;
 import com.google.common.base.Strings;
 import com.timeline.common.ControllerException;
 import com.timeline.common.ErrorType;
+import com.timeline.common.ResponseUtils;
 import com.timeline.model.DTO.SubjectDTO;
 import com.timeline.service.SearchService;
 import com.timeline.service.SubjectService;
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 import static com.timeline.common.CommonConfig.PAGE_SIZE;
 
@@ -32,17 +34,17 @@ public class SubjectController {
 
 	@ApiOperation(httpMethod = "GET", value = "get definite subject by ID", response = List.class)
 	@RequestMapping(value="info", method=RequestMethod.GET)
-	public SubjectDTO getSubjectInfo(@RequestParam("subjectID") Integer subjectID) throws ControllerException {
+	public Map<String, Object> getSubjectInfo(@RequestParam("subjectID") Integer subjectID) throws ControllerException {
 		if ( !NumberUtil.isPositiveAndValid(subjectID) ){
 			LogUtil.appLog.info(LogUtil.getMsg("wrong input for: subjectID="+subjectID));
 			throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
 		}
-		return subjectService.getSubject(subjectID);
+		return ResponseUtils.toSuccess(subjectService.getSubject(subjectID));
 	}
 
 	@ApiOperation(httpMethod = "GET", value = "get subject list by subject ID List", response = List.class)
 	@RequestMapping(value="list", method=RequestMethod.GET)
-	public List<SubjectDTO> getSubjectList(@RequestParam("pageNum") Integer pageNum,
+	public Map<String, Object> getSubjectList(@RequestParam("pageNum") Integer pageNum,
 										   @RequestParam(name="pageSize", required = false) Integer pageSize) throws ControllerException {
 		if ( !NumberUtil.isPositiveAndValid(pageNum) ) {
 			LogUtil.appLog.info(LogUtil.getMsg("wrong input for: pageNum="+pageNum));
@@ -51,12 +53,12 @@ public class SubjectController {
 		if ( pageSize==null ){
 			pageSize = PAGE_SIZE;
 		}
-		return subjectService.getSubjectListByDefault(pageNum, pageSize);
+		return ResponseUtils.toSuccess(subjectService.getSubjectListByDefault(pageNum, pageSize));
 	}
 
 	@ApiOperation(httpMethod = "GET", value = "get subject list which user focus on", response = List.class)
 	@RequestMapping(value="list/focus", method=RequestMethod.GET)
-	public List<SubjectDTO> getFocusSubjectList(@RequestParam("userID") Integer userID,
+	public Map<String, Object> getFocusSubjectList(@RequestParam("userID") Integer userID,
 												@RequestParam("pageNum") Integer pageNum,
 											    @RequestParam(name="pageSize", required = false) Integer pageSize) throws ControllerException {
 		if ( !NumberUtil.isPositiveAndValid(userID) ){
@@ -71,11 +73,11 @@ public class SubjectController {
 			pageSize = PAGE_SIZE;
 		}
 
-		return subjectService.getSubjectListByUserFocus(userID, pageNum, pageSize);
+		return ResponseUtils.toSuccess(subjectService.getSubjectListByUserFocus(userID, pageNum, pageSize));
 	}
 
 	@RequestMapping(value = "search", method = { RequestMethod.GET, RequestMethod.POST })
-	public List<SubjectDTO> searchSubject(@RequestParam("key")String key, 
+	public Map<String, Object> searchSubject(@RequestParam("key")String key,
 										  @RequestParam("pageNum") int pageNum) {
 		
 		if(Strings.isNullOrEmpty(key.trim()) || pageNum <= 0 || pageNum > 10) {
@@ -83,7 +85,7 @@ public class SubjectController {
 			return null;
 		}
 		
-		return ConvertUtils.convert(searchService.searchSubjects(key, pageNum), SubjectDTO.class);
+		return ResponseUtils.toSuccess(ConvertUtils.convert(searchService.searchSubjects(key, pageNum), SubjectDTO.class));
 	}
 
 }

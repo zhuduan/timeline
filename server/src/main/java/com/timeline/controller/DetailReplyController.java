@@ -2,6 +2,7 @@ package com.timeline.controller;
 
 import com.timeline.common.ControllerException;
 import com.timeline.common.ErrorType;
+import com.timeline.common.ResponseUtils;
 import com.timeline.model.DTO.DetailReplyDTO;
 import com.timeline.service.DetailReplyService;
 import com.timeline.util.LogUtil;
@@ -31,7 +32,7 @@ public class DetailReplyController {
 
     @ApiOperation(httpMethod = "GET", value = "get detail replies list by detailID", response = List.class)
     @RequestMapping(value = "list", method = RequestMethod.GET)
-    public List<DetailReplyDTO> getRepliesByDetailID(@RequestParam("detailID") Integer detailID,
+    public Map<String, Object> getRepliesByDetailID(@RequestParam("detailID") Integer detailID,
                                                      @RequestParam("pageNum") Integer pageNum,
                                                      @RequestParam(name="pageSize", required = false) Integer pageSize) throws Exception {
         if ( !NumberUtil.isPositiveAndValid(detailID)
@@ -42,12 +43,12 @@ public class DetailReplyController {
         if ( pageSize==null ){
             pageSize = PAGE_SIZE;
         }
-        return detailReplyService.getReplyByDetailID(detailID, pageNum, pageSize);
+        return ResponseUtils.toSuccess(detailReplyService.getReplyByDetailID(detailID, pageNum, pageSize));
     }
 
     @ApiOperation(httpMethod = "POST", value = "add new reply", response = Map.class)
     @RequestMapping(value = "info/new", method = RequestMethod.POST)
-    public Map<String,Boolean> addReply(@RequestParam("detailID") Integer detailID,
+    public Map<String,Object> addReply(@RequestParam("detailID") Integer detailID,
                                         @RequestParam("title") String title,
                                         @RequestParam("content") String content,
                                         @RequestParam("authorID") Integer authorID,
@@ -66,12 +67,12 @@ public class DetailReplyController {
 
         Map<String, Boolean> addResult = new HashMap<>();
         addResult.put("result", detailReplyService.addReply(detailID,title,content,authorID, userID));
-        return addResult;
+        return ResponseUtils.toSuccess(addResult);
     }
 
     @ApiOperation(httpMethod = "PUT", value = "modify exist reply", response = Map.class)
     @RequestMapping(value = "info/modify", method = RequestMethod.PUT)
-    public Map<String,Boolean> modifyReply(@RequestParam("replyID") Integer replyID,
+    public Map<String,Object> modifyReply(@RequestParam("replyID") Integer replyID,
                                            @RequestParam("title") String title,
                                            @RequestParam("content") String content,
                                            @RequestParam("userID") Integer userID) throws Exception{
@@ -82,12 +83,12 @@ public class DetailReplyController {
 
         Map<String, Boolean> modifyResult = new HashMap<>();
         modifyResult.put("result", detailReplyService.updateReply(replyID, title, content, userID));
-        return modifyResult;
+        return ResponseUtils.toSuccess(modifyResult);
     }
 
     @ApiOperation(httpMethod = "DELETE", value = "delete exist reply", response = Map.class)
     @RequestMapping(value = "info/delete", method = RequestMethod.DELETE)
-    public Map<String,Boolean> deleteReply(@RequestParam("replyID") Integer replyID,
+    public Map<String,Object> deleteReply(@RequestParam("replyID") Integer replyID,
                                            @RequestParam("userID") Integer userID) throws Exception{
         if ( !NumberUtil.isPositiveAndValid(replyID) || !NumberUtil.isPositiveAndValid(userID) ){
             LogUtil.appLog.info(LogUtil.getMsg("wrong input for: replyID="+replyID+", userID="+userID));
@@ -96,6 +97,6 @@ public class DetailReplyController {
 
         Map<String, Boolean> deleteResult = new HashMap<>();
         deleteResult.put("result", detailReplyService.deleteReply(replyID, userID));
-        return deleteResult;
+        return ResponseUtils.toSuccess(deleteResult);
     }
 }
