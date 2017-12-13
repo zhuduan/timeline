@@ -94,8 +94,8 @@ public class DetailReplyController {
             throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
         }
 
-        Map<String, Boolean> modifyResult = new HashMap<>();
-        modifyResult.put("result", detailReplyService.deleteReply(replyID, userID));
-        return modifyResult;
+        Map<String, Boolean> deleteResult = new HashMap<>();
+        deleteResult.put("result", detailReplyService.deleteReply(replyID, userID));
+        return deleteResult;
     }
 }

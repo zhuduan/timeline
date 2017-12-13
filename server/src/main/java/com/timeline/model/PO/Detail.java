@@ -34,19 +34,19 @@ public class Detail {
 
     private String Content;
 
-    public Integer getID() {
+    public Integer getId() {
         return ID;
     }
 
-    public void setID(Integer ID) {
+    public void setId(Integer ID) {
         this.ID = ID;
     }
 
-    public Integer getSubjectID() {
+    public Integer getSubjectId() {
         return SubjectID;
     }
 
-    public void setSubjectID(Integer subjectID) {
+    public void setSubjectId(Integer subjectID) {
         SubjectID = subjectID;
     }
 
@@ -74,19 +74,19 @@ public class Detail {
         PicDes = picDes;
     }
 
-    public Integer getAuthorID() {
+    public Integer getAuthorId() {
         return AuthorID;
     }
 
-    public void setAuthorID(Integer authorID) {
+    public void setAuthorId(Integer authorID) {
         AuthorID = authorID;
     }
 
-    public String getContributorIDs() {
+    public String getContributorIds() {
         return ContributorIDs;
     }
 
-    public void setContributorIDs(String contributorIDs) {
+    public void setContributorIds(String contributorIDs) {
         ContributorIDs = contributorIDs;
     }
 
