@@ -29,19 +29,19 @@ public class DetailLink {
 
     private String Content;
 
-    public Integer getID() {
+    public Integer getId() {
         return ID;
     }
 
-    public void setID(Integer ID) {
+    public void setId(Integer ID) {
         this.ID = ID;
     }
 
-    public String getDetailID_Language() {
+    public String getDetailId_Language() {
         return DetailID_Language;
     }
 
-    public void setDetailID_Language(String detailID_Language) {
+    public void setDetailId_Language(String detailID_Language) {
         DetailID_Language = detailID_Language;
     }
 

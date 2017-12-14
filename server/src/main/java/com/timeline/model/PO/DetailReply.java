@@ -19,19 +19,19 @@ public class DetailReply {
 
     private Date UpdateTime;
 
-    public Integer getID() {
+    public Integer getId() {
         return ID;
     }
 
-    public void setID(Integer ID) {
+    public void setId(Integer ID) {
         this.ID = ID;
     }
 
-    public Integer getDetailID() {
+    public Integer getDetailId() {
         return DetailID;
     }
 
-    public void setDetailID(Integer detailID) {
+    public void setDetailId(Integer detailID) {
         DetailID = detailID;
     }
 
@@ -51,11 +51,11 @@ public class DetailReply {
         Content = content;
     }
 
-    public Integer getAuthorID() {
+    public Integer getAuthorId() {
         return AuthorID;
     }
 
-    public void setAuthorID(Integer authorID) {
+    public void setAuthorId(Integer authorID) {
         AuthorID = authorID;
     }
 

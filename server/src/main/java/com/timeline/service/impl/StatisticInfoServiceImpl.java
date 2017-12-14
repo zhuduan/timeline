@@ -18,7 +18,7 @@ public class StatisticInfoServiceImpl implements StatisticInfoService {
     public Integer saveInfo(String requestUrl, Integer requestUserID, String requestIP) {
         StatisticInfo statisticInfo = new StatisticInfo();
         statisticInfo.setRequestUrl(requestUrl);
-        statisticInfo.setRequestUserID(requestUserID);
+        statisticInfo.setRequestUserId(requestUserID);
         statisticInfo.setRequestIP(requestIP);
         statisticInfo.setRequestDateTime(new Date());
 

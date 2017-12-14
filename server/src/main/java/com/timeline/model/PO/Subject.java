@@ -35,11 +35,11 @@ public class Subject {
 
     private String Content;
 
-    public Integer getID() {
+    public Integer getId() {
         return ID;
     }
 
-    public void setID(Integer ID) {
+    public void setId(Integer ID) {
         this.ID = ID;
     }
 
@@ -67,19 +67,19 @@ public class Subject {
         PicDes = picDes;
     }
 
-    public Integer getAuthorID() {
+    public Integer getAuthorId() {
         return AuthorID;
     }
 
-    public void setAuthorID(Integer authorID) {
+    public void setAuthorId(Integer authorID) {
         AuthorID = authorID;
     }
 
-    public String getContributorIDs() {
+    public String getContributorIds() {
         return ContributorIDs;
     }
 
-    public void setContributorIDs(String contributorIDs) {
+    public void setContributorIds(String contributorIDs) {
         ContributorIDs = contributorIDs;
     }
 
@@ -123,11 +123,11 @@ public class Subject {
         Language = language;
     }
 
-    public String getRelatedSubjectIDs() {
+    public String getRelatedSubjectIds() {
         return RelatedSubjectIDs;
     }
 
-    public void setRelatedSubjectIDs(String relatedSubjectIDs) {
+    public void setRelatedSubjectIds(String relatedSubjectIDs) {
         RelatedSubjectIDs = relatedSubjectIDs;
     }
 

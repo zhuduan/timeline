@@ -21,7 +21,7 @@ public interface DetailReplyDAO {
     Integer saveInfo(DetailReply detailReply);
 
     @UpdateProvider(type = DetailReplySQL.class, method = DetailReplySQL.METHOD_UPDATE_BY_KEY)
-    Integer updateInfo(Map<String, Object> replyInfo);
+    Integer updateInfo(DetailReply detailReply);
 
     @DeleteProvider(type = DetailReplySQL.class, method = DetailReplySQL.METHOD_DEL_BY_KEY)
     Integer deleteInfo(Integer replyID);
