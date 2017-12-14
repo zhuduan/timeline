@@ -11,13 +11,16 @@ import VueI18n from 'vue-i18n';
 import Locales from './locale';
 import zhLocale from 'iview/src/locale/lang/zh-CN';
 import enLocale from 'iview/src/locale/lang/en-US';
-import axios from 'axios';
-Vue.prototype.$http = axios;
+
+import VueAxios from 'vue-axios';
 
 Vue.use(VueRouter);
 Vue.use(Vuex);
 Vue.use(VueI18n);
 Vue.use(iView);
+
+// 设置Vue请求默认使用 axios
+Vue.use(VueAxios, Util.ajax);
 
 // 自动设置语言
 const navLang = navigator.language;
@@ -52,62 +55,18 @@ router.beforeEach((to, from, next) => {
             next({
                 path: '/login',
                 query: {redirect: to.fullPath}
-            })
+            });
         }
     }
     else {
         next();
     }
-
 });
 
 router.afterEach(() => {
     iView.LoadingBar.finish();
     window.scrollTo(0, 0);
 });
-
-// axios start
-axios.defaults.timeout = 5000;
-axios.defaults.headers.post['Content-Type'] = 'application/text; charset=UTF-8';
-axios.defaults.baseURL = 'api url';
-axios.defaults.withCredentials = false;
-
-axios.interceptors.request.use((config) => {
-    if(config.method  === 'post'){
-        config.data = qs.stringify(config.data);
-    }
-    return config;
-},(error) =>{
-     _.toast("bad params", 'fail');
-    return Promise.reject(error);
-});
-//interceptors
-axios.interceptors.response.use((res) =>{
-    // if(res.data.status != 200){
-    //     // _.toast(res.data.msg);
-    //     return Promise.reject(res);
-    // }
-    return res;
-}, (error) => {
-    _.toast("network issue", 'fail');
-    return Promise.reject(error);
-});
-
-export function fetch(url, params) {
-    return new Promise((resolve, reject) => {
-        axios.post(url, params)
-            .then(response => {
-                resolve(response.data);
-            }, err => {
-                reject(err);
-            })
-            .catch((error) => {
-               reject(error)
-            })
-    })
-}
-// axios end
-
 
 const store = new Vuex.Store({
     state: {

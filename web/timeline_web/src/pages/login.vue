@@ -40,7 +40,7 @@ export default {
       iview.inputOnBlur(e);
     },
     sendLogin: function (e) {
-      var querystring = 'http://localhost:8080/user/login';
+      var querystring = '/user/login';
       this.$http.post(querystring, qs.stringify({
         userName: this.$refs.userName.value,
         password: this.$refs.password.value

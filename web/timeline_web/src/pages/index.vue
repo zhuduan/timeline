@@ -53,9 +53,8 @@ export default {
   },
   methods: {
     onMainPageLoaded: function () {
-      this.$http.get('http://localhost:8080/subject/list?pageNum=1').then(response => {
+      this.$http.get('/subject/list?pageNum=1').then(response => {
            this.cardlist = response.data;
-
       }, response => {
           console.log("error");
       });

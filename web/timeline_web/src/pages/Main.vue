@@ -108,7 +108,7 @@
 
         <Row>
             <div class="layout-copy">
-                2011-2016 &copy; TalkingData
+                TimeLine
             </div>
         </Row>
     </div>
