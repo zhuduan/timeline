@@ -1,26 +1,37 @@
 package com.timeline.model.DTO;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class UserDTO {
+
     private Integer ID;
 
     private String Name;
 
     private String PicUrl;
 
+    @JsonIgnore
     private Byte Role;
 
+    @JsonIgnore
     private Byte Authority;
-    
+
+    @JsonIgnore
     private String password;
 
+    @JsonIgnore
     private String Email;
 
+    @JsonIgnore
     private String Phone;
 
+    @JsonIgnore
     private String WechatAccount;
 
+    @JsonIgnore
     private String WeiboAccount;
 
+    @JsonIgnore
     private String GoogleAccount;
 
     public Integer getID() {
