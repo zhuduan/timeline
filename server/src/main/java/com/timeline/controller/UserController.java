@@ -75,7 +75,6 @@ public class UserController {
 			UserDTO dto = new UserDTO();
 			dto.setName(userName);
 			dto.setPassword(password);
-
 			User user = userService.login(dto);
 			return ConvertUtils.convert(user, UserDTO.class);
 

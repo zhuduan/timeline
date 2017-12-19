@@ -14,11 +14,11 @@ public class StatisticInfo {
 
     private Date RequestDateTime;
 
-    public Integer getID() {
+    public Integer getId() {
         return ID;
     }
 
-    public void setID(Integer ID) {
+    public void setId(Integer ID) {
         this.ID = ID;
     }
 
@@ -30,11 +30,11 @@ public class StatisticInfo {
         RequestUrl = requestUrl;
     }
 
-    public Integer getRequestUserID() {
+    public Integer getRequestUserId() {
         return RequestUserID;
     }
 
-    public void setRequestUserID(Integer requestUserID) {
+    public void setRequestUserId(Integer requestUserID) {
         RequestUserID = requestUserID;
     }
 

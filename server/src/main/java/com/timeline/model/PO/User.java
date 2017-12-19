@@ -31,11 +31,11 @@ public class User {
 
     private Date UpdateTime;
 
-    public Integer getID() {
+    public Integer getId() {
         return ID;
     }
 
-    public void setID(Integer ID) {
+    public void setId(Integer ID) {
         this.ID = ID;
     }
 

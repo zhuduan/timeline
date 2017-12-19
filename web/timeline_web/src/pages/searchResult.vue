@@ -46,16 +46,17 @@ export default {
   },
   methods: {
     onSearchPageLoaded: function () {
-      var querystring = 'http://localhost:8080/subject/search';
+      var querystring = '/subject/search';
       this.$http.get(querystring,
         {
           params: {
-          key: this.searchKey,
-          pageNum: 1},
+                    key: this.searchKey,
+                    pageNum: 1
+                  },
           headers: {'Content-Type': 'application/text; charset=UTF-8'}
         }).then(
           response => {
-             this.cardlist = response.data;
+            this.cardlist = response.data;
         }, response => {
             console.log("error");
         });

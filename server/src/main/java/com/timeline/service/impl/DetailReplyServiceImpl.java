@@ -15,9 +15,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class DetailReplyServiceImpl implements DetailReplyService {
@@ -70,14 +68,11 @@ public class DetailReplyServiceImpl implements DetailReplyService {
         }
 
         title = StringUtils.isEmpty(title) ? null : title;
-        content = StringUtils.isEmpty(content) ? null : title;
+        content = StringUtils.isEmpty(content) ? null : content;
 
-        // TODO: check if here can be simplified
-        Map<String, Object> updatedInfo = new HashMap<>();
-        updatedInfo.put("ID", replyID);
-        updatedInfo.put("Title", title);
-        updatedInfo.put("Content", content);
-        Integer modifyNum = detailReplyDAO.updateInfo(updatedInfo);
+        DetailReply reply = new DetailReply(null, title, content, null);
+        reply.setId(replyID);
+        Integer modifyNum = detailReplyDAO.updateInfo(reply);
         return modifyNum>0;
     }
 }

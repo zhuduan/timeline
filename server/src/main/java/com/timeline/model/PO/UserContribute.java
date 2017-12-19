@@ -17,35 +17,35 @@ public class UserContribute {
 
     private Date UpdateTime;
 
-    public Integer getID() {
+    public Integer getId() {
         return ID;
     }
 
-    public void setID(Integer ID) {
+    public void setId(Integer ID) {
         this.ID = ID;
     }
 
-    public Integer getSubjectID() {
+    public Integer getSubjectId() {
         return SubjectID;
     }
 
-    public void setSubjectID(Integer subjectID) {
+    public void setSubjectId(Integer subjectID) {
         SubjectID = subjectID;
     }
 
-    public Integer getDetailID() {
+    public Integer getDetailId() {
         return DetailID;
     }
 
-    public void setDetailID(Integer detailID) {
+    public void setDetailId(Integer detailID) {
         DetailID = detailID;
     }
 
-    public Integer getUserID() {
+    public Integer getUserId() {
         return UserID;
     }
 
-    public void setUserID(Integer userID) {
+    public void setUserId(Integer userID) {
         UserID = userID;
     }
 

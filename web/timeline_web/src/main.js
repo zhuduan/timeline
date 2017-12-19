@@ -11,13 +11,16 @@ import VueI18n from 'vue-i18n';
 import Locales from './locale';
 import zhLocale from 'iview/src/locale/lang/zh-CN';
 import enLocale from 'iview/src/locale/lang/en-US';
-import axios from 'axios';
-Vue.prototype.$http = axios;
+
+import VueAxios from 'vue-axios';
 
 Vue.use(VueRouter);
 Vue.use(Vuex);
 Vue.use(VueI18n);
 Vue.use(iView);
+
+// 设置Vue请求默认使用 axios
+Vue.use(VueAxios, Util.ajax);
 
 // 自动设置语言
 const navLang = navigator.language;
@@ -44,14 +47,26 @@ const router = new VueRouter(RouterConfig);
 router.beforeEach((to, from, next) => {
     iView.LoadingBar.start();
     Util.title(to.meta.title);
-    next();
+    if (to.meta.requireAuth) {
+        if (store.state.sessionid) {
+            next();
+        }
+        else {
+            next({
+                path: '/login',
+                query: {redirect: to.fullPath}
+            });
+        }
+    }
+    else {
+        next();
+    }
 });
 
 router.afterEach(() => {
     iView.LoadingBar.finish();
     window.scrollTo(0, 0);
 });
-
 
 const store = new Vuex.Store({
     state: {

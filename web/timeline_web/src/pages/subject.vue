@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     loadDetail: function () {
-      var querystring = 'http://localhost:8080/subject/info';
+      var querystring = '/subject/info';
       this.$http.get(querystring,
         {
           params: {

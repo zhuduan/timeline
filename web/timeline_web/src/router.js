@@ -41,7 +41,8 @@ const routers = [{
         path: '/home',
         name: '/home',
         meta: {
-            title: ''
+            title: '',
+            requireAuth: true
         },
         component: (resolve) => require(['./pages/home.vue'], resolve)
     }

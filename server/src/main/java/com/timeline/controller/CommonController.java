@@ -2,6 +2,7 @@ package com.timeline.controller;
 
 import com.timeline.common.EnumLanguage;
 import com.timeline.common.EnumStatus;
+import com.timeline.common.ResponseUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,21 +19,21 @@ public class CommonController {
 
     @ApiOperation(httpMethod = "GET", value = "get all support language and its ID", response = Map.class)
     @RequestMapping(value = "language", method = RequestMethod.GET)
-    public Map<String, Integer> getAllSupportLanguage() throws Exception{
+    public Map<String, Object> getAllSupportLanguage() throws Exception{
         Map<String,Integer> languageStrIDMap = new HashMap<>();
         for( EnumLanguage language : EnumLanguage.values() ){
            languageStrIDMap.put(language.name(), language.getLanguageID());
        }
-       return languageStrIDMap;
+       return ResponseUtils.toSuccess(languageStrIDMap);
     }
 
     @ApiOperation(httpMethod = "GET", value = "get all support status and its ID", response = Map.class)
     @RequestMapping(value = "status", method = RequestMethod.GET)
-    public Map<String, Integer> getAllSupportStatus() throws Exception{
+    public Map<String, Object> getAllSupportStatus() throws Exception{
         Map<String,Integer> statusStrIDMap = new HashMap<>();
         for( EnumStatus status : EnumStatus.values() ){
             statusStrIDMap.put(status.name(), status.getStatusID());
         }
-        return statusStrIDMap;
+        return ResponseUtils.toSuccess(statusStrIDMap);
     }
 }
