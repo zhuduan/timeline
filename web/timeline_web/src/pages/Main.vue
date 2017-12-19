@@ -47,6 +47,12 @@
         padding: 10px;
     }
 
+    .layout-bottom {
+        text-align: center;
+        padding: 10px 0 10px;
+        background: #fff;
+    }
+
     .layout-copy {
         text-align: center;
         padding: 10px 0 20px;
@@ -107,8 +113,29 @@
         </Row>
 
         <Row>
+            <div class="layout-bottom">
+                <div style="display:inline">
+                    concact us info 
+                </div>
+                &nbsp;&nbsp;
+                <div style="display:inline">
+                    some related links here
+                </div>
+                &nbsp;&nbsp;
+                <div style="display:inline">
+                    donation info here
+                </div>
+            </div>
+        </Row>
+        <Row>
             <div class="layout-copy">
-                2011-2016 &copy; TalkingData
+                <span>
+                    2017-Now &copy; TimeLine
+                </span>
+                <br/>
+                <span>
+                    some isp info will be put here
+                </span>
             </div>
         </Row>
     </div>
