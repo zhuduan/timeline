@@ -56,7 +56,7 @@ export default {
           headers: {'Content-Type': 'application/text; charset=UTF-8'}
         }).then(
           response => {
-            this.cardlist = response.data;
+            this.cardlist = response.data.data;
         }, response => {
             console.log("error");
         });

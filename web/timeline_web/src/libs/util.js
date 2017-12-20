@@ -11,11 +11,12 @@ const ajaxUrl = env === 'development' ? 'http://127.0.0.1:8088' : env === 'produ
 
 util.ajax = axios.create();
 
-// axios start
-util.ajax.defaults.baseURL = ajaxUrl;
+// axios config
 util.ajax.defaults.timeout = 50000;
+util.ajax.defaults.baseURL = ajaxUrl;
+util.ajax.defaults.withCredentials = true;
 util.ajax.defaults.headers.post['Content-Type'] = 'application/text; charset=UTF-8';
-util.ajax.defaults.withCredentials = false;
+
 
 /*util.ajax.interceptors.request.use((config) => {
     if (config.method === 'post') {
@@ -27,7 +28,7 @@ util.ajax.defaults.withCredentials = false;
 });*/
 
 //interceptors
-util.ajax.interceptors.response.use((res) => {
+/*util.ajax.interceptors.response.use((res) => {
 
     if (res.status == 200) {
 
@@ -43,7 +44,7 @@ util.ajax.interceptors.response.use((res) => {
 }, (error) => {
 
     return Promise.reject(error);
-});
+});*/
 
 util.getParams = (params) => {
     let param = new URLSearchParams();

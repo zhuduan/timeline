@@ -54,7 +54,10 @@ export default {
   methods: {
     onMainPageLoaded: function () {
       this.$http.get('/subject/list?pageNum=1').then(response => {
-           this.cardlist = response.data;
+
+          if(response.data['status'] == 200) {
+              this.cardlist = response.data.data;
+          }
       }, response => {
           console.log("error");
       });

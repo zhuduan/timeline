@@ -76,7 +76,7 @@ public class UserController {
 			dto.setName(userName);
 			dto.setPassword(password);
 			User user = userService.login(dto);
-			return ConvertUtils.convert(user, UserDTO.class);
+			return ResponseUtils.toSuccess(ConvertUtils.convert(user, UserDTO.class));
 
 		} catch (Exception e) {
 			throw e;

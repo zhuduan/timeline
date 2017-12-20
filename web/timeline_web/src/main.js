@@ -57,8 +57,9 @@ router.beforeEach((to, from, next) => {
                 query: {redirect: to.fullPath}
             });
         }
-    }
-    else {
+    } else if (to.path == '/login') {
+        next();
+    } else {
         next();
     }
 });
@@ -84,7 +85,7 @@ const store = new Vuex.Store({
 });
 
 
-new Vue({
+const MainVue = new Vue({
     el: '#app',
     router: router,
     store: store,

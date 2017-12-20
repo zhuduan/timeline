@@ -40,7 +40,7 @@ export default {
           headers: {'Content-Type': 'application/text; charset=UTF-8'}
         }).then(
           response => {
-             this.timelineData = this.assembleTimeline(response.data);
+             this.timelineData = this.assembleTimeline(response.data.data);
              this.loadTimeline();
         }, response => {
             console.log("error");

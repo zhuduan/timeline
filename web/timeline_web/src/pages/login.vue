@@ -29,6 +29,7 @@
     import iview from './../js/iview'
     import qs from 'qs';
     import util from './../libs/util'
+
     export default {
         data() {
             return {
@@ -44,27 +45,50 @@
             inputOnBlur: function (e) {
                 iview.inputOnBlur(e);
             },
+
             sendLogin: function (e) {
                 var querystring = '/user/login';
 
-                if(this.userName != null && this.userName != "") {
+                if (this.userName == null || this.userName == "") {
 
-                    if(this.password != null && this.password.length >= 6) {
-
-                        this.$http.post(querystring, util.getParams({
-                            userName: this.userName,
-                            password: this.password
-                        }))
-                        .then(function (response) {
-
-                            console.log(response.data);
-                            this.$router.back();
-                        })
-                        .catch(function (error) {
-                            console.log(error);
-                        });
-                    }
+                    return;
                 }
+
+                if (this.password == null || this.password.length < 6) {
+
+                    return;
+                }
+
+                this.$http.post(querystring, util.getParams({
+                    userName: this.userName,
+                    password: this.password
+                }))
+                    .then((response) => {
+
+                        var data = response.data;
+                        if( data['status'] === 200 ) {
+
+                            this.$Notice.success({
+                                title:"success",
+                                desc:"登录成功！",
+                                duration:1000 * 2,
+                                onClose: this.$router.back()
+                            });
+                            this.$store.commit('isLogin', true);
+                            this.$store.commit('userInfo', data.data);
+                        } else {
+
+                            this.$Notice.error({
+                                title:"error",
+                                desc:data.data,
+                                duration:1000 * 2
+                            });
+                        }
+
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
 
             }
         }
