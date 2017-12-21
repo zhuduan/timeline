@@ -123,7 +123,7 @@
                 </div>
                 &nbsp;&nbsp;
                 <div style="display:inline">
-                    donation info here
+                    <donationInfo donationTo="System" />
                 </div>
             </div>
         </Row>
@@ -141,7 +141,18 @@
     </div>
 </template>
 <script>
-    export default {}
+    import donationInfo from './../components/donationInfo'
+    
+    export default {
+        data () {
+            return {
+                
+            }
+        },
+        components: {
+            donationInfo: donationInfo
+        }
+    }
 </script>
 <style>
   @import "./../css/base.css";
