@@ -74,8 +74,7 @@
                                 duration:1000 * 2,
                                 onClose: this.$router.back()
                             });
-                            this.$store.commit('isLogin', true);
-                            this.$store.commit('userInfo', data.data);
+                            this.$store.commit('USER_SIGNIN', data.data);
                         } else {
 
                             this.$Notice.error({

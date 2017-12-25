@@ -36,6 +36,31 @@ const mergeEN = Object.assign(enLocale, locales['en-US']);
 Vue.locale('zh-CN', mergeZH);
 Vue.locale('en-US', mergeEN);
 
+export const USER_SIGNIN = 'USER_SIGNIN' ;//登录成功
+export const USER_SIGNOUT = 'USER_SIGNOUT' ;//退出登录
+
+const store = new Vuex.Store({
+    state: { user: JSON.parse(sessionStorage.getItem('user')) || {} },
+    mutations: {
+        [USER_SIGNIN](state, user) {
+            user['isLogin'] = true;
+            sessionStorage.setItem('user', JSON.stringify(user));
+            Object.assign(state, user);
+        },
+        [USER_SIGNOUT](state) {
+            sessionStorage.removeItem('user');
+            Object.keys(state).forEach(k => Vue.delete(state, k));
+        }
+    },
+    actions: {
+        [USER_SIGNIN]({commit}, user) {
+            commit(USER_SIGNIN, user);
+        },
+        [USER_SIGNOUT]({commit}) {
+            commit(USER_SIGNOUT);
+        }
+    }
+});
 
 // 路由配置
 const RouterConfig = {
@@ -58,6 +83,9 @@ router.beforeEach((to, from, next) => {
             });
         }
     } else if (to.path == '/login') {
+        if(store.state.user.isLogin === true) {
+            return;
+        }
         next();
     } else {
         next();
@@ -68,22 +96,6 @@ router.afterEach(() => {
     iView.LoadingBar.finish();
     window.scrollTo(0, 0);
 });
-
-const store = new Vuex.Store({
-    state: {
-
-    },
-    getters: {
-
-    },
-    mutations: {
-
-    },
-    actions: {
-
-    }
-});
-
 
 const MainVue = new Vue({
     el: '#app',
