@@ -88,12 +88,9 @@
                     </MenuItem>
                 </div>
                 <div class="login-container">
-                  <router-link :to="{ name: '/login', params: {} }">
-                    <button class="btn white layout-login">登录</button>
-                  </router-link>
-                  <router-link :to="{ name: '/register', params: {} }">
-                    <button class="btn white layout-login">注册</button>
-                  </router-link>
+                    <UserInfo>
+
+                    </UserInfo>
                 </div>
             </Menu>
             <div class="layout-breadcrumb">
@@ -142,7 +139,8 @@
 </template>
 <script>
     import donationInfo from './../components/donationInfo'
-    
+    import UserInfo from "../components/LoginAndLogout.vue"
+
     export default {
         data () {
             return {
@@ -150,7 +148,8 @@
             }
         },
         components: {
-            donationInfo: donationInfo
+            donationInfo: donationInfo,
+            UserInfo:UserInfo
         }
     }
 </script>
