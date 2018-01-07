@@ -3,6 +3,7 @@ package com.timeline.controller;
 import com.timeline.common.ControllerException;
 import com.timeline.common.ErrorType;
 import com.timeline.common.ResponseUtils;
+import com.timeline.model.DTO.DetailDTO;
 import com.timeline.model.DTO.DetailReplyDTO;
 import com.timeline.service.DetailReplyService;
 import com.timeline.util.LogUtil;
@@ -33,8 +34,8 @@ public class DetailReplyController {
     @ApiOperation(httpMethod = "GET", value = "get detail replies list by detailID", response = List.class)
     @RequestMapping(value = "list", method = RequestMethod.GET)
     public Map<String, Object> getRepliesByDetailID(@RequestParam("detailID") Integer detailID,
-                                                     @RequestParam("pageNum") Integer pageNum,
-                                                     @RequestParam(name="pageSize", required = false) Integer pageSize) throws Exception {
+                                                    @RequestParam("pageNum") Integer pageNum,
+                                                    @RequestParam(name="pageSize", required = false) Integer pageSize) throws Exception {
         if ( !NumberUtil.isPositiveAndValid(detailID)
                 || !NumberUtil.isPositiveAndValid(pageNum) ) {
             LogUtil.appLog.info(LogUtil.getMsg("wrong input for: detailID="+detailID+", pageNum="+pageNum));
@@ -43,7 +44,7 @@ public class DetailReplyController {
         if ( pageSize==null ){
             pageSize = PAGE_SIZE;
         }
-        return ResponseUtils.toSuccess(detailReplyService.getReplyByDetailID(detailID, pageNum, pageSize));
+        return ResponseUtils.toSuccess(detailReplyService.getReplyWithUserByDetailID(detailID, pageNum, pageSize));
     }
 
     @ApiOperation(httpMethod = "POST", value = "add new reply", response = Map.class)

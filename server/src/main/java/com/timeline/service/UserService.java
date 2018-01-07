@@ -4,6 +4,8 @@ import com.timeline.common.EnumAction;
 import com.timeline.model.DTO.UserDTO;
 import com.timeline.model.PO.User;
 
+import java.util.Map;
+
 public interface UserService {
 
 	int register(UserDTO user) throws Exception;
@@ -12,7 +14,7 @@ public interface UserService {
 	
 	int insertUser(User user);
 	
-	User getUserByID(Long id);
+	User getUserByID(Integer id);
 	
 	User getUserByName(String name);
 

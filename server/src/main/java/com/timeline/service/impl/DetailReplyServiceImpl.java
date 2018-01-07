@@ -5,6 +5,7 @@ import com.timeline.common.EnumAction;
 import com.timeline.common.ErrorType;
 import com.timeline.common.ServiceException;
 import com.timeline.model.DTO.DetailReplyDTO;
+import com.timeline.model.DTO.UserDTO;
 import com.timeline.model.PO.DetailReply;
 import com.timeline.repository.DetailReplyDAO;
 import com.timeline.service.DetailReplyService;
@@ -15,7 +16,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class DetailReplyServiceImpl implements DetailReplyService {
@@ -31,6 +35,19 @@ public class DetailReplyServiceImpl implements DetailReplyService {
         PageHelper.startPage(pageNum, pageSize);
         List<DetailReply> detailReplyList = detailReplyDAO.getDetailReplyByDetailID(detailID);
         return ConvertUtils.convert(detailReplyList, DetailReplyDTO.class);
+    }
+
+    @Override
+    public List<Map<String, Object>> getReplyWithUserByDetailID(Integer detailID, Integer pageNum, Integer pageSize) {
+        List<DetailReplyDTO> replyList = getReplyByDetailID(detailID, pageNum, pageSize);
+        List<Map<String, Object>> replyWithUserList = new ArrayList<>();
+        replyList.forEach( (reply) -> {
+            Map<String, Object> replyWithUser = new HashMap<String, Object>();
+            replyWithUser.put("reply", reply);
+            replyWithUser.put("user", ConvertUtils.convert(userService.getUserByID(reply.getAuthorID()),UserDTO.class));
+            replyWithUserList.add(replyWithUser);
+        } );
+        return replyWithUserList;
     }
 
     @Override

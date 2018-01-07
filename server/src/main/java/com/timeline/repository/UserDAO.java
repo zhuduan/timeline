@@ -14,7 +14,7 @@ public interface UserDAO {
             + " WechatAccount, WeiboAccount, GoogleAccount, IsValid, CreateTime, UpdateTime";
     
     @SelectProvider(type = UserSQL.class, method = UserSQL.METHOD_GET_BY_KEY)
-    User getUserByID(@Param("id")Long id);
+    User getUserByID(@Param("id")Integer id);
     
     @SelectProvider(type = UserSQL.class, method = UserSQL.METHOD_SELECT_BY_COLUMN)
     User getUserByName(@Param("name")String name);
