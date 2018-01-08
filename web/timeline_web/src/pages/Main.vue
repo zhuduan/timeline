@@ -111,12 +111,8 @@
 
         <Row>
             <div class="layout-bottom">
-                <div style="display:inline">
-                    concact us info 
-                </div>
-                &nbsp;&nbsp;
-                <div style="display:inline">
-                    some related links here
+                <div style="display:inline; font-size:160%; text-align:center;">
+                    <Icon type="email"></Icon> <Icon type="forward"></Icon> &nbsp; timeline9001@gmail.com
                 </div>
                 &nbsp;&nbsp;
                 <div style="display:inline">
@@ -131,7 +127,8 @@
                 </span>
                 <br/>
                 <span>
-                    some isp info will be put here
+                    <!-- future will replace with the isp info -->
+                    Welcome to join us
                 </span>
             </div>
         </Row>
