@@ -36,20 +36,20 @@ public interface UserFocusDAO {
             super(TABLE, ALL_COLUMNS);
         }
 
-        public String insertFocusRelation(Integer userID, Integer subjectID) {
+        public String insertFocusRelation() {
             // Notice: if passed param here is a String, should escape the string to avoid sql injection
             //         the userID and subjectID here are unique index
             String sqlStr = " INSERT INTO " + TABLE + " (UserID, SubjectID, IsValid) "
-                    + " VALUES(" + userID + ", " + subjectID + ", " + "1" + ") "
+                    + " VALUES( #{UserID}, #{SubjectID}, 1) "
                     + " ON DUPLICATE KEY UPDATE IsValid = 1 ";
             return sqlStr;
         }
 
-        public String deleteFocusRelation(Integer userID, Integer subjectID) {
+        public String deleteFocusRelation() {
             SQL sql = new SQL();
             sql.UPDATE(getTable())
-                    .SET("IsValid=#{" + 0 + "}")
-                    .WHERE( "UserID=#{" + userID + "}" + " AND SubjectID=#{" + subjectID + "}" );
+                    .SET("IsValid=0")
+                    .WHERE( "UserID=#{UserID}  AND SubjectID=#{SubjectID}" );
             return sql.toString();
         }
         

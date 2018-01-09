@@ -22,7 +22,6 @@ import java.util.Map;
 @Api(description = "user focus related api")
 @RestController
 @RequestMapping("focus")
-@ResponseBody
 public class UserFocusController {
     
     @Autowired
@@ -32,7 +31,7 @@ public class UserFocusController {
     @ApiOperation(httpMethod = "POST", value = "focus on subject", response = Map.class)
     @RequestMapping(value = "subject/on", method = RequestMethod.POST)
     public Map<String,Object> focusSubject(@RequestParam("subjectID") Integer subjectID,
-                                             @RequestParam("userID") Integer userID) throws Exception{
+                                           @RequestParam("userID") Integer userID) throws Exception{
         if ( !NumberUtil.isPositiveAndValid(subjectID) || !NumberUtil.isPositiveAndValid(userID) ){
             LogUtil.appLog.info(LogUtil.getMsg("wrong input for: subjectID=" + subjectID + ", userID=" + userID));
             throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
@@ -60,7 +59,7 @@ public class UserFocusController {
 
     
     @ApiOperation(httpMethod = "GET", value = "is already focused on subject", response = Map.class)
-    @RequestMapping(value = "subject/off", method = RequestMethod.GET)
+    @RequestMapping(value = "subject", method = RequestMethod.GET)
     public Map<String,Object> isFocusSubject(@RequestParam("subjectID") Integer subjectID,
                                              @RequestParam("userID") Integer userID) throws Exception{
         if ( !NumberUtil.isPositiveAndValid(subjectID) || !NumberUtil.isPositiveAndValid(userID) ){
