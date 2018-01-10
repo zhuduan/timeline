@@ -1,5 +1,7 @@
 package com.timeline.shiro;
 
+import com.google.common.base.Joiner;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.timeline.model.PO.User;
 import com.timeline.service.UserService;
@@ -59,10 +61,11 @@ public class ShiroFilterConfig {
     public Map<String, String> getFilterChainDefinitionMap() {
 
         Map<String, String> definitionMap = Maps.newLinkedHashMap();
-        definitionMap.put("/user/login", DefaultFilter.anon.name());
+        definitionMap.put("/user/login", Joiner.on(',').join(DefaultFilter.anon.name(), DefaultFilter.noSessionCreation.name()));
         definitionMap.put("/user/login/error", DefaultFilter.anon.name());
-        definitionMap.put("/user/**", DefaultFilter.authc.name());
-
+        definitionMap.put("/user/register", DefaultFilter.anon.name());
+        definitionMap.put("/user/**", Joiner.on(',').join(DefaultFilter.authc.name(), DefaultFilter.noSessionCreation.name()));
+        definitionMap.put("/**", Joiner.on(',').join(DefaultFilter.anon.name(), DefaultFilter.noSessionCreation.name()));
         return definitionMap;
     }
 

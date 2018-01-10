@@ -37,7 +37,7 @@ public class UserController {
 	private UserService userService;
 
 	@RequestMapping(value = "register", method = RequestMethod.POST)
-	public UserDTO register(@RequestParam("userName") String userName,
+	public Object register(@RequestParam("userName") String userName,
 							@RequestParam("password") String password,
 							@RequestParam("email") String email,
 							@RequestParam("phone") String phone) throws Exception {
@@ -55,7 +55,7 @@ public class UserController {
 
 		if (userService.register(user) > 0) {
 
-			return user;
+			return ResponseUtils.toSuccess(ConvertUtils.convert(user, UserDTO.class));
 		} else {
 
 			throw new Exception("register failure");
