@@ -18,24 +18,24 @@
             <Modal v-model="loginModal" title="登录" class-name="vertical-center-modal"
                    :loading="loginLoading" :mask-closable="false" :label-width="50" @on-ok="sendLogin()">
                 <IForm ref="loginForm" :model="user">
-                    <i-row type="flex" justify="center" class="code-row-bg">
-                        <i-col>
+                    <IRow type="flex" justify="center" class="code-row-bg">
+                        <ICol>
                             <IFormItem prop="name">
                                 <IInput type="text" v-model="user.name" placeholder="用户名">
                                     <Icon type="ios-person-outline" slot="prepend"></Icon>
                                 </IInput>
                             </IFormItem>
-                        </i-col>
-                    </i-row>
-                    <i-row type="flex" justify="center" class="code-row-bg">
-                        <i-col>
+                        </ICol>
+                    </IRow>
+                    <IRow type="flex" justify="center" class="code-row-bg">
+                        <ICol>
                             <IFormItem prop="password">
                                 <IInput type="password" v-model="user.password" placeholder="密码">
                                     <Icon type="ios-locked-outline" slot="prepend"></Icon>
                                 </IInput>
                             </IFormItem>
-                        </i-col>
-                    </i-row>
+                        </ICol>
+                    </IRow>
                 </IForm>
 
                 <div slot="footer">
@@ -48,45 +48,45 @@
                    :loading="registerLoading" :mask-closable="false" :label-width="50" @on-ok="register()">
                 <IForm ref="registerForm" :model="user">
 
-                    <i-row type="flex" justify="center" class="code-row-bg">
-                        <i-col>
+                    <IRow type="flex" justify="center" class="code-row-bg">
+                        <ICol>
                             <IFormItem prop="user">
                                 <IInput type="text" v-model="user.name" placeholder="用户名">
                                     <Icon type="ios-person-outline" slot="prepend"></Icon>
                                 </IInput>
                             </IFormItem>
-                        </i-col>
-                    </i-row>
+                        </ICol>
+                    </IRow>
 
-                    <i-row type="flex" justify="center" class="code-row-bg">
-                        <i-col>
+                    <IRow type="flex" justify="center" class="code-row-bg">
+                        <ICol>
                             <IFormItem prop="password">
                                 <IInput type="password" v-model="user.password" placeholder="密码">
                                     <Icon type="ios-locked-outline" slot="prepend"></Icon>
                                 </IInput>
                             </IFormItem>
-                        </i-col>
-                    </i-row>
+                        </ICol>
+                    </IRow>
 
-                    <i-row type="flex" justify="center" class="code-row-bg">
-                        <i-col>
+                    <IRow type="flex" justify="center" class="code-row-bg">
+                        <ICol>
                             <IFormItem prop="email">
                                 <IInput type="email" v-model="user.email" placeholder="邮箱">
                                     <Icon type="ios-email-outline" slot="prepend"></Icon>
                                 </IInput>
                             </IFormItem>
-                        </i-col>
-                    </i-row>
+                        </ICol>
+                    </IRow>
 
-                    <i-row type="flex" justify="center" class="code-row-bg">
-                        <i-col>
+                    <IRow type="flex" justify="center" class="code-row-bg">
+                        <ICol>
                             <IFormItem prop="phone">
                                 <IInput type="text" v-model="user.phone" placeholder="电话">
                                     <Icon type="ios-person-outline" slot="prepend"></Icon>
                                 </IInput>
                             </IFormItem>
-                        </i-col>
-                    </i-row>
+                        </ICol>
+                    </IRow>
 
                 </IForm>
 
@@ -100,20 +100,21 @@
 </template>
 
 <script>
-    import common from '../js/common'
-    import qs from 'qs';
-    import util from '../libs/util'
+    import common from '../js/common';
+    import util from '../libs/util';
     import IForm from "../../node_modules/iview/src/components/form/form.vue";
     import IFormItem from "../../node_modules/iview/src/components/form/form-item.vue";
     import IInput from "../../node_modules/iview/src/components/input/input.vue";
     import ICol from "../../node_modules/iview/src/components/grid/col.vue";
-
+    import IRow from "../../node_modules/iview/src/components/grid/row.vue";
+    
     export default {
         components: {
             ICol,
             IForm,
             IFormItem,
-            IInput
+            IInput,
+            IRow
         },
         mounted: function () {
 

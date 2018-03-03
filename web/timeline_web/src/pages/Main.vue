@@ -153,5 +153,4 @@
 <style>
   @import "./../css/base.css";
   @import "./../css/iview.css";
-  @import "./../css/timeline.css";
 </style>

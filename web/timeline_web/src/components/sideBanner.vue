@@ -16,7 +16,7 @@ export default {
     }
   },
   props: {
-    'sidelist': Object
+    'sidelist': {}
   }
 }
 </script>
