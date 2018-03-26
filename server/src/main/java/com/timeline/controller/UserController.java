@@ -15,6 +15,7 @@ import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -106,6 +107,9 @@ public class UserController {
 		//get current subject
 		Subject subject = SecurityUtils.getSubject();
 		subject.login(token);
+
+		// 创建 session
+		Session session = SecurityUtils.getSubject().getSession(true);
 	}
 
 

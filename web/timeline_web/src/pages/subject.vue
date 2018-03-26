@@ -4,8 +4,9 @@
             <div class="index-logo" style="font-size: x-large;">
                 <h1>{{this.subjectTitle}}</h1>
                 <h3 class="subject-detail">编辑作者{{this.author}} | 最近修改时间： {{this.latestUpdateTime}}</h3>
-                <button class="btn white" style="float: right; margin: 0 0 0 10px;">贡献内容</button>
-                <button class="btn white" style="float: right; margin: 0 0 0 10px;">关注</button>
+                <button class="btn white btn-style" >贡献内容</button>
+                <button class="btn white btn-style" v-if="isFocus == false">关注</button>
+                <button class="btn white btn-style" v-else="isFocus == true">已关注</button>
             </div>
             <hr/>
             <div id='timeline-embed' style="width: 100%; height: 600px;"></div>
@@ -23,40 +24,45 @@
                 subjectTitle: '',
                 author: '',
                 latestUpdateTime: '',
-                timeline:null
+                timeline:null,
+                isFocus:false
             }
         },
         mounted: function () {
-            // this.loadJS();
             this.subjectId = this.$route.params.value;
             this.loadDetail();
         },
         methods: {
+            // 加载 Subject 详情
             loadDetail: function () {
                 var querystring = '/subject/info';
-                this.$http.get(querystring,
-                    {
+                this.$http.get(querystring, {
                         params: {
                             subjectID: this.subjectId
                         },
                         headers: {'Content-Type': 'application/text; charset=UTF-8'}
-                    }).then(
-                    response => {
+                    }).then(response => {
                         this.timelineData = this.assembleTimeline(response.data.data);
                         this.loadTimeline();
                     }, response => {
-                        console.log("error");
+                        console.log("error: " + response);
                     });
             },
+            
+            // 关注相关
+            focus: function () {
+                
+            },
+
+            unFocus: function () {
+
+            },
+
+            // 初始化 TimeLine 组件
             loadTimeline: function () {
                 this.timeline = new TL.Timeline('timeline-embed', this.timelineData);
             },
-            // loadJS: function () {
-            //   const s = document.createElement('script');
-            //   s.type = 'text/javascript';
-            //   s.src = 'https://cdn.knightlab.com/libs/timeline3/latest/js/timeline-min.js';
-            //   document.body.appendChild(s);
-            // },
+            // 解析返回结果为 TimeLine 组件数据
             assembleTimeline: function (responseData) {
                 var timeline = {title: '', events: ''};
                 var title = {text: '', media: ''};
@@ -96,7 +102,7 @@
                     eventGroup.text = text;
                     eventGroupArray.push(eventGroup);
                 }
-                this.latestUpdateTime = responseData.details[responseData.details.length - 1].occurrenceTime
+                this.latestUpdateTime = responseData.details[responseData.details.length - 1].occurrenceTime;
                 timeline.events = eventGroupArray;
                 this.subjectTitle = timeline.title.text.headline;
                 return timeline;
@@ -107,4 +113,8 @@
 
 <style>
     @import "./../css/timeline.css";
+    .btn-style {
+        float: right;
+        margin: 0 0 0 10px;
+    }
 </style>
