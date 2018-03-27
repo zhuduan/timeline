@@ -1,5 +1,8 @@
 package com.timeline.aop;
 
+import com.timeline.model.PO.User;
+import com.timeline.support.common.ResponseUtils;
+import com.timeline.support.http.HttpKeys;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -12,11 +15,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.timeline.model.PO.User;
-import com.timeline.support.common.ResponseUtils;
-import com.timeline.support.http.HttpKeys;
-
-import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 
 @Aspect
@@ -26,11 +24,6 @@ public class ControllerAspect {
 
   @Pointcut("execution(* com.timeline.controller..*.*(..))")
   public void resultAspect() {
-  }
-
-  @PostConstruct
-  public void init() {
-    System.out.printf("test.............");
   }
 
   @Around(value = "resultAspect()")
@@ -43,7 +36,7 @@ public class ControllerAspect {
       }
       return ResponseUtils.toSuccess(obj);
     } catch (Throwable t) {
-      return ResponseUtils.toFailure(t);
+      return ResponseUtils.toFailure(t.getMessage());
     }
   }
 
