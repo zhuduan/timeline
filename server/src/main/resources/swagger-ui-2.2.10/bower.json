@@ -12,7 +12,11 @@
     "Swagger",
     "API"
   ],
-  "license": ["Apache-2.0","Copyright 2016 SmartBear Software","./LICENSE"],
+  "license": [
+    "Apache-2.0",
+    "Copyright 2016 SmartBear Software",
+    "./LICENSE"
+  ],
   "homepage": "http://swagger.io",
   "private": true,
   "ignore": [

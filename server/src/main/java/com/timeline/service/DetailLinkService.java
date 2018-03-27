@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface DetailLinkService {
 
-    List<DetailLinkDTO> getLinksByIDAndLanguage(Integer detailID, Integer languageID, Integer pageNum, Integer pageSize);
+  List<DetailLinkDTO> getLinksByIDAndLanguage(Integer detailID, Integer languageID, Integer pageNum, Integer pageSize);
 }

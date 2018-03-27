@@ -4,143 +4,143 @@ import java.util.Date;
 import java.util.List;
 
 public class SubjectDTO {
-    private Integer ID;
+  private Integer ID;
 
-    private String Title;
+  private String Title;
 
-    private String PicUrl;
+  private String PicUrl;
 
-    private String PicDes;
+  private String PicDes;
 
-    private Integer AuthorID;
+  private Integer AuthorID;
 
-    private String ContributorIDs;
+  private String ContributorIDs;
 
-    private String Category;
+  private String Category;
 
-    private String Tags;
+  private String Tags;
 
-    private Date StartTime;
+  private Date StartTime;
 
-    private Date EndTime;
+  private Date EndTime;
 
-    private Integer Language;
+  private Integer Language;
 
-    private String RelatedSubjectIDs;
+  private String RelatedSubjectIDs;
 
-    private String Content;
+  private String Content;
 
-    private List<DetailDTO> details;
-    
-    public Integer getID() {
-        return ID;
-    }
+  private List<DetailDTO> details;
 
-    public void setID(Integer ID) {
-        this.ID = ID;
-    }
+  public Integer getID() {
+    return ID;
+  }
 
-    public String getTitle() {
-        return Title;
-    }
+  public void setID(Integer ID) {
+    this.ID = ID;
+  }
 
-    public void setTitle(String title) {
-        Title = title;
-    }
+  public String getTitle() {
+    return Title;
+  }
 
-    public String getPicUrl() {
-        return PicUrl;
-    }
+  public void setTitle(String title) {
+    Title = title;
+  }
 
-    public void setPicUrl(String picUrl) {
-        PicUrl = picUrl;
-    }
+  public String getPicUrl() {
+    return PicUrl;
+  }
 
-    public String getPicDes() {
-        return PicDes;
-    }
+  public void setPicUrl(String picUrl) {
+    PicUrl = picUrl;
+  }
 
-    public void setPicDes(String picDes) {
-        PicDes = picDes;
-    }
+  public String getPicDes() {
+    return PicDes;
+  }
 
-    public Integer getAuthorID() {
-        return AuthorID;
-    }
+  public void setPicDes(String picDes) {
+    PicDes = picDes;
+  }
 
-    public void setAuthorID(Integer authorID) {
-        AuthorID = authorID;
-    }
+  public Integer getAuthorID() {
+    return AuthorID;
+  }
 
-    public String getContributorIDs() {
-        return ContributorIDs;
-    }
+  public void setAuthorID(Integer authorID) {
+    AuthorID = authorID;
+  }
 
-    public void setContributorIDs(String contributorIDs) {
-        ContributorIDs = contributorIDs;
-    }
+  public String getContributorIDs() {
+    return ContributorIDs;
+  }
 
-    public String getCategory() {
-        return Category;
-    }
+  public void setContributorIDs(String contributorIDs) {
+    ContributorIDs = contributorIDs;
+  }
 
-    public void setCategory(String category) {
-        Category = category;
-    }
+  public String getCategory() {
+    return Category;
+  }
 
-    public String getTags() {
-        return Tags;
-    }
+  public void setCategory(String category) {
+    Category = category;
+  }
 
-    public void setTags(String tags) {
-        Tags = tags;
-    }
+  public String getTags() {
+    return Tags;
+  }
 
-    public Date getStartTime() {
-        return StartTime;
-    }
+  public void setTags(String tags) {
+    Tags = tags;
+  }
 
-    public void setStartTime(Date startTime) {
-        StartTime = startTime;
-    }
+  public Date getStartTime() {
+    return StartTime;
+  }
 
-    public Date getEndTime() {
-        return EndTime;
-    }
+  public void setStartTime(Date startTime) {
+    StartTime = startTime;
+  }
 
-    public void setEndTime(Date endTime) {
-        EndTime = endTime;
-    }
+  public Date getEndTime() {
+    return EndTime;
+  }
 
-    public Integer getLanguage() {
-        return Language;
-    }
+  public void setEndTime(Date endTime) {
+    EndTime = endTime;
+  }
 
-    public void setLanguage(Integer language) {
-        Language = language;
-    }
+  public Integer getLanguage() {
+    return Language;
+  }
 
-    public String getRelatedSubjectIDs() {
-        return RelatedSubjectIDs;
-    }
+  public void setLanguage(Integer language) {
+    Language = language;
+  }
 
-    public void setRelatedSubjectIDs(String relatedSubjectIDs) {
-        RelatedSubjectIDs = relatedSubjectIDs;
-    }
+  public String getRelatedSubjectIDs() {
+    return RelatedSubjectIDs;
+  }
 
-    public String getContent() {
-        return Content;
-    }
+  public void setRelatedSubjectIDs(String relatedSubjectIDs) {
+    RelatedSubjectIDs = relatedSubjectIDs;
+  }
 
-    public void setContent(String content) {
-        Content = content;
-    }
+  public String getContent() {
+    return Content;
+  }
 
-	public List<DetailDTO> getDetails() {
-		return details;
-	}
+  public void setContent(String content) {
+    Content = content;
+  }
 
-	public void setDetails(List<DetailDTO> details) {
-		this.details = details;
-	}
+  public List<DetailDTO> getDetails() {
+    return details;
+  }
+
+  public void setDetails(List<DetailDTO> details) {
+    this.details = details;
+  }
 }

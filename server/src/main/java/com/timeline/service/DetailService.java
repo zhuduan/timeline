@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface DetailService {
 
-	List<DetailDTO> getDetailsBySubjectID(Integer subjectID, Integer pageNum, Integer pageSize);
+  List<DetailDTO> getDetailsBySubjectID(Integer subjectID, Integer pageNum, Integer pageSize);
 
-	DetailDTO getDetailByID(Integer detailID);
+  DetailDTO getDetailByID(Integer detailID);
 }

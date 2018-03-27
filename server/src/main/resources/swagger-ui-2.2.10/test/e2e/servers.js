@@ -17,26 +17,26 @@ var swaggerUI;
 var specServer;
 
 module.exports.start = function (specsLocation, done) {
-  swaggerUI = createServer({ root: dist, cors: true });
-  specServer = createServer({ root: specs, cors: true });
+    swaggerUI = createServer({root: dist, cors: true});
+    specServer = createServer({root: specs, cors: true});
 
-  swaggerUI.listen(DOCS_PORT);
-  specServer.listen(SPEC_SERVER_PORT);
+    swaggerUI.listen(DOCS_PORT);
+    specServer.listen(SPEC_SERVER_PORT);
 
-  var swaggerSpecLocation = encodeURIComponent('http://localhost:' + SPEC_SERVER_PORT + specsLocation);
-  var url = 'http://localhost:' + DOCS_PORT + '/index.html?url=' + swaggerSpecLocation;
+    var swaggerSpecLocation = encodeURIComponent('http://localhost:' + SPEC_SERVER_PORT + specsLocation);
+    var url = 'http://localhost:' + DOCS_PORT + '/index.html?url=' + swaggerSpecLocation;
 
-  setTimeout(function(){
-    driver.get(url);
-    setTimeout(function() {
-      done();
-    }, 2000);
-    console.log('waiting for UI to load');
-  }, process.env.TRAVIS ? 20000 : 5000);
-  console.log('waiting for server to start');
+    setTimeout(function () {
+        driver.get(url);
+        setTimeout(function () {
+            done();
+        }, 2000);
+        console.log('waiting for UI to load');
+    }, process.env.TRAVIS ? 20000 : 5000);
+    console.log('waiting for server to start');
 };
 
-module.exports.close = function() {
-  swaggerUI.close();
-  specServer.close();
+module.exports.close = function () {
+    swaggerUI.close();
+    specServer.close();
 };

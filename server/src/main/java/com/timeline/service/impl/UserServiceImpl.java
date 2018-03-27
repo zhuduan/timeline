@@ -1,69 +1,69 @@
 package com.timeline.service.impl;
 
-import com.timeline.common.EnumAction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.timeline.model.DTO.UserDTO;
 import com.timeline.model.PO.User;
 import com.timeline.repository.UserDAO;
 import com.timeline.service.UserService;
-import com.timeline.util.ConvertUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.timeline.support.common.EnumAction;
+import com.timeline.support.utils.ConvertUtils;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
-	@Autowired
-	private UserDAO userDAO;
-	
-	@Override
-	public int register(UserDTO user) throws Exception {
+  @Autowired
+  private UserDAO userDAO;
 
-		User existsUser = getUserByName(user.getName());
-		if(existsUser != null && existsUser.getName().equals(user.getName())) {
-			
-			throw new Exception("user name exists!");
-		}
-		
-		existsUser = ConvertUtils.convert(user, User.class);
-		
-		return userDAO.insertUser(existsUser);
-	}
+  @Override
+  public int register(UserDTO user) throws Exception {
 
-	@Override
-	public int insertUser(User user) {
+    User existsUser = getUserByName(user.getName());
+    if (existsUser != null && existsUser.getName().equals(user.getName())) {
 
-		return userDAO.insertUser(user);
-	}
+      throw new Exception("user name exists!");
+    }
 
-	@Override
-	public User getUserByID(Integer id) {
+    existsUser = ConvertUtils.convert(user, User.class);
 
-		return userDAO.getUserByID(id);
-	}
+    return userDAO.insertUser(existsUser);
+  }
 
-	@Override
-	public User getUserByName(String name) {
+  @Override
+  public int insertUser(User user) {
 
-		return userDAO.getUserByName(name);
-	}
+    return userDAO.insertUser(user);
+  }
 
-	@Override
-	public Boolean isAuthorised(Integer userID, EnumAction action) {
-		// TODO: judge whether user has the authority
-		return true;
-	}
+  @Override
+  public User getUserByID(Integer id) {
 
-	@Override
-	public User login(UserDTO user) throws Exception {
+    return userDAO.getUserByID(id);
+  }
 
-		User existsUser = userDAO.getUserByName(user.getName());
-		if(existsUser != null && existsUser.getPassword().equals(user.getPassword())) {
-			
-			return existsUser;
-		} else {
-			
-			throw new Exception("user not exist or password invalid");
-		}
-	}
+  @Override
+  public User getUserByName(String name) {
 
+    return userDAO.getUserByName(name);
+  }
+
+  @Override
+  public Boolean isAuthorised(Integer userID, EnumAction action) {
+    // TODO: judge whether user has the authority
+    return true;
+  }
+
+  @Override
+  public User login(UserDTO user) throws Exception {
+
+    User existsUser = userDAO.getUserByName(user.getName());
+    if (existsUser != null && existsUser.getPassword().equals(user.getPassword())) {
+
+      return existsUser;
+    } else {
+
+      throw new Exception("user not exist or password invalid");
+    }
+  }
 }

@@ -1,95 +1,118 @@
 'use strict';
 
 SwaggerUi.Collections.AuthsCollection = Backbone.Collection.extend({
-    constructor: function() {
-        var args = Array.prototype.slice.call(arguments);
+                                                                       constructor: function () {
+                                                                           var args = Array.prototype.slice.call(
+                                                                               arguments);
 
-        args[0] = this.parse(args[0]);
+                                                                           args[0] = this.parse(args[0]);
 
-        Backbone.Collection.apply(this, args);
-    },
+                                                                           Backbone.Collection.apply(this, args);
+                                                                       },
 
-    add: function (model) {
-        var args = Array.prototype.slice.call(arguments);
+                                                                       add: function (model) {
+                                                                           var args = Array.prototype.slice.call(
+                                                                               arguments);
 
-        if (Array.isArray(model)) {
-            args[0] = _.map(model, function(val) {
-                return this.handleOne(val);
-            }, this);
-        } else {
-            args[0] = this.handleOne(model);
-        }
+                                                                           if (Array.isArray(model)) {
+                                                                               args[0] = _.map(model, function (val) {
+                                                                                   return this.handleOne(val);
+                                                                               }, this);
+                                                                           } else {
+                                                                               args[0] = this.handleOne(model);
+                                                                           }
 
-        Backbone.Collection.prototype.add.apply(this, args);
-    },
+                                                                           Backbone.Collection.prototype.add.apply(this,
+                                                                                                                   args);
+                                                                       },
 
-    handleOne: function (model) {
-        var result = model;
+                                                                       handleOne: function (model) {
+                                                                           var result = model;
 
-        if (! (model instanceof Backbone.Model) ) {
-            switch (model.type) {
-                case 'oauth2':
-                    result = new SwaggerUi.Models.Oauth2Model(model);
-                    break;
-                case 'basic':
-                    result = new SwaggerUi.Models.BasicAuthModel(model);
-                    break;
-                case 'apiKey':
-                    result = new SwaggerUi.Models.ApiKeyAuthModel(model);
-                    break;
-                default:
-                    result = new Backbone.Model(model);
-            }
-        }
+                                                                           if (!(model instanceof Backbone.Model)) {
+                                                                               switch (model.type) {
+                                                                                   case 'oauth2':
+                                                                                       result =
+                                                                                           new SwaggerUi.Models.Oauth2Model(
+                                                                                               model);
+                                                                                       break;
+                                                                                   case 'basic':
+                                                                                       result =
+                                                                                           new SwaggerUi.Models.BasicAuthModel(
+                                                                                               model);
+                                                                                       break;
+                                                                                   case 'apiKey':
+                                                                                       result =
+                                                                                           new SwaggerUi.Models.ApiKeyAuthModel(
+                                                                                               model);
+                                                                                       break;
+                                                                                   default:
+                                                                                       result =
+                                                                                           new Backbone.Model(model);
+                                                                               }
+                                                                           }
 
-        return result;
-    },
+                                                                           return result;
+                                                                       },
 
-    isValid: function () {
-        var valid = true;
+                                                                       isValid: function () {
+                                                                           var valid = true;
 
-        this.models.forEach(function(model) {
-            if (!model.validate()) {
-                valid = false;
-            }
-        });
+                                                                           this.models.forEach(function (model) {
+                                                                               if (!model.validate()) {
+                                                                                   valid = false;
+                                                                               }
+                                                                           });
 
-        return valid;
-    },
+                                                                           return valid;
+                                                                       },
 
-    isAuthorized: function () {
-        return this.length === this.where({ isLogout: true }).length;
-    },
+                                                                       isAuthorized: function () {
+                                                                           return this.length === this.where(
+                                                                               {isLogout: true}).length;
+                                                                       },
 
-    isPartiallyAuthorized: function () {
-        return this.where({ isLogout: true }).length > 0;
-    },
+                                                                       isPartiallyAuthorized: function () {
+                                                                           return this.where({isLogout: true}).length
+                                                                                  > 0;
+                                                                       },
 
-    parse: function (data) {
-        var authz = {};
+                                                                       parse: function (data) {
+                                                                           var authz = {};
 
-        if(typeof window.swaggerUi !== 'undefined') {
-            authz = Object.assign({}, window.swaggerUi.api.clientAuthorizations.authz);
-        }
+                                                                           if (typeof window.swaggerUi
+                                                                               !== 'undefined') {
+                                                                               authz =
+                                                                                   Object.assign({},
+                                                                                                 window.swaggerUi.api.clientAuthorizations.authz);
+                                                                           }
 
-        return _.map(data, function (auth, name) {
-            var isBasic = authz[name] && auth.type === 'basic' && authz[name].username && authz[name].password;
+                                                                           return _.map(data, function (auth, name) {
+                                                                               var isBasic = authz[name] && auth.type
+                                                                                             === 'basic'
+                                                                                             && authz[name].username
+                                                                                             && authz[name].password;
 
-            _.extend(auth, {
-                title: name
-            });
+                                                                               _.extend(auth, {
+                                                                                   title: name
+                                                                               });
 
-            if (authz[name] || isBasic) {
-                _.extend(auth, {
-                    isLogout: true,
-                    value: isBasic ? undefined : authz[name].value,
-                    username: isBasic ? authz[name].username : undefined,
-                    password: isBasic ? authz[name].password : undefined,
-                    valid: true
-                });
-            }
+                                                                               if (authz[name] || isBasic) {
+                                                                                   _.extend(auth, {
+                                                                                       isLogout: true,
+                                                                                       value: isBasic ? undefined
+                                                                                           : authz[name].value,
+                                                                                       username: isBasic
+                                                                                           ? authz[name].username
+                                                                                           : undefined,
+                                                                                       password: isBasic
+                                                                                           ? authz[name].password
+                                                                                           : undefined,
+                                                                                       valid: true
+                                                                                   });
+                                                                               }
 
-            return auth;
-        });
-    }
-});
+                                                                               return auth;
+                                                                           });
+                                                                       }
+                                                                   });

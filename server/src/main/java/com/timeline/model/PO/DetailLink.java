@@ -3,133 +3,133 @@ package com.timeline.model.PO;
 import java.util.Date;
 
 public class DetailLink {
-    private Integer ID;
+  private Integer ID;
 
-    private String DetailID_Language;
+  private String DetailID_Language;
 
-    private String Title;
+  private String Title;
 
-    private String PicUrl;
+  private String PicUrl;
 
-    private String PicDes;
+  private String PicDes;
 
-    private String SourceName;
+  private String SourceName;
 
-    private String SourceLink;
+  private String SourceLink;
 
-    private Integer Weight;
+  private Integer Weight;
 
-    private Integer Status;
+  private Integer Status;
 
-    private Integer IsValid;
+  private Integer IsValid;
 
-    private Date CreateTime;
+  private Date CreateTime;
 
-    private Date UpdateTime;
+  private Date UpdateTime;
 
-    private String Content;
+  private String Content;
 
-    public Integer getId() {
-        return ID;
-    }
+  public Integer getId() {
+    return ID;
+  }
 
-    public void setId(Integer ID) {
-        this.ID = ID;
-    }
+  public void setId(Integer ID) {
+    this.ID = ID;
+  }
 
-    public String getDetailId_Language() {
-        return DetailID_Language;
-    }
+  public String getDetailId_Language() {
+    return DetailID_Language;
+  }
 
-    public void setDetailId_Language(String detailID_Language) {
-        DetailID_Language = detailID_Language;
-    }
+  public void setDetailId_Language(String detailID_Language) {
+    DetailID_Language = detailID_Language;
+  }
 
-    public String getTitle() {
-        return Title;
-    }
+  public String getTitle() {
+    return Title;
+  }
 
-    public void setTitle(String title) {
-        Title = title;
-    }
+  public void setTitle(String title) {
+    Title = title;
+  }
 
-    public String getPicUrl() {
-        return PicUrl;
-    }
+  public String getPicUrl() {
+    return PicUrl;
+  }
 
-    public void setPicUrl(String picUrl) {
-        PicUrl = picUrl;
-    }
+  public void setPicUrl(String picUrl) {
+    PicUrl = picUrl;
+  }
 
-    public String getPicDes() {
-        return PicDes;
-    }
+  public String getPicDes() {
+    return PicDes;
+  }
 
-    public void setPicDes(String picDes) {
-        PicDes = picDes;
-    }
+  public void setPicDes(String picDes) {
+    PicDes = picDes;
+  }
 
-    public String getSourceName() {
-        return SourceName;
-    }
+  public String getSourceName() {
+    return SourceName;
+  }
 
-    public void setSourceName(String sourceName) {
-        SourceName = sourceName;
-    }
+  public void setSourceName(String sourceName) {
+    SourceName = sourceName;
+  }
 
-    public String getSourceLink() {
-        return SourceLink;
-    }
+  public String getSourceLink() {
+    return SourceLink;
+  }
 
-    public void setSourceLink(String sourceLink) {
-        SourceLink = sourceLink;
-    }
+  public void setSourceLink(String sourceLink) {
+    SourceLink = sourceLink;
+  }
 
-    public Integer getWeight() {
-        return Weight;
-    }
+  public Integer getWeight() {
+    return Weight;
+  }
 
-    public void setWeight(Integer weight) {
-        Weight = weight;
-    }
+  public void setWeight(Integer weight) {
+    Weight = weight;
+  }
 
-    public Integer getStatus() {
-        return Status;
-    }
+  public Integer getStatus() {
+    return Status;
+  }
 
-    public void setStatus(Integer status) {
-        Status = status;
-    }
+  public void setStatus(Integer status) {
+    Status = status;
+  }
 
-    public Integer getIsValid() {
-        return IsValid;
-    }
+  public Integer getIsValid() {
+    return IsValid;
+  }
 
-    public void setIsValid(Integer isValid) {
-        IsValid = isValid;
-    }
+  public void setIsValid(Integer isValid) {
+    IsValid = isValid;
+  }
 
-    public Date getCreateTime() {
-        return CreateTime;
-    }
+  public Date getCreateTime() {
+    return CreateTime;
+  }
 
-    public void setCreateTime(Date createTime) {
-        CreateTime = createTime;
-    }
+  public void setCreateTime(Date createTime) {
+    CreateTime = createTime;
+  }
 
-    public Date getUpdateTime() {
-        return UpdateTime;
-    }
+  public Date getUpdateTime() {
+    return UpdateTime;
+  }
 
-    public void setUpdateTime(Date updateTime) {
-        UpdateTime = updateTime;
-    }
+  public void setUpdateTime(Date updateTime) {
+    UpdateTime = updateTime;
+  }
 
-    public String getContent() {
-        return Content;
-    }
+  public String getContent() {
+    return Content;
+  }
 
-    public void setContent(String content) {
-        Content = content;
-    }
+  public void setContent(String content) {
+    Content = content;
+  }
 }

@@ -2,44 +2,45 @@
 
 SwaggerUi.Views.ApiKeyAuthView = Backbone.View.extend({ // TODO: append this to global SwaggerUi
 
-    events: {
-        'change .input_apiKey_entry': 'apiKeyChange'
-    },
+                                                          events: {
+                                                              'change .input_apiKey_entry': 'apiKeyChange'
+                                                          },
 
-    selectors: {
-        apikeyInput: '.input_apiKey_entry'
-    },
+                                                          selectors: {
+                                                              apikeyInput: '.input_apiKey_entry'
+                                                          },
 
-    template: Handlebars.templates.apikey_auth,
+                                                          template: Handlebars.templates.apikey_auth,
 
-    initialize: function(opts) {
-        this.options = opts || {};
-        this.router = this.options.router;
-    },
+                                                          initialize: function (opts) {
+                                                              this.options = opts || {};
+                                                              this.router = this.options.router;
+                                                          },
 
-    render: function (){
-        this.$el.html(this.template(this.model.toJSON()));
+                                                          render: function () {
+                                                              this.$el.html(this.template(this.model.toJSON()));
 
-        return this;
-    },
+                                                              return this;
+                                                          },
 
-    apiKeyChange: function (e) {
-        var val = $(e.target).val();
-        if (val) {
-            this.$(this.selectors.apikeyInput).removeClass('error');
-        }
+                                                          apiKeyChange: function (e) {
+                                                              var val = $(e.target).val();
+                                                              if (val) {
+                                                                  this.$(this.selectors.apikeyInput)
+                                                                      .removeClass('error');
+                                                              }
 
-        this.model.set('value', val);
-    },
+                                                              this.model.set('value', val);
+                                                          },
 
-    isValid: function () {
-        return this.model.validate();
-    },
+                                                          isValid: function () {
+                                                              return this.model.validate();
+                                                          },
 
-    highlightInvalid: function () {
-        if (!this.isValid()) {
-            this.$(this.selectors.apikeyInput).addClass('error');
-        }
-    }
+                                                          highlightInvalid: function () {
+                                                              if (!this.isValid()) {
+                                                                  this.$(this.selectors.apikeyInput).addClass('error');
+                                                              }
+                                                          }
 
-});
+                                                      });

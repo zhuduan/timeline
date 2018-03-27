@@ -19,7 +19,6 @@
   "smarttabs": true,
   "validthis": true,
   "globals": {
-
     // Libraries
     "_": false,
     "$": false,
@@ -33,7 +32,6 @@
     "jsyaml": false,
     "define": false,
     "sanitizeHtml": false,
-
     // Global object
     // TODO: remove these
     "Docs": false

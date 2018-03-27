@@ -3,143 +3,143 @@ package com.timeline.model.PO;
 import java.util.Date;
 
 public class User {
-    private Integer ID;
+  private Integer ID;
 
-    private String Name;
+  private String Name;
 
-    private String PicUrl;
+  private String PicUrl;
 
-    private Byte Role;
+  private Byte Role;
 
-    private Byte Authority;
+  private Byte Authority;
 
-    private String Email;
+  private String Email;
 
-    private String Phone;
-    
-    private String password;
+  private String Phone;
 
-    private String WechatAccount;
+  private String password;
 
-    private String WeiboAccount;
+  private String WechatAccount;
 
-    private String GoogleAccount;
+  private String WeiboAccount;
 
-    private Byte IsValid;
+  private String GoogleAccount;
 
-    private Date CreateTime;
+  private Byte IsValid;
 
-    private Date UpdateTime;
+  private Date CreateTime;
 
-    public Integer getId() {
-        return ID;
-    }
+  private Date UpdateTime;
 
-    public void setId(Integer ID) {
-        this.ID = ID;
-    }
+  public Integer getId() {
+    return ID;
+  }
 
-    public String getName() {
-        return Name;
-    }
+  public void setId(Integer ID) {
+    this.ID = ID;
+  }
 
-    public void setName(String name) {
-        Name = name;
-    }
+  public String getName() {
+    return Name;
+  }
 
-    public String getPicUrl() {
-        return PicUrl;
-    }
+  public void setName(String name) {
+    Name = name;
+  }
 
-    public void setPicUrl(String picUrl) {
-        PicUrl = picUrl;
-    }
+  public String getPicUrl() {
+    return PicUrl;
+  }
 
-    public Byte getRole() {
-        return Role;
-    }
+  public void setPicUrl(String picUrl) {
+    PicUrl = picUrl;
+  }
 
-    public void setRole(Byte role) {
-        Role = role;
-    }
+  public Byte getRole() {
+    return Role;
+  }
 
-    public Byte getAuthority() {
-        return Authority;
-    }
+  public void setRole(Byte role) {
+    Role = role;
+  }
 
-    public void setAuthority(Byte authority) {
-        Authority = authority;
-    }
+  public Byte getAuthority() {
+    return Authority;
+  }
 
-    public String getEmail() {
-        return Email;
-    }
+  public void setAuthority(Byte authority) {
+    Authority = authority;
+  }
 
-    public void setEmail(String email) {
-        Email = email;
-    }
+  public String getEmail() {
+    return Email;
+  }
 
-    public String getPhone() {
-        return Phone;
-    }
+  public void setEmail(String email) {
+    Email = email;
+  }
 
-    public void setPhone(String phone) {
-        Phone = phone;
-    }
+  public String getPhone() {
+    return Phone;
+  }
 
-    public String getWechatAccount() {
-        return WechatAccount;
-    }
+  public void setPhone(String phone) {
+    Phone = phone;
+  }
 
-    public void setWechatAccount(String wechatAccount) {
-        WechatAccount = wechatAccount;
-    }
+  public String getWechatAccount() {
+    return WechatAccount;
+  }
 
-    public String getWeiboAccount() {
-        return WeiboAccount;
-    }
+  public void setWechatAccount(String wechatAccount) {
+    WechatAccount = wechatAccount;
+  }
 
-    public void setWeiboAccount(String weiboAccount) {
-        WeiboAccount = weiboAccount;
-    }
+  public String getWeiboAccount() {
+    return WeiboAccount;
+  }
 
-    public String getGoogleAccount() {
-        return GoogleAccount;
-    }
+  public void setWeiboAccount(String weiboAccount) {
+    WeiboAccount = weiboAccount;
+  }
 
-    public void setGoogleAccount(String googleAccount) {
-        GoogleAccount = googleAccount;
-    }
+  public String getGoogleAccount() {
+    return GoogleAccount;
+  }
 
-    public Byte getIsValid() {
-        return IsValid;
-    }
+  public void setGoogleAccount(String googleAccount) {
+    GoogleAccount = googleAccount;
+  }
 
-    public void setIsValid(Byte isValid) {
-        IsValid = isValid;
-    }
+  public Byte getIsValid() {
+    return IsValid;
+  }
 
-    public Date getCreateTime() {
-        return CreateTime;
-    }
+  public void setIsValid(Byte isValid) {
+    IsValid = isValid;
+  }
 
-    public void setCreateTime(Date createTime) {
-        CreateTime = createTime;
-    }
+  public Date getCreateTime() {
+    return CreateTime;
+  }
 
-    public Date getUpdateTime() {
-        return UpdateTime;
-    }
+  public void setCreateTime(Date createTime) {
+    CreateTime = createTime;
+  }
 
-    public void setUpdateTime(Date updateTime) {
-        UpdateTime = updateTime;
-    }
+  public Date getUpdateTime() {
+    return UpdateTime;
+  }
 
-	public String getPassword() {
-		return password;
-	}
+  public void setUpdateTime(Date updateTime) {
+    UpdateTime = updateTime;
+  }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
 }

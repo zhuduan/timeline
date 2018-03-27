@@ -3,73 +3,73 @@ package com.timeline.model.PO;
 import java.util.Date;
 
 public class UserContribute {
-    private Integer ID;
+  private Integer ID;
 
-    private Integer SubjectID;
+  private Integer SubjectID;
 
-    private Integer DetailID;
+  private Integer DetailID;
 
-    private Integer UserID;
+  private Integer UserID;
 
-    private Integer IsValid;
+  private Integer IsValid;
 
-    private Date CreateTime;
+  private Date CreateTime;
 
-    private Date UpdateTime;
+  private Date UpdateTime;
 
-    public Integer getId() {
-        return ID;
-    }
+  public Integer getId() {
+    return ID;
+  }
 
-    public void setId(Integer ID) {
-        this.ID = ID;
-    }
+  public void setId(Integer ID) {
+    this.ID = ID;
+  }
 
-    public Integer getSubjectId() {
-        return SubjectID;
-    }
+  public Integer getSubjectId() {
+    return SubjectID;
+  }
 
-    public void setSubjectId(Integer subjectID) {
-        SubjectID = subjectID;
-    }
+  public void setSubjectId(Integer subjectID) {
+    SubjectID = subjectID;
+  }
 
-    public Integer getDetailId() {
-        return DetailID;
-    }
+  public Integer getDetailId() {
+    return DetailID;
+  }
 
-    public void setDetailId(Integer detailID) {
-        DetailID = detailID;
-    }
+  public void setDetailId(Integer detailID) {
+    DetailID = detailID;
+  }
 
-    public Integer getUserId() {
-        return UserID;
-    }
+  public Integer getUserId() {
+    return UserID;
+  }
 
-    public void setUserId(Integer userID) {
-        UserID = userID;
-    }
+  public void setUserId(Integer userID) {
+    UserID = userID;
+  }
 
-    public Integer getIsValid() {
-        return IsValid;
-    }
+  public Integer getIsValid() {
+    return IsValid;
+  }
 
-    public void setIsValid(Integer isValid) {
-        IsValid = isValid;
-    }
+  public void setIsValid(Integer isValid) {
+    IsValid = isValid;
+  }
 
-    public Date getCreateTime() {
-        return CreateTime;
-    }
+  public Date getCreateTime() {
+    return CreateTime;
+  }
 
-    public void setCreateTime(Date createTime) {
-        CreateTime = createTime;
-    }
+  public void setCreateTime(Date createTime) {
+    CreateTime = createTime;
+  }
 
-    public Date getUpdateTime() {
-        return UpdateTime;
-    }
+  public Date getUpdateTime() {
+    return UpdateTime;
+  }
 
-    public void setUpdateTime(Date updateTime) {
-        UpdateTime = updateTime;
-    }
+  public void setUpdateTime(Date updateTime) {
+    UpdateTime = updateTime;
+  }
 }

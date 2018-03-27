@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface SubjectService {
 
-	SubjectDTO getSubject(Integer id);
+  SubjectDTO getSubject(Integer id);
 
-	List<SubjectDTO> getSubjectListByDefault(Integer pageNum, Integer pageSize);
+  List<SubjectDTO> getSubjectListByDefault(Integer pageNum, Integer pageSize);
 
-	List<SubjectDTO> getSubjectListByIDs(List<Integer> idList, Integer pageNum, Integer pageSize);
+  List<SubjectDTO> getSubjectListByIDs(List<Integer> idList, Integer pageNum, Integer pageSize);
 
-	List<SubjectDTO> getSubjectListByUserFocus(Integer userID, Integer pageNum, Integer pageSize);
+  List<SubjectDTO> getSubjectListByUserFocus(Integer userID, Integer pageNum, Integer pageSize);
 }
