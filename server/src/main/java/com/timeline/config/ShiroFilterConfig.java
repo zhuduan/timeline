@@ -11,33 +11,31 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.realm.Realm;
-import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.apache.shiro.web.filter.mgt.DefaultFilter;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.apache.shiro.web.servlet.ShiroFilter;
+import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.context.ServletContextAware;
+import org.springframework.web.servlet.HandlerInterceptor;
 
-import com.google.common.collect.Maps;
+import com.timeline.interceptor.ShiroInterceptor;
 import com.timeline.model.PO.User;
 import com.timeline.service.UserService;
 
-import javax.servlet.DispatcherType;
-import javax.servlet.Filter;
-
-import java.util.Arrays;
-import java.util.Map;
+import javax.servlet.ServletContext;
 
 @Configuration
-public class ShiroFilterConfig {
+public class ShiroFilterConfig implements ServletContextAware {
 
   @Autowired
   private UserService userService;
 
-  @Bean
+  private ServletContext servletContext;
+
+/*  @Bean
   @Autowired
   @Qualifier("shiroFilter")
   public FilterRegistrationBean getShiroDelegateFilter(Filter shiroFilter) {
@@ -72,12 +70,21 @@ public class ShiroFilterConfig {
     definitionMap.put("/user/**", DefaultFilter.authc.name());
     definitionMap.put("/**", DefaultFilter.anon.name());
     return definitionMap;
+  }*/
+
+  @Bean("shiroInterceptor")
+  public HandlerInterceptor shiroInterceptor() {
+    ShiroInterceptor interceptor = new ShiroInterceptor();
+    interceptor.setServletContext(servletContext);
+    interceptor.setWebSecurityManager(getDefaultSecurityManager());
+    return interceptor;
   }
 
-  public DefaultSecurityManager getDefaultSecurityManager() {
+  public DefaultWebSecurityManager getDefaultSecurityManager() {
 
     DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
     securityManager.setRealm(getRealm());
+    securityManager.setSessionManager(new DefaultWebSessionManager());
     return securityManager;
   }
 
@@ -133,5 +140,10 @@ public class ShiroFilterConfig {
     };
 
     return realm;
+  }
+
+  @Override
+  public void setServletContext(final ServletContext servletContext) {
+
   }
 }
