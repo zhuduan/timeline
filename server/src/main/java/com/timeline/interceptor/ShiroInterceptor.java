@@ -20,6 +20,7 @@ import com.google.common.collect.Maps;
 import com.timeline.model.PO.User;
 import com.timeline.support.annotation.UserLogin;
 import com.timeline.support.annotation.UserLoginHolder;
+import com.timeline.support.http.HttpKeys;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -82,7 +83,7 @@ public class ShiroInterceptor implements HandlerInterceptor {
             WebUtils.saveRequest(request);
             throw new RuntimeException("you need login");
           }
-          request.setAttribute("userID", ((User) subject.getPrincipal()).getId());
+          request.setAttribute(HttpKeys.X_USER_ID, ((User) subject.getPrincipal()).getId());
         }
       });
     } catch (ExecutionException ex) {

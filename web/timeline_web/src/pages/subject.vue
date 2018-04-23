@@ -5,8 +5,8 @@
                 <h1>{{this.subjectTitle}}</h1>
                 <h3 class="subject-detail">编辑作者{{this.author}} | 最近修改时间： {{this.latestUpdateTime}}</h3>
                 <button class="btn white btn-style" >贡献内容</button>
-                <button class="btn white btn-style" v-if="isFocus == false">关注</button>
-                <button class="btn white btn-style" v-else="isFocus == true">已关注</button>
+                <button class="btn white btn-style" v-if="isFocus == false" @click="focus">关注</button>
+                <button class="btn white btn-style" v-else="isFocus == true" @click="unFocus">已关注</button>
             </div>
             <hr/>
             <div id='timeline-embed' style="width: 100%; height: 600px;"></div>
@@ -16,6 +16,8 @@
 
 <script>
     import TL from "../js/TL";
+    import util from '../libs/util';
+
     export default {
         data() {
             return {
@@ -31,6 +33,9 @@
         mounted: function () {
             this.subjectId = this.$route.params.value;
             this.loadDetail();
+            if (this.$root.$store.state.user.isLogin === true) {
+                this.isSubjectFocus();
+            }
         },
         methods: {
             // 加载 Subject 详情
@@ -51,13 +56,54 @@
             
             // 关注相关
             focus: function () {
-                
+                var focusApi = "/focus/subject/on";
+                this.$http.post(focusApi, util.getParams( { subjectID:this.subjectId }) ).then(response => {
+                    if (response.data.data === true) {
+                        this.isFocus = true;
+                        this.$Notice.success({
+                            title: "success",
+                            desc: "关注成功",
+                            duration: 2
+                        });
+                    } else {
+                        this.$Notice.error({
+                            title: "fail",
+                            desc: "关注失败",
+                            duration: 2
+                        });
+                    }
+                })
             },
 
             unFocus: function () {
-
+                var focusApi = "/focus/subject/off";
+                this.$http.post(focusApi, util.getParams({ subjectID:this.subjectId })).then(response => {
+                    if (response.data.data === true) {
+                        this.isFocus = false;
+                        this.$Notice.success({
+                            title: "success",
+                            desc: "取关成功",
+                            duration: 2
+                        });
+                    } else {
+                        this.$Notice.error({
+                            title: "fail",
+                            desc: "取关失败",
+                            duration: 2
+                        });
+                    }
+                })
             },
 
+            isSubjectFocus: function () {
+                var focusApi = "/focus/subject";
+                this.$http.get(focusApi, {params: { subjectID:this.subjectId }}).then(response => {
+
+                    if (response.data.data === true) {
+                        this.isFocus = true;
+                    }
+                })
+            },
             // 初始化 TimeLine 组件
             loadTimeline: function () {
                 this.timeline = new TL.Timeline('timeline-embed', this.timelineData);

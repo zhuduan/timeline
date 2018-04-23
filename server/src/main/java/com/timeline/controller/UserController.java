@@ -5,7 +5,6 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,13 +14,8 @@ import com.google.common.collect.Maps;
 import com.timeline.model.DTO.UserDTO;
 import com.timeline.model.PO.User;
 import com.timeline.service.UserService;
-import com.timeline.support.annotation.UserLogin;
-import com.timeline.support.common.ControllerException;
-import com.timeline.support.common.ErrorType;
 import com.timeline.support.common.ResponseUtils;
 import com.timeline.support.utils.ConvertUtils;
-import com.timeline.support.utils.LogUtil;
-import com.timeline.support.utils.NumberUtil;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +23,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 
 @Api(description = "user related api")
 @RestController
@@ -109,18 +102,5 @@ public class UserController {
     //get current subject
     Subject subject = SecurityUtils.getSubject();
     subject.login(token);
-  }
-
-  @ApiOperation(httpMethod = "GET", value = "get user info detail by ID", response = Map.class)
-  @RequestMapping(value = "info", method = {RequestMethod.GET})
-  @UserLogin
-  Object getUserInfo(@RequestAttribute("userID") Integer userID) throws Exception {
-    if (!NumberUtil.isPositiveAndValid(userID)) {
-      LogUtil.appLog.info(LogUtil.getMsg("wrong input for: userID=" + userID));
-      throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
-    }
-
-    UserDTO userInfo = ConvertUtils.convert(userService.getUserByID(userID), UserDTO.class);
-    return userInfo;
   }
 }

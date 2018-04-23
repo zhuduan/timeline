@@ -3,7 +3,7 @@ package com.timeline.controller;
 import static com.timeline.support.common.CommonConfig.PAGE_SIZE;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,8 +14,10 @@ import com.google.common.base.Strings;
 import com.timeline.model.DTO.SubjectDTO;
 import com.timeline.service.SearchService;
 import com.timeline.service.SubjectService;
+import com.timeline.support.annotation.UserLogin;
 import com.timeline.support.common.ControllerException;
 import com.timeline.support.common.ErrorType;
+import com.timeline.support.http.HttpKeys;
 import com.timeline.support.utils.ConvertUtils;
 import com.timeline.support.utils.LogUtil;
 import com.timeline.support.utils.NumberUtil;
@@ -61,11 +63,13 @@ public class SubjectController {
     return subjectService.getSubjectListByDefault(pageNum, pageSize);
   }
 
+  @UserLogin
   @ApiOperation(httpMethod = "GET", value = "get subject list which user focus on", response = List.class)
   @RequestMapping(value = "list/focus", method = RequestMethod.GET)
-  public Object getFocusSubjectList(@RequestParam("userID") Integer userID,
-      @RequestParam("pageNum") Integer pageNum,
-      @RequestParam(name = "pageSize", required = false) Integer pageSize) throws ControllerException {
+  public Object getFocusSubjectList( @RequestAttribute(HttpKeys.X_USER_ID) Integer userID,
+                                     @RequestParam(name = "pageSize", required = false) Integer pageSize,
+                                     @RequestParam("pageNum") Integer pageNum ) throws ControllerException {
+
     if (!NumberUtil.isPositiveAndValid(userID)) {
       LogUtil.appLog.info(LogUtil.getMsg("wrong input for: userID=" + userID));
       throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
@@ -92,9 +96,4 @@ public class SubjectController {
     return ConvertUtils.convert(searchService.searchSubjects(key, pageNum), SubjectDTO.class);
   }
 
-  @PostMapping(value = "")
-  public SubjectDTO createSubject() {
-
-    return null;
-  }
 }

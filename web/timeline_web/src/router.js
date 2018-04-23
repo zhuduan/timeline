@@ -3,7 +3,7 @@ const routers = [{
     meta: {
         title: ''
     },
-    component: (resolve) => require(['./pages/Index.vue'], resolve)
+    component: (resolve) => require(['./pages/index.vue'], resolve)
     },
     {
         path: '/search/:value',

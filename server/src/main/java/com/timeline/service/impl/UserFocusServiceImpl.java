@@ -41,7 +41,7 @@ public class UserFocusServiceImpl implements UserFocusService {
       LogUtil.svcLog.info(LogUtil.getMsg("no authority to focus: userID=" + userID));
       throw new ServiceException(ErrorType.INVALID_INPUT_PARAM);
     }
-    return (userFocusDAO.focusSubject(userID, subjectID) >= 0);
+    return (userFocusDAO.focusSubject(userID, subjectID, 1) >= 0);
   }
 
   @Override
@@ -50,7 +50,7 @@ public class UserFocusServiceImpl implements UserFocusService {
       LogUtil.svcLog.info(LogUtil.getMsg("no authority to unfocus: userID=" + userID));
       throw new ServiceException(ErrorType.INVALID_INPUT_PARAM);
     }
-    return (userFocusDAO.unFocusSubject(userID, subjectID) >= 0);
+    return (userFocusDAO.focusSubject(userID, subjectID, 0) >= 0);
   }
 
   @Override
