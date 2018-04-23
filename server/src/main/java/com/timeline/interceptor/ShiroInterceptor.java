@@ -2,7 +2,9 @@ package com.timeline.interceptor;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
+import org.apache.shiro.subject.ExecutionException;
 import org.apache.shiro.subject.Subject;
+import org.apache.shiro.util.ThreadContext;
 import org.apache.shiro.web.mgt.WebSecurityManager;
 import org.apache.shiro.web.servlet.ShiroHttpServletRequest;
 import org.apache.shiro.web.servlet.ShiroHttpServletResponse;
@@ -20,11 +22,13 @@ import com.timeline.support.annotation.UserLogin;
 import com.timeline.support.annotation.UserLoginHolder;
 
 import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Map;
 
@@ -50,36 +54,64 @@ public class ShiroInterceptor implements HandlerInterceptor {
                             final HttpServletResponse servletResponse,
                             final Object handler ) throws Exception {
 
-    HandlerMethod handlerMethod = (HandlerMethod) handler;
-    UserLoginHolder holder = getUserLoginHolder(handlerMethod);
+    Throwable t = null;
 
-    final ServletRequest request = prepareServletRequest(servletRequest, servletResponse);
-    final ServletResponse response = prepareServletResponse(request, servletResponse);
-    final Subject subject = createSubject(request, response);
+    try {
+      HandlerMethod handlerMethod = (HandlerMethod) handler;
+      UserLoginHolder holder = getUserLoginHolder(handlerMethod);
 
-    subject.execute(() -> {
+      // wrap request and response
+      final ServletRequest request = prepareServletRequest(servletRequest, servletResponse);
+      final ServletResponse response = prepareServletResponse(request, servletResponse);
 
-      // 更新Session
-      updateSessionLastAccessTime(request, response);
-      Method method = handlerMethod.getMethod();
-      if (holder.needCheck(method)) {
+      // create subject
+      final Subject subject = createSubject(request, response);
 
-        if (!subject.isAuthenticated()) {
-          WebUtils.saveRequest(request);
-          throw new RuntimeException("you need login");
+      // bind subject to current thread
+      ThreadContext.bind(subject);
+
+      // execute
+      subject.execute(() -> {
+
+        // update session
+        updateSessionLastAccessTime(request, response);
+        Method method = handlerMethod.getMethod();
+        if (holder.needCheck(method)) {
+
+          if (!subject.isAuthenticated()) {
+            WebUtils.saveRequest(request);
+            throw new RuntimeException("you need login");
+          }
+          request.setAttribute("userID", ((User) subject.getPrincipal()).getId());
         }
-        request.setAttribute("userID", ((User)subject.getPrincipal()).getId());
+      });
+    } catch (ExecutionException ex) {
+      t = ex.getCause();
+    } catch (Throwable throwable) {
+      t = throwable;
+    }
+
+    if (t != null) {
+      if (t instanceof ServletException) {
+        throw (ServletException) t;
       }
-    });
+      if (t instanceof IOException) {
+        throw (IOException) t;
+      }
+      //otherwise it's not one of the two exceptions expected by the filter method signature - wrap it in one:
+      String msg = "Filtered request failed.";
+      throw new ServletException(msg, t);
+    }
 
     return true;
   }
 
   private UserLoginHolder getUserLoginHolder(HandlerMethod handlerMethod) {
     UserLoginHolder holder = cache.get(handlerMethod.getBeanType());
+    Class<?> type = handlerMethod.getBeanType();
     if (holder == null) {
 
-      synchronized (object) {
+      synchronized (type) {
 
         if (holder == null) {
 

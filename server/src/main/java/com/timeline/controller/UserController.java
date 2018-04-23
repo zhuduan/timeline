@@ -3,9 +3,7 @@ package com.timeline.controller;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
-import org.apache.shiro.web.util.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -86,7 +84,6 @@ public class UserController {
     try {
 
       doLogin(userName, password);
-      WebUtils.saveRequest(request);
 
       UserDTO dto = new UserDTO();
       dto.setName(userName);

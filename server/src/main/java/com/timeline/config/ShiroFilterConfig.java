@@ -8,12 +8,10 @@ import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationInfo;
-import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
-import org.apache.shiro.web.servlet.ShiroFilter;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -35,43 +33,6 @@ public class ShiroFilterConfig implements ServletContextAware {
 
   private ServletContext servletContext;
 
-/*  @Bean
-  @Autowired
-  @Qualifier("shiroFilter")
-  public FilterRegistrationBean getShiroDelegateFilter(Filter shiroFilter) {
-
-    FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
-    filterRegistrationBean.setDispatcherTypes(DispatcherType.REQUEST,
-        DispatcherType.INCLUDE,
-        DispatcherType.FORWARD);
-    filterRegistrationBean.setUrlPatterns(Arrays.asList("/*"));
-    filterRegistrationBean.setOrder(1);
-    filterRegistrationBean.setFilter(shiroFilter);
-    return filterRegistrationBean;
-  }
-
-  @Bean("shiroFilter")
-  public ShiroFilterFactoryBean getShiroFilter() {
-
-    ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
-    shiroFilterFactoryBean.setFilterChainDefinitionMap(getFilterChainDefinitionMap());
-
-    shiroFilterFactoryBean.setLoginUrl("/user/login");
-    shiroFilterFactoryBean.setSecurityManager(getDefaultSecurityManager());
-    return shiroFilterFactoryBean;
-  }
-
-  public Map<String, String> getFilterChainDefinitionMap() {
-
-    Map<String, String> definitionMap = Maps.newLinkedHashMap();
-    definitionMap.put("/user/login", DefaultFilter.anon.name());
-    definitionMap.put("/user/login/error", DefaultFilter.anon.name());
-    definitionMap.put("/user/register", DefaultFilter.anon.name());
-    definitionMap.put("/user/**", DefaultFilter.authc.name());
-    definitionMap.put("/**", DefaultFilter.anon.name());
-    return definitionMap;
-  }*/
-
   @Bean("shiroInterceptor")
   public HandlerInterceptor shiroInterceptor() {
     ShiroInterceptor interceptor = new ShiroInterceptor();
@@ -83,8 +44,8 @@ public class ShiroFilterConfig implements ServletContextAware {
   public DefaultWebSecurityManager getDefaultSecurityManager() {
 
     DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
-    securityManager.setRealm(getRealm());
     securityManager.setSessionManager(new DefaultWebSessionManager());
+    securityManager.setRealm(getRealm());
     return securityManager;
   }
 
@@ -144,6 +105,6 @@ public class ShiroFilterConfig implements ServletContextAware {
 
   @Override
   public void setServletContext(final ServletContext servletContext) {
-
+    this.servletContext = servletContext;
   }
 }
