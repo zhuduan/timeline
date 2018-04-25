@@ -7,7 +7,7 @@ util.title = function (title) {
     window.document.title = title;
 };
 
-const ajaxUrl = env === 'development' ? 'http://127.0.0.1:8088' : env === 'production' ? 'https://www.url.com' : 'https://debug.url.com';
+const ajaxUrl = env === 'development' ? 'http://127.0.0.1:8088' : env === 'production' ? 'http://www.keep-on.top:8080/api-server' : 'https://debug.url.com';
 
 util.ajax = axios.create();
 
