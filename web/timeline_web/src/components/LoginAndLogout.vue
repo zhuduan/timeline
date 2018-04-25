@@ -101,7 +101,7 @@
 
 <script>
     import common from '../js/common';
-    import util from '../libs/util';
+    import util from '../js/util';
     import IForm from "../../node_modules/iview/src/components/form/form.vue";
     import IFormItem from "../../node_modules/iview/src/components/form/form-item.vue";
     import IInput from "../../node_modules/iview/src/components/input/input.vue";

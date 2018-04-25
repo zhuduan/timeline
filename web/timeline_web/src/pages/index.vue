@@ -1,9 +1,8 @@
 <template>
     <div>
         <Row style="text-align: center;">
-            <div class="index-logo" style="font-size: xx-large;"><h1>timeline<sup class="sup red">js</sup></h1></div>
-            <span><h3>Sub title</h3></span>
-            <br/>
+            <div class="index-logo" style="font-size: xx-large;"><h1>{{this.title}}</h1></div>
+            <br/> <br/> <br/>
             <div class="index-search">
                 <input v-model="searchKey" class="ivu-inputbox" v-on:keyup.enter="searchSubject" placeholder="Enter something..."/>
                 <Button type="ghost" shape="circle" icon="ios-search" @click="searchSubject">Search</Button>
@@ -29,10 +28,10 @@
 </template>
 
 <script>
-import itemCard from './../components/itemCard'
-import sideBanner from './../components/sideBanner'
+    import itemCard from './../components/itemCard'
+    import sideBanner from './../components/sideBanner'
 
-export default {
+    export default {
   data () {
     return {
         cardlist: '',
@@ -41,7 +40,8 @@ export default {
           {itemText: 'What is latest news?', itemUrl: '#'},
           {itemText: 'Tips', itemUrl: '#'}
         ],
-        searchKey: ''
+        searchKey: '',
+        title:'事件回溯'
     }
   },
   components: {

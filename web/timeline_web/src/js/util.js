@@ -2,12 +2,23 @@ import axios from 'axios';
 import env from '../config/env';
 
 let util = {};
+
+const WEB_TITLE = "Backtrack--事件回溯";
+
+const Dev_Api_Url = "http://127.0.0.1:8088";
+const Prod_Api_Url = "http://www.keep-on.top:8080/api-server";
+const Debug_Api_Url = 'https://debug.url.com';
+
 util.title = function (title) {
-    title = title ? title + ' - Home' : 'iView project';
+    title = title ? title + ' - Home' : WEB_TITLE;
     window.document.title = title;
 };
 
-const ajaxUrl = env === 'development' ? 'http://127.0.0.1:8088' : env === 'production' ? 'http://www.keep-on.top:8080/api-server' : 'https://debug.url.com';
+util.getWebTitle = function () {
+    return WEB_TITLE;
+}
+
+const ajaxUrl = env === 'development' ? Dev_Api_Url : env === 'production' ? Prod_Api_Url : Debug_Api_Url;
 
 util.ajax = axios.create();
 
