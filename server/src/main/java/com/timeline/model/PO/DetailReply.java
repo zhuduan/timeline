@@ -12,6 +12,8 @@ public class DetailReply {
   private String Content;
 
   private Integer AuthorID;
+  
+  private Integer toReplyID;
 
   private Byte IsValid;
 
@@ -83,6 +85,14 @@ public class DetailReply {
     UpdateTime = updateTime;
   }
 
+  public Integer getToReplyID() {
+    return toReplyID;
+  }
+
+  public void setToReplyID(Integer toReplyID) {
+    this.toReplyID = toReplyID;
+  }
+
   public DetailReply() {
   }
 
@@ -91,5 +101,15 @@ public class DetailReply {
     Title = title;
     Content = content;
     AuthorID = authorID;
+    toReplyID = 0;
+  }
+
+  public DetailReply(Integer detailID, String title, String content, Integer authorID, Integer toReplyID) {
+    this.ID = ID;
+    DetailID = detailID;
+    Title = title;
+    Content = content;
+    AuthorID = authorID;
+    this.toReplyID = toReplyID;
   }
 }

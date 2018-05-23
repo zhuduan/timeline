@@ -1,6 +1,9 @@
 package com.timeline.model.DTO;
 
+import java.util.List;
+
 public class DetailReplyDTO {
+  
   private Integer ID;
 
   private Integer DetailID;
@@ -10,7 +13,11 @@ public class DetailReplyDTO {
   private String Content;
 
   private Integer AuthorID;
-
+  
+  private Integer ToReplyID;
+  
+  private List<DetailReplyDTO> subReplies;
+  
   public Integer getID() {
     return ID;
   }
@@ -49,5 +56,21 @@ public class DetailReplyDTO {
 
   public void setAuthorID(Integer authorID) {
     AuthorID = authorID;
+  }
+
+  public List<DetailReplyDTO> getSubReplies() {
+    return subReplies;
+  }
+
+  public void setSubReplies(List<DetailReplyDTO> subReplies) {
+    this.subReplies = subReplies;
+  }
+
+  public Integer getToReplyID() {
+    return ToReplyID;
+  }
+
+  public void setToReplyID(Integer toReplyID) {
+    ToReplyID = toReplyID;
   }
 }

@@ -27,78 +27,78 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping(value = "detail/reply")
 public class DetailReplyController {
 
-  @Autowired
-  private DetailReplyService detailReplyService;
+    @Autowired
+    private DetailReplyService detailReplyService;
 
-  @ApiOperation(httpMethod = "GET", value = "get detail replies list by detailID", response = List.class)
-  @RequestMapping(value = "list", method = RequestMethod.GET)
-  public Object getRepliesByDetailID(@RequestParam("detailID") Integer detailID,
-      @RequestParam("pageNum") Integer pageNum,
-      @RequestParam(name = "pageSize", required = false) Integer pageSize) throws Exception {
-    if (!NumberUtil.isPositiveAndValid(detailID)
-        || !NumberUtil.isPositiveAndValid(pageNum)) {
-      LogUtil.appLog.info(LogUtil.getMsg("wrong input for: detailID=" + detailID + ", pageNum=" + pageNum));
-      throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
-    }
-    if (pageSize == null) {
-      pageSize = PAGE_SIZE;
-    }
-    return detailReplyService.getReplyWithUserByDetailID(detailID, pageNum, pageSize);
-  }
-
-  @ApiOperation(httpMethod = "POST", value = "add new reply", response = Map.class)
-  @RequestMapping(value = "info/new", method = RequestMethod.POST)
-  public Object addReply( @RequestParam("detailID") Integer detailID,
-                          @RequestParam("title") String title,
-                          @RequestParam("content") String content,
-                          @RequestParam("authorID") Integer authorID,
-                          @RequestParam("userID") Integer userID) throws Exception {
-
-    if (!NumberUtil.isPositiveAndValid(detailID)
-        || !NumberUtil.isPositiveAndValid(authorID)
-        || !NumberUtil.isPositiveAndValid(userID)) {
-      LogUtil.appLog.info(LogUtil.getMsg("wrong input for: detailID="
-          + detailID + ", authorID=" + authorID + ", userID=" + userID));
-      throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
-    }
-    if (StringUtils.isEmpty(title) || StringUtils.isEmpty(content)) {
-      LogUtil.appLog.info(LogUtil.getMsg("wrong input for: title=" + title + ", content=" + content));
-      throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
+    @ApiOperation(httpMethod = "GET", value = "get detail replies list by detailID", response = List.class)
+    @RequestMapping(value = "list", method = RequestMethod.GET)
+    public Object getRepliesByDetailID(@RequestParam("detailID") Integer detailID,
+                                       @RequestParam("pageNum") Integer pageNum,
+                                       @RequestParam(name = "pageSize", required = false) Integer pageSize) throws Exception {
+        if (!NumberUtil.isPositiveAndValid(detailID)
+                || !NumberUtil.isPositiveAndValid(pageNum)) {
+            LogUtil.appLog.info(LogUtil.getMsg("wrong input for: detailID=" + detailID + ", pageNum=" + pageNum));
+            throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
+        }
+        if (pageSize == null) {
+            pageSize = PAGE_SIZE;
+        }
+        return detailReplyService.getReplyWithUserInfoByDetailID(detailID, pageNum, pageSize);
     }
 
-    Map<String, Boolean> addResult = new HashMap<>();
-    addResult.put("result", detailReplyService.addReply(detailID, title, content, authorID, userID));
-    return addResult;
-  }
+    @ApiOperation(httpMethod = "POST", value = "add new reply", response = Map.class)
+    @RequestMapping(value = "info/new", method = RequestMethod.POST)
+    public Object addReply(@RequestParam("detailID") Integer detailID,
+                           @RequestParam("title") String title,
+                           @RequestParam("content") String content,
+                           @RequestParam("authorID") Integer authorID,
+                           @RequestParam(value = "toReplyID", required = false) Integer toReplyID) throws Exception {
 
-  @ApiOperation(httpMethod = "PUT", value = "modify exist reply", response = Map.class)
-  @RequestMapping(value = "info/modify", method = RequestMethod.PUT)
-  public Object modifyReply(@RequestParam("replyID") Integer replyID,
-      @RequestParam("title") String title,
-      @RequestParam("content") String content,
-      @RequestParam("userID") Integer userID) throws Exception {
-    if (!NumberUtil.isPositiveAndValid(replyID) || !NumberUtil.isPositiveAndValid(userID)) {
-      LogUtil.appLog.info(LogUtil.getMsg("wrong input for: replyID=" + replyID + ", userID=" + userID));
-      throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
+        if (!NumberUtil.isPositiveAndValid(detailID) || !NumberUtil.isPositiveAndValid(authorID)) {
+            LogUtil.appLog.info(LogUtil.getMsg("wrong input for: detailID=" + detailID + ", authorID=" + authorID));
+            throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
+        }
+        if (StringUtils.isEmpty(title) || StringUtils.isEmpty(content)) {
+            LogUtil.appLog.info(LogUtil.getMsg("wrong input for: title=" + title + ", content=" + content));
+            throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
+        }
+        if (toReplyID == null) {
+            toReplyID = 0;
+        }
+
+        Map<String, Boolean> addResult = new HashMap<>();
+        addResult.put("result", detailReplyService.addReply(detailID, title, content, authorID, toReplyID));
+        return addResult;
     }
 
-    Map<String, Boolean> modifyResult = new HashMap<>();
-    modifyResult.put("result", detailReplyService.updateReply(replyID, title, content, userID));
-    return modifyResult;
-  }
+    @ApiOperation(httpMethod = "PUT", value = "modify exist reply", response = Map.class)
+    @RequestMapping(value = "info/modify", method = RequestMethod.PUT)
+    public Object modifyReply(@RequestParam("replyID") Integer replyID,
+                              @RequestParam("title") String title,
+                              @RequestParam("content") String content,
+                              @RequestParam("authorID") Integer authorID) throws Exception {
+        if (!NumberUtil.isPositiveAndValid(replyID) || !NumberUtil.isPositiveAndValid(authorID)) {
+            LogUtil.appLog.info(LogUtil.getMsg("wrong input for: replyID=" + replyID + ", authorID=" + authorID));
+            throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
+        }
 
-  @ApiOperation(httpMethod = "DELETE", value = "delete exist reply", response = Map.class)
-  @RequestMapping(value = "info/delete", method = RequestMethod.DELETE)
-  public Object deleteReply( @RequestParam("replyID") Integer replyID,
-                             @RequestParam("userID") Integer userID ) throws Exception {
-
-    if (!NumberUtil.isPositiveAndValid(replyID) || !NumberUtil.isPositiveAndValid(userID)) {
-      LogUtil.appLog.info(LogUtil.getMsg("wrong input for: replyID=" + replyID + ", userID=" + userID));
-      throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
+        Map<String, Boolean> modifyResult = new HashMap<>();
+        modifyResult.put("result", detailReplyService.updateReply(replyID, title, content, authorID));
+        return modifyResult;
     }
 
-    Map<String, Boolean> deleteResult = new HashMap<>();
-    deleteResult.put("result", detailReplyService.deleteReply(replyID, userID));
-    return deleteResult;
-  }
+    @ApiOperation(httpMethod = "DELETE", value = "delete exist reply", response = Map.class)
+    @RequestMapping(value = "info/delete", method = RequestMethod.DELETE)
+    public Object deleteReply(@RequestParam("replyID") Integer replyID,
+                              @RequestParam("authorID") Integer authorID) throws Exception {
+
+        if (!NumberUtil.isPositiveAndValid(replyID) || !NumberUtil.isPositiveAndValid(authorID)) {
+            LogUtil.appLog.info(LogUtil.getMsg("wrong input for: replyID=" + replyID + ", userID=" + authorID));
+            throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
+        }
+
+        Map<String, Boolean> deleteResult = new HashMap<>();
+        deleteResult.put("result", detailReplyService.deleteReply(replyID, authorID));
+        return deleteResult;
+    }
 }

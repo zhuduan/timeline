@@ -10,12 +10,11 @@ public interface DetailReplyService {
 
   List<DetailReplyDTO> getReplyByDetailID(Integer detailID, Integer pageNum, Integer pageSize);
 
-  List<Map<String, Object>> getReplyWithUserByDetailID(Integer detailID, Integer pageNum, Integer pageSize);
+  List<Map<String, Object>> getReplyWithUserInfoByDetailID(Integer detailID, Integer pageNum, Integer pageSize);
 
-  Boolean addReply(Integer detailID, String title, String content, Integer authorID, Integer userID)
-      throws ServiceException;
+  Boolean addReply(Integer detailID, String title, String content, Integer authorID, Integer toReplyID) throws ServiceException;
 
-  Boolean deleteReply(Integer relyID, Integer userID) throws ServiceException;
+  Boolean deleteReply(Integer relyID, Integer authorID) throws ServiceException;
 
-  Boolean updateReply(Integer relyID, String title, String content, Integer userID) throws ServiceException;
+  Boolean updateReply(Integer relyID, String title, String content, Integer authorID) throws ServiceException;
 }
