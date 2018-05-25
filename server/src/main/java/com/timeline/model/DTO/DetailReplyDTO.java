@@ -14,6 +14,8 @@ public class DetailReplyDTO {
 
   private Integer AuthorID;
   
+  private UserDTO User;
+  
   private Integer ToReplyID;
   
   private List<DetailReplyDTO> subReplies;
@@ -72,5 +74,13 @@ public class DetailReplyDTO {
 
   public void setToReplyID(Integer toReplyID) {
     ToReplyID = toReplyID;
+  }
+
+  public UserDTO getUser() {
+    return User;
+  }
+
+  public void setUser(UserDTO user) {
+    User = user;
   }
 }

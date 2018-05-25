@@ -39,17 +39,13 @@ public class DetailReplyServiceImpl implements DetailReplyService {
     }
 
     @Override
-    public List<Map<String, Object>> getReplyWithUserInfoByDetailID(Integer detailID, Integer pageNum, Integer pageSize) {
+    public List<DetailReplyDTO> getReplyWithUserInfoByDetailID(Integer detailID, Integer pageNum, Integer pageSize) {
         List<DetailReplyDTO> replyList = getReplyByDetailID(detailID, pageNum, pageSize);
-        List<Map<String, Object>> replyWithUserList = new ArrayList<>();
         replyList.forEach((reply) -> {
-            Map<String, Object> replyWithUser = new HashMap<String, Object>();
             reply.setSubReplies(getSubReply(reply.getDetailID(), reply.getID()));
-            replyWithUser.put("reply", reply);
-            replyWithUser.put("user", ConvertUtils.convert(userService.getUserByID(reply.getAuthorID()), UserDTO.class));
-            replyWithUserList.add(replyWithUser);
+            reply.setUser(ConvertUtils.convert(userService.getUserByID(reply.getAuthorID()), UserDTO.class));
         });
-        return replyWithUserList;
+        return replyList;
     }
 
     @Override
@@ -95,7 +91,12 @@ public class DetailReplyServiceImpl implements DetailReplyService {
     }
 
     private List<DetailReplyDTO> getSubReply(Integer detailID, Integer toReplyID) {
-        List<DetailReply> detailReplyList = detailReplyDAO.getSubReplyByDetailID(detailID, toReplyID);
-        return ConvertUtils.convert(detailReplyList, DetailReplyDTO.class);
+        List<DetailReplyDTO> detailReplyList = ConvertUtils.convert(
+                detailReplyDAO.getSubReplyByDetailID(detailID, toReplyID), DetailReplyDTO.class);
+        detailReplyList.forEach((reply) -> {
+            reply.setSubReplies(getSubReply(reply.getDetailID(), reply.getID()));
+            reply.setUser(ConvertUtils.convert(userService.getUserByID(reply.getAuthorID()), UserDTO.class));
+        });
+        return detailReplyList;
     }
 }

@@ -10,7 +10,7 @@ public interface DetailReplyService {
 
   List<DetailReplyDTO> getReplyByDetailID(Integer detailID, Integer pageNum, Integer pageSize);
 
-  List<Map<String, Object>> getReplyWithUserInfoByDetailID(Integer detailID, Integer pageNum, Integer pageSize);
+  List<DetailReplyDTO> getReplyWithUserInfoByDetailID(Integer detailID, Integer pageNum, Integer pageSize);
 
   Boolean addReply(Integer detailID, String title, String content, Integer authorID, Integer toReplyID) throws ServiceException;
 

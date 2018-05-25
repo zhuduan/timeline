@@ -13,7 +13,7 @@ public class DetailReply {
 
   private Integer AuthorID;
   
-  private Integer toReplyID;
+  private Integer ToReplyID;
 
   private Byte IsValid;
 
@@ -86,11 +86,11 @@ public class DetailReply {
   }
 
   public Integer getToReplyID() {
-    return toReplyID;
+    return ToReplyID;
   }
 
   public void setToReplyID(Integer toReplyID) {
-    this.toReplyID = toReplyID;
+    this.ToReplyID = toReplyID;
   }
 
   public DetailReply() {
@@ -101,7 +101,7 @@ public class DetailReply {
     Title = title;
     Content = content;
     AuthorID = authorID;
-    toReplyID = 0;
+    ToReplyID = 0;
   }
 
   public DetailReply(Integer detailID, String title, String content, Integer authorID, Integer toReplyID) {
@@ -110,6 +110,6 @@ public class DetailReply {
     Title = title;
     Content = content;
     AuthorID = authorID;
-    this.toReplyID = toReplyID;
+    this.ToReplyID = toReplyID;
   }
 }
