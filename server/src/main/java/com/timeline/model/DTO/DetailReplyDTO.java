@@ -1,5 +1,6 @@
 package com.timeline.model.DTO;
 
+import java.util.Date;
 import java.util.List;
 
 public class DetailReplyDTO {
@@ -17,6 +18,8 @@ public class DetailReplyDTO {
   private UserDTO User;
   
   private Integer ToReplyID;
+
+  private Date CreateTime;
   
   private List<DetailReplyDTO> subReplies;
   
@@ -82,5 +85,13 @@ public class DetailReplyDTO {
 
   public void setUser(UserDTO user) {
     User = user;
+  }
+
+  public Date getCreateTime() {
+    return CreateTime;
+  }
+
+  public void setCreateTime(Date createTime) {
+    CreateTime = createTime;
   }
 }
