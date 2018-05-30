@@ -111,8 +111,8 @@
 
         <!-- temp -->
         <Row>
-            <div style="display:inline">
-                <replyList detailID="1" />
+            <div style="margin:10%;">
+                <replyList detailID="1" userID="1"/>
             </div>
         </Row>
         <!-- temp end -->
