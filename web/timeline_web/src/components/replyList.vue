@@ -167,7 +167,7 @@
                     if(response.data['status'] == 200) {
                         this.replies = response.data.data;
                         this.getTotalCount();
-                    }
+                    } 
                 }, response => {
                     console.log("error");
                 });
@@ -199,7 +199,9 @@
                     if(response.data['status'] == 200) {
                         this.replies = this.getReplyList();
                         this.replyContent = '';
-                    } 
+                    } else {
+                        this.showErrMsg(response.data.msg, response.data.data);
+                    }
                 }, response => {
                     console.log("error");
                 });
@@ -220,6 +222,8 @@
                     if(response.data['status'] == 200) {
                         this.replies = this.getReplyList();
                         this.subReplyContent = '';
+                    } else {
+                        this.showErrMsg(response.data.msg, response.data.data);
                     }
                 }, response => {
                     console.log("error");
@@ -236,6 +240,8 @@
                     data: {
                         id: id,
                         authorID: this.userID
+                    } else {
+                        this.showErrMsg(response.data.msg, response.data.data);
                     }
                 }).then(response => {
                     if(response.data['status'] == 200) {
