@@ -112,7 +112,7 @@
         <!-- temp -->
         <Row>
             <div style="margin:10%;">
-                <replyList detailID="1" userID="1"/>
+                <replyList :detailID="1" :userID="2"/>
             </div>
         </Row>
         <!-- temp end -->

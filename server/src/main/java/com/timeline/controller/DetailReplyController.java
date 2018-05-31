@@ -2,8 +2,10 @@ package com.timeline.controller;
 
 import static com.timeline.support.common.CommonConfig.PAGE_SIZE;
 
+import com.timeline.model.DTO.DetailReplyDTO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -46,37 +48,36 @@ public class DetailReplyController {
         return detailReplyService.getReplyWithUserInfoByDetailID(detailID, pageNum, pageSize);
     }
 
+    @ApiOperation(httpMethod = "GET", value = "get the total count of reply list", response = Integer.class)
+    @RequestMapping(value = "count/total", method = RequestMethod.GET)
+    public Object getTotalCount(@RequestParam("detailID") Integer detailID) throws Exception {
+        if ( !NumberUtil.isPositiveAndValid(detailID) ) {
+            LogUtil.appLog.info(LogUtil.getMsg("wrong input for: detailID=" + detailID));
+            throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
+        }
+        Map<String, Integer> countResult = new HashMap<>();
+        countResult.put("total", detailReplyService.getTotalCount(detailID));
+        return countResult;
+    }
+    
     @ApiOperation(httpMethod = "POST", value = "add new reply", response = Map.class)
     @RequestMapping(value = "info/new", method = RequestMethod.POST)
-    public Object addReply(@RequestParam("detailID") Integer detailID,
-                           @RequestParam("title") String title,
-                           @RequestParam("content") String content,
-                           @RequestParam("authorID") Integer authorID,
-                           @RequestParam(value = "toReplyID", required = false) Integer toReplyID) throws Exception {
-
-        if (!NumberUtil.isPositiveAndValid(detailID) || !NumberUtil.isPositiveAndValid(authorID)) {
-            LogUtil.appLog.info(LogUtil.getMsg("wrong input for: detailID=" + detailID + ", authorID=" + authorID));
-            throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
-        }
-        if (StringUtils.isEmpty(title) || StringUtils.isEmpty(content)) {
-            LogUtil.appLog.info(LogUtil.getMsg("wrong input for: title=" + title + ", content=" + content));
-            throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
-        }
-        if (toReplyID == null) {
-            toReplyID = 0;
-        }
-
+    public Object addReply(@RequestBody DetailReplyDTO detailReplyDTO) throws Exception {
+        detailReplyDTO.validate();
         Map<String, Boolean> addResult = new HashMap<>();
-        addResult.put("result", detailReplyService.addReply(detailID, title, content, authorID, toReplyID));
+        addResult.put("result", detailReplyService.addReply(detailReplyDTO.getDetailID(), detailReplyDTO.getTitle(),
+                detailReplyDTO.getContent(), detailReplyDTO.getAuthorID(), detailReplyDTO.getToReplyID()));
         return addResult;
     }
 
     @ApiOperation(httpMethod = "PUT", value = "modify exist reply", response = Map.class)
     @RequestMapping(value = "info/modify", method = RequestMethod.PUT)
-    public Object modifyReply(@RequestParam("replyID") Integer replyID,
-                              @RequestParam("title") String title,
-                              @RequestParam("content") String content,
-                              @RequestParam("authorID") Integer authorID) throws Exception {
+    public Object modifyReply(@RequestBody DetailReplyDTO detailReplyDTO) throws Exception {
+        Integer replyID = detailReplyDTO.getID();
+        Integer authorID = detailReplyDTO.getAuthorID();
+        String title = detailReplyDTO.getTitle();
+        String content = detailReplyDTO.getContent();
+        
         if (!NumberUtil.isPositiveAndValid(replyID) || !NumberUtil.isPositiveAndValid(authorID)) {
             LogUtil.appLog.info(LogUtil.getMsg("wrong input for: replyID=" + replyID + ", authorID=" + authorID));
             throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);
@@ -89,9 +90,10 @@ public class DetailReplyController {
 
     @ApiOperation(httpMethod = "DELETE", value = "delete exist reply", response = Map.class)
     @RequestMapping(value = "info/delete", method = RequestMethod.DELETE)
-    public Object deleteReply(@RequestParam("replyID") Integer replyID,
-                              @RequestParam("authorID") Integer authorID) throws Exception {
-
+    public Object deleteReply(@RequestBody DetailReplyDTO detailReplyDTO) throws Exception {
+        Integer replyID = detailReplyDTO.getID();
+        Integer authorID = detailReplyDTO.getAuthorID();
+        
         if (!NumberUtil.isPositiveAndValid(replyID) || !NumberUtil.isPositiveAndValid(authorID)) {
             LogUtil.appLog.info(LogUtil.getMsg("wrong input for: replyID=" + replyID + ", userID=" + authorID));
             throw new ControllerException(ErrorType.INVALID_INPUT_PARAM);

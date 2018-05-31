@@ -1,5 +1,6 @@
 package com.timeline.repository;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.DeleteProvider;
 import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.Param;
@@ -31,13 +32,19 @@ public interface DetailReplyDAO {
             + " WHERE DetailID = #{detailID} AND ToReplyID=#{toReplyID} AND IsValid>0 ")
     List<DetailReply> getSubReplyByDetailID(@Param("detailID") Integer detailID, @Param("toReplyID") Integer toReplyID);
 
+    @Select("   SELECT COUNT(id) "
+            + " FROM " + TABLE
+            + " WHERE DetailID = #{detailID} AND ToReplyID=0 AND IsValid>0 ")
+    Integer getTotalCount(@Param("detailID") Integer detailID);
+
     @InsertProvider(type = DetailReplySQL.class, method = DetailReplySQL.METHOD_INSERT)
     Integer saveInfo(DetailReply detailReply);
 
     @UpdateProvider(type = DetailReplySQL.class, method = DetailReplySQL.METHOD_UPDATE_BY_KEY)
     Integer updateInfo(DetailReply detailReply);
 
-    @DeleteProvider(type = DetailReplySQL.class, method = DetailReplySQL.METHOD_DEL_BY_KEY)
+    @Delete("  DELETE FROM " + TABLE 
+            +" WHERE id=#{replyID} OR ToReplyID=#{replyID} ")
     Integer deleteInfo(Integer replyID);
 
     static class DetailReplySQL extends BaseSql {

@@ -89,6 +89,11 @@ public class DetailReplyServiceImpl implements DetailReplyService {
         Integer modifyNum = detailReplyDAO.updateInfo(reply);
         return modifyNum > 0;
     }
+    
+    @Override
+    public Integer getTotalCount(Integer detailID){
+        return detailReplyDAO.getTotalCount(detailID);
+    }
 
     private List<DetailReplyDTO> getSubReply(Integer detailID, Integer toReplyID) {
         List<DetailReplyDTO> detailReplyList = ConvertUtils.convert(

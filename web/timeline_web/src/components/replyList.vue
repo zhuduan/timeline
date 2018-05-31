@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Row v-for="item in replies">
+        <Row v-for="item in replies" v-if="item.user!=null">
             <input type="hidden" :value="item.id" />
             <Row>
                 <Col span="2" style="text-align:center;">
@@ -24,18 +24,18 @@
                     <br/>
                     <p style="margin-left:2%;">
                         <Button type="ghost" shape="circle" size="small" @click='showAddSubButton("subReplyButton"+item.id)'>回复</Button>
-                        <Button type="ghost" shape="circle" size="small" @click="rmvReply(item.id)">删除</Button>
+                        <Button type="ghost" shape="circle" size="small" @click="rmvReply(item.id)" :disabled="isAuthor(item.authorID)">删除</Button>
                     </p>
                 </Col>
             </Row>
             <br/>
-            <Row v-for="subItem in item.subReplies">
+            <Row v-for="subItem in item.subReplies" v-if="subItem.user!=null">
                 <Col span="2">
                     <span> &nbsp; </span>
                 </Col>
                 <Col span="22">
                     <span style="border-right: gray;">
-                        <a :href="subItem.user.id">{{subItem.user.name}}</a> : 
+                        <a :href="subItem.authorID">{{subItem.user.name}}</a> : 
                         &nbsp; &nbsp;
                         {{subItem.content}}
                     </span>
@@ -43,18 +43,22 @@
                 </Col>
             </Row>
             <br/>
-            <p style="margin-left:1%; margin-right:1%; display: none" :id='"subReplyButton"+item.id'>
+            <div style="margin-left:8%; margin-right:8%; display: none" :id='"subReplyButton"+item.id'>
                 <Input v-model="subReplyContent">
                     <Button slot="append" type="ghost" @click="addSubReply(item.id)">发送</Button>
                 </Input>
-            </p>
+            </div>
             <hr></hr>
             <br/>
         </Row>
+        <div style="text-align: center;">
+            <Page :current="pageNum" :total="totalSize" @on-change="showPage"></Page>
+        </div>
+        <br/>
         <Row>
             <p style="margin-left:1%; margin-right:1%; ">
                 <Input v-model="replyContent">
-                    <Button slot="append" type="ghost">回复</Button>
+                    <Button slot="append" type="ghost" @click="addReply()" >回复</Button>
                 </Input>
             </p>
         </Row>
@@ -62,12 +66,12 @@
 </template>
 
 <script>
-    let pageNum = 1;
-    let pageSize = 20;
-
     export default {
         data () {
             return {
+                pageNum: 1,
+                pageSize: 10,
+                totalSize: 20,
                 replyContent: '',
                 subReplyContent:'',
                 replies: [
@@ -143,13 +147,17 @@
         mounted: function () {
             // alert("hello");
             // alert(this.detailID);
-            this.getReplyList(1, 20);
+            this.getReplyList();
         },
         props: {
             'detailID': Number,
             'userID': Number
         },
         methods: {
+            showPage(page){
+                this.pageNum = page;
+                this.getReplyList();
+            },
             getReplyList: function () {
                 let url = '/detail/reply/list?detailID='+ this.detailID
                     + '&pageNum=' + this.pageNum
@@ -158,42 +166,56 @@
                 this.$http.get(url).then(response => {
                     if(response.data['status'] == 200) {
                         this.replies = response.data.data;
+                        this.getTotalCount();
+                    }
+                }, response => {
+                    console.log("error");
+                });
+            },
+            getTotalCount: function () {
+                let url = '/detail/reply/count/total?detailID='+ this.detailID;
+
+                this.$http.get(url).then(response => {
+                    if(response.data['status'] == 200) {
+                        this.totalSize = response.data.data.total>this.pageSize ? response.data.data.total : this.pageSize;
                     }
                 }, response => {
                     console.log("error");
                 });
             },
             addReply: function () {
+                if( this.userID<=0 || undefined==this.userID ){
+                    this.showErrMsg("用户信息错误", "您需要先登录之后才能发送用户信息");
+                }
+
                 let url = '/detail/reply/info/new';
                 this.$http.post(url, {
-                    headers: {"Content-Type": "application/json"},
-                    data: {
-                        detailID: this.detailID,
-                        title: '',
-                        content: this.replyContent,
-                        authorID: this.userID,    // todo:
-                        toReplyID: 0
-                    }
+                    detailID: this.detailID,
+                    title: '',
+                    content: this.replyContent,
+                    authorID: this.userID,
+                    toReplyID: 0  
                 }).then(response => {
                     if(response.data['status'] == 200) {
                         this.replies = this.getReplyList();
                         this.replyContent = '';
-                    }
+                    } 
                 }, response => {
                     console.log("error");
                 });
             },
             addSubReply: function(toReply) {
+                if( this.userID<=0 || undefined==this.userID ){
+                    this.showErrMsg("用户信息错误", "您需要先登录之后才能发送用户信息");
+                }
+
                 let url = '/detail/reply/info/new';
                 this.$http.post(url, {
-                    headers: {"Content-Type": "application/json"},
-                    data: {
-                        detailID: this.detailID,
-                        title: '',
-                        content: this.subReplyContent,
-                        authorID: this.userID,    // todo:
-                        toReplyID: toReply
-                    }
+                    detailID: this.detailID,
+                    title: '',
+                    content: this.subReplyContent,
+                    authorID: this.userID,  
+                    toReplyID: toReply
                 }).then(response => {
                     if(response.data['status'] == 200) {
                         this.replies = this.getReplyList();
@@ -204,11 +226,15 @@
                 });
             },
             rmvReply: function(id) {
+                if( this.userID<=0 || undefined==this.userID ){
+                    this.showErrMsg("用户信息错误", "您需要先登录之后才能发送用户信息");
+                }
+
                 let url = '/detail/reply/info/delete';
                 this.$http.delete(url,{
                     headers: {"Content-Type": "application/json"},
                     data: {
-                        replyID: id,
+                        id: id,
                         authorID: this.userID
                     }
                 }).then(response => {
@@ -220,7 +246,16 @@
                 });
             },
             showAddSubButton: function(domId){
-
+                document.getElementById(domId).style.display = "block";
+            },
+            showErrMsg: function(msgTitle, msgContent) {
+                this.$Notice.error({
+                    title: msgTitle,
+                    desc: msgContent
+                });
+            },
+            isAuthor: function(replyUserID){
+                return replyUserID!=this.userID;
             }
         }
     };

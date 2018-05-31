@@ -17,4 +17,6 @@ public interface DetailReplyService {
   Boolean deleteReply(Integer relyID, Integer authorID) throws ServiceException;
 
   Boolean updateReply(Integer relyID, String title, String content, Integer authorID) throws ServiceException;
+
+  Integer getTotalCount(Integer detailID);
 }
