@@ -108,15 +108,6 @@
                 </div>
             </div>
         </Row>
-
-        <!-- temp -->
-        <Row>
-            <div style="margin:10%;">
-                <replyList :detailID="1" :userID="2"/>
-            </div>
-        </Row>
-        <!-- temp end -->
-
         <Row>
             <div class="layout-bottom">
                 <div style="display:inline; font-size:160%; text-align:center;">
@@ -144,7 +135,6 @@
 </template>
 <script>
     import donationInfo from './../components/donationInfo'
-    import replyList from './../components/replyList'
     import UserInfo from "../components/LoginAndLogout.vue"
 
     export default {
@@ -155,8 +145,7 @@
         },
         components: {
             donationInfo: donationInfo,
-            UserInfo: UserInfo,
-            replyList: replyList
+            UserInfo: UserInfo
         }
     }
 </script>

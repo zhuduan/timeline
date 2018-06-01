@@ -1,22 +1,33 @@
 <template>
-    <Row style="text-align: center;">
-        <div style="width: 90%; display: inline-block; overflow: auto;">
-            <div class="index-logo" style="font-size: x-large;">
-                <h1>{{this.subjectTitle}}</h1>
-                <h3 class="subject-detail">编辑作者{{this.author}} | 最近修改时间： {{this.latestUpdateTime}}</h3>
-                <button class="btn white btn-style" >贡献内容</button>
-                <button class="btn white btn-style" v-if="isFocus == false" @click="focus">关注</button>
-                <button class="btn white btn-style" v-else="isFocus == true" @click="unFocus">已关注</button>
+    <div>
+        <Row style="text-align: center;">
+            <div style="width: 90%; display: inline-block; overflow: auto;">
+                <div class="index-logo" style="font-size: x-large;">
+                    <h1>{{this.subjectTitle}}</h1>
+                    <h3 class="subject-detail">编辑作者{{this.author}} | 最近修改时间： {{this.latestUpdateTime}}</h3>
+                    <button class="btn white btn-style" >贡献内容</button>
+                    <button class="btn white btn-style" v-if="isFocus == false" @click="focus">关注</button>
+                    <button class="btn white btn-style" v-else="isFocus == true" @click="unFocus">已关注</button>
+                </div>
+                <hr/>
+                <div id='timeline-embed' style="width: 100%; height: 600px;"></div>
             </div>
-            <hr/>
-            <div id='timeline-embed' style="width: 100%; height: 600px;"></div>
-        </div>
-    </Row>
+        </Row>
+        <br/>
+        <!-- may some ad here -->
+        <Row>
+            <div style="margin:10%;">
+                <replyList :detailID="currentDetailID" :userID="1"/>
+            </div>
+        </Row>
+    </div>
 </template>
 
 <script>
     import TL from "../js/TL";
     import util from '../js/util';
+    import replyList from './../components/replyList';
+    import Vue from 'vue';
 
     export default {
         data() {
@@ -27,15 +38,25 @@
                 author: '',
                 latestUpdateTime: '',
                 timeline:null,
-                isFocus:false
+                isFocus:false,
+                currentDetailID: 0,
+                currentUserID: 0
             }
+        },
+        components:{
+            replyList: replyList
         },
         mounted: function () {
             this.subjectId = this.$route.params.value;
             this.loadDetail();
             if (this.$root.$store.state.user.isLogin === true) {
                 this.isSubjectFocus();
+
+                //todo: set the user id
+                console.log("user", this.$root.$store.state.user);
             }
+
+            
         },
         methods: {
             // 加载 Subject 详情
@@ -107,6 +128,9 @@
             // 初始化 TimeLine 组件
             loadTimeline: function () {
                 this.timeline = new TL.Timeline('timeline-embed', this.timelineData);
+                this.timeline.on("change", (data)=> {
+                    this.currentDetailID = isNaN(data.unique_id) ? 0 : parseInt(data.unique_id, 10);
+                });
             },
             // 解析返回结果为 TimeLine 组件数据
             assembleTimeline: function (responseData) {

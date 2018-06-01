@@ -4,7 +4,7 @@ TL = TL.TL._originalL;
 TL.adapter = function(responseData) {
     var timeline = {title: '', events: ''};
     var title = {text: '', media: ''};
-    var eventGroup = {media: '', text: '', start_date: ''};
+    var eventGroup = {media: '', text: '', start_date: '', unique_id:''};
     var eventGroupArray = [];
     var detailDate;
     var media = {url: '', caption: '', credit: ''};
@@ -19,7 +19,7 @@ TL.adapter = function(responseData) {
     title.media = media;
     title.text = text;
     timeline.title = title;
-
+   
     for (var i = 0; i < responseData.details.length; i++) {
         media = {url: '', caption: '', credit: ''};
         text = {text: '', headline: ''};
@@ -38,6 +38,7 @@ TL.adapter = function(responseData) {
         eventGroup.media = media;
         eventGroup.start_date = start_date;
         eventGroup.text = text;
+        eventGroup.unique_id = '' + responseData.details[i].id;
         eventGroupArray.push(eventGroup);
     }
     this.latestUpdateTime = responseData.details[responseData.details.length - 1].occurrenceTime;

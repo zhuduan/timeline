@@ -144,14 +144,25 @@
                 ]
             }
         },
+        props: {
+            detailID: {
+                type: Number,
+                required: true
+            },
+            userID: {
+                type: Number,
+                required: true
+            }
+        },
         mounted: function () {
             // alert("hello");
             // alert(this.detailID);
             this.getReplyList();
         },
-        props: {
-            'detailID': Number,
-            'userID': Number
+        watch: {
+            detailID: function(val){
+                this.getReplyList();
+            }
         },
         methods: {
             showPage(page){
@@ -159,6 +170,11 @@
                 this.getReplyList();
             },
             getReplyList: function () {
+                if( this.detailID<=0 ){
+                    this.replies = null;
+                    return;
+                }
+
                 let url = '/detail/reply/list?detailID='+ this.detailID
                     + '&pageNum=' + this.pageNum
                     + '&pageSize=' + this.pageSize;
@@ -240,12 +256,12 @@
                     data: {
                         id: id,
                         authorID: this.userID
-                    } else {
-                        this.showErrMsg(response.data.msg, response.data.data);
-                    }
+                    } 
                 }).then(response => {
                     if(response.data['status'] == 200) {
                         this.replies = this.getReplyList();
+                    } else {
+                        this.showErrMsg(response.data.msg, response.data.data);
                     }
                 }, response => {
 
