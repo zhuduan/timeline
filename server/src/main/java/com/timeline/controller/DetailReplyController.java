@@ -1,28 +1,23 @@
 package com.timeline.controller;
 
-import static com.timeline.support.common.CommonConfig.PAGE_SIZE;
-
 import com.timeline.model.DTO.DetailReplyDTO;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.timeline.service.DetailReplyService;
+import com.timeline.support.annotation.UserLogin;
 import com.timeline.support.common.ControllerException;
 import com.timeline.support.common.ErrorType;
+import com.timeline.support.http.HttpKeys;
 import com.timeline.support.utils.LogUtil;
 import com.timeline.support.utils.NumberUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import static com.timeline.support.common.CommonConfig.PAGE_SIZE;
 
 @Api(description = "detail reply interface")
 @RestController()
@@ -59,10 +54,14 @@ public class DetailReplyController {
         countResult.put("total", detailReplyService.getTotalCount(detailID));
         return countResult;
     }
-    
+
+    @UserLogin
     @ApiOperation(httpMethod = "POST", value = "add new reply", response = Map.class)
     @RequestMapping(value = "info/new", method = RequestMethod.POST)
-    public Object addReply(@RequestBody DetailReplyDTO detailReplyDTO) throws Exception {
+    public Object addReply( @RequestAttribute(HttpKeys.X_USER_ID) Long userID,
+                            @RequestBody DetailReplyDTO detailReplyDTO ) throws Exception {
+
+        detailReplyDTO.setAuthorID(userID.intValue());
         detailReplyDTO.validate();
         Map<String, Boolean> addResult = new HashMap<>();
         addResult.put("result", detailReplyService.addReply(detailReplyDTO.getDetailID(), detailReplyDTO.getTitle(),
